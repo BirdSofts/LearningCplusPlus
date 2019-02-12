@@ -3,7 +3,7 @@
 /// _4_CompoundDataTypes.cpp
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,24.01.2019</changed>
+/// <changed>ʆϒʅ,12.02.2019</changed>
 // --------------------------------------------------------------------------------
 
 #include "pch.h"
@@ -13,15 +13,148 @@
 #define Tab '\t'
 #define Nline '\n'
 
+const char tab { '\t' };
+const char nline { '\n' };
+
+
+void _7_1_Arrays ()
+{
+    // the functions used in this section are defined above it.
+    try
+    {
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
+
+        //! ####################################################################
+        //! ~~~~~ arrays:
+        // an array is built a chain of same type elements placed in contiguous memory locations.
+        // every individual element can be referred to by its unique index identifier.
+        // in C++ language the first element index of an array is always zero.
+        // an array like a variable is usable after declaration.
+        // Note declaration syntax: type name [elements];
+        // elements field which is always enclosed in square brackets [] specifies the length of the array in terms of the number of elements.
+        // elements field specifies the length of the array in terms of number. (always enclosed in square brackets)
+        // arrays are blocks of static memory, which sizes are determined at the compile time,
+        // therefore the element field of an array must be a constant expression.
+        ColourCouter ( "~~~~~ Arrays:\n", F_bBLUE );
+        ColourCouter ( "Same type elements can build series of elements known as arrays and every element can be referenced by adding an index to the array's unique identifier.\n\n", F_YELLOW );
+    }
+    catch ( const std::exception& )
+    {
+
+    }
+}
+
 
 void print_simple_array ( int arg [], int length )
 {
     for ( int n = 0; n < length; n++ )
     {
-        std::cout << arg [n] << "  ";
+        std::cout << arg [n];
+        if ( arg [n] < 9 ) std::cout << "   "; else std::cout << "  ";
     }
-    std::cout << Nline << Nline;
+    std::cout << Nline;
 }
+void _7_2_InitializingArrays ()
+{
+    try
+    {
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
+
+        //! ####################################################################
+        //! ----- initializing arrays:
+        // arrays of local scope like variables are uninitialized by default
+        // to explicitly initialize an array, the values must be enclosed in curly braces.
+        // the number of values must not be grater than the exact number of elements in the array.
+        // if the array is initialized with less, the remaining elements will be set to their default values.
+        // the default value for fundamental types is zero.
+        // empty curly braces are to be used to initial an array with default values.
+        // with leaving square braces empty for an initialization-provided array,
+        // C++ automatically assume a size for the array that matches the number of its values.
+        // evolution of C++ has provided universal initialization also for arrays,
+        // so equal signs in between of their declarations and identifiers aren't needed any more.
+        ColourCouter ( "----- Initialization of Arrays:\n", F_bBLUE );
+        ColourCouter ( "Uninitialized arrays of local scope have undetermined values.\n\n", F_YELLOW );
+        int array1 [5]; // uninitialized
+        int array2 [5] = { 0,10,20,30,40 }; // explicitly initialized
+        int array3 [5] = { 0,10,20 }; // remaining elements will be initialized with array's type default value
+        int array4 [5] = {}; // all elements are initialized with array's type default value
+        int array5 [] = { 0,10,20,30,40 }; // compiler of C++ assumes the size of array automatically
+        int array6 [5] { 0,10,20,30,40 }; // universal initialization
+        std::cout << "The elements of an uninitialized array (it can be inserted):" << nline;
+        print_simple_array ( array1, 5 );
+        std::cout << "The elements of an array with explicit initialization:" << "\t\t\t";
+        print_simple_array ( array2, 5 );
+        std::cout << "The remaining uninitialized elements of an array:" << "\t\t\t";
+        print_simple_array ( array3, 5 );
+        std::cout << "Initialization of an array with default values of its elements:" << "\t\t";
+        print_simple_array ( array4, 5 );
+        std::cout << "Assuming the size of an array automatically:" << "\t\t\t\t";
+        print_simple_array ( array5, 5 );
+        std::cout << "Declaring an array with the use of universal initialization:" << "\t\t";
+        print_simple_array ( array6, 5 );
+        std::cout << nline;
+    }
+    catch ( const std::exception& )
+    {
+
+    }
+}
+
+
+void _7_3_AccessingValues ()
+{
+    try
+    {
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
+
+        //! ####################################################################
+        //! ----- accessing the values of an array:
+        // the value of any element in an array can be accessed just like the value of regular variable of the same type.
+        // Note syntax: name[index]
+        ColourCouter ( "----- Accessing the values of an array:\n", F_bBLUE );
+        ColourCouter ( "Elements of an array can be accessed by their indices.\n\n", F_YELLOW );
+        int a_array [5] {};
+        std::cout << "The values of the array's elements (automatically initialized):" << "\t\t";
+        print_simple_array ( a_array, 5 );
+        a_array [0] = 11;
+        a_array [2] = 33;
+        a_array [4] = 55;
+        std::cout << "The values of the array's elements (after assignment):" << "\t\t\t";
+        print_simple_array ( a_array, 5 );
+        std::cout << nline;
+
+        //! - in addition:
+        // exceeding the valid (defined) range of array indices is syntactically (compiler doesn't cause any error) correct,
+        // but it can cause error at runtime and the reason for this being allowed will be seen in pointers chapter.
+        // giving heed to the different uses that brackets [] have concerning arrays is also important. (define and access time)
+        // following comes some expansion on valid operations with arrays.
+        ColourCouter ( "More on arrays, their indices and some other valid operations:\n", F_bYELLOW );
+        int b_array [5] {}; // first use of brackets: in declaration to specify the size
+        b_array [1] = 22; // second use of brackets: to access an element of the array
+        int a { 3 };
+        b_array [0] = a;
+        b_array [a] = 33;
+        int b { b_array [a + 1] }; // equivalent: int b {0};
+        b_array [b_array [a] / 11] = b_array [2] + 5; // equivalent: b_array[3] = 5;
+        std::cout << "The values of the array's elements (after some valid operation):" << tab;
+        print_simple_array ( b_array, 5 );
+        int result {};
+        for ( int n = 0; n < 5; n++ )
+        {
+            result += b_array [n];
+        }
+        std::cout << "Subtraction of all the values of the array's elements:" << "\t\t\t" << result << nline << nline;
+    }
+    catch ( const std::exception& )
+    {
+
+    }
+}
+
+
 void print_bidimensional_array ( int arg [] [5], int width, int height )
 {
     for ( int n = 0; n < width; n++ )
@@ -34,101 +167,12 @@ void print_bidimensional_array ( int arg [] [5], int width, int height )
     }
     std::cout << Nline;
 }
-// ********************************************************************************
-/// <summary>
-/// Arrays in C++
-/// </summary>
-/// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,11.06.2018</changed>
-// ********************************************************************************
-void Arrays ()
+void _7_4_MultidimensionalArrays ()
 {
-    // the functions used in this section are defined above it.
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
-
-        //! ####################################################################
-        //! ~~~~~ arrays:
-        // a series of the same type elements placed in contiguous memory locations that can be individually referenced by adding an index to its unique identifier.
-        // in C++ the first element in an array is always numbered with zero no matter the length.
-        // like variables an array must be declared before it is used.
-        // declaration syntax: type name [elements];
-        // elements field which is always enclosed in square brackets [] specifies the length of the array in terms of the number of elements.
-        // since arrays are blocks of static memory whose size must be determined at the compile time, the elements field must be a constant expression.
-        std::cout << nline << "~~~~~ Arrays:" << nline;
-        std::cout << "An array is a series of elements of the same type that every element can be referenced by its index which the unique identifier of array provides." << nline;
-
-        //! ####################################################################
-        //! ----- initializing arrays:
-        // arrays of local scope are uninitialized by default
-        // to explicitly initialize an array the values must be enclosed in curly braces.
-        // the number of values must not be grater than the exact number of elements in the array.
-        // if the array is initialized with less, the remaining elements will be set to their default values.
-        // the default value for fundamental types is zero.
-        // to initialize with default values, empty curly braces must be used
-        // if initialization of an array is provided, C++ can automatically assume a size for array that matches the number of its values. for this leave the square braces empty.
-        // the evolution of C++ has led to the adoption of universal initialization, therefore there is no longer need for the equal sign in between the declaration and initializer.
-        std::cout << nline << "----- Initialization of Arrays:" << nline;
-        std::cout << "Without initialization an array has undetermined values as its elements." << nline << nline;
-        int array1 [5]; // uninitialized
-        int array2 [5] = { 0,10,20,30,40 }; // explicitly initialized
-        int array3 [5] = { 0,10,20 }; // remaining elements will be initialized with their default values
-        int array4 [5] = {}; // all elements are initialized with their default values
-        int array5 [] = { 0,10,20,30,40 }; // compiler of C++ assumes the size of array automatically
-        int array6 [5] { 0,10,20,30,40 }; // using universal initialization
-        std::cout << "The elements of an uninitialized array:" << nline;
-        print_simple_array ( array1, 5 );
-        std::cout << "The elements of an array with explicit initialization:" << nline;
-        print_simple_array ( array2, 5 );
-        std::cout << "The remaining uninitialized elements of an array:" << nline;
-        print_simple_array ( array3, 5 );
-        std::cout << "Initialization of an array with default values of its elements:" << nline;
-        print_simple_array ( array4, 5 );
-        std::cout << "Assuming the size of an array automatically:" << nline;
-        print_simple_array ( array5, 5 );
-        std::cout << "Declaring an array with the use of universal initialization:" << nline;
-        print_simple_array ( array6, 5 );
-
-        //! ####################################################################
-        //! ----- accessing the values of an array:
-        // the values of any elements in an array can be accessed just like the value of regular variable of the same type.
-        // syntax: name[index]
-        std::cout << "----- Accessing the values of an array:" << nline;
-        std::cout << "The values of any elements of an array can be accessed just like regular variable of the same type." << nline << nline;
-        int a_array [5] {};
-        std::cout << "The values of the elements of the array before assignments:" << nline;
-        print_simple_array ( a_array, 5 );
-        a_array [0] = 11;
-        a_array [2] = 33;
-        a_array [4] = 55;
-        std::cout << "The values of the elements of the array after assignments:" << nline;
-        print_simple_array ( a_array, 5 );
-
-        // as we saw the fifth and the last element of the array has the index 4.
-        // with the expression a_array[5] we would be accessing the sixth element of the array, and therefore actually exceeding the size of the array.
-        // in C++, it is syntactically (the compiler doesn't cause error) correct to exceed the valid range of indices for an array. and this can create problems in the runtime
-        // the reason for this being allowed is the pointers.
-        // give also heed to the different uses that brackets [] have related to arrays.
-        // following there are also some other valid operations with arrays.
-        int b_array [5] {}; // first use of brackets: in declaration to specify the size
-        b_array [1] = 22222; // second use of brackets: to access an element of the array
-        int a { 3 };
-        b_array [0] = a;
-        b_array [a] = 33333;
-        int b { b_array [a + 1] }; // equivalent: int b {0};
-        b_array [b_array [a] / 11111] = b_array [2] + 5; // equivalent: b_array[3] = 5;
-        std::cout << "The values of the elements of the array after some valid operation:" << nline;
-        print_simple_array ( b_array, 5 );
-        int result {};
-        for ( int n = 0; n < 5; n++ )
-        {
-            result += b_array [n];
-        }
-        std::cout << "The addition result of all the elements of the array:" << tab << result << nline;
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ----- multidimensional arrays:
@@ -138,8 +182,8 @@ void Arrays ()
         // the only difference is that with multidimensional arrays, the compiler automatically remembers the depth of each imaginary dimension.
 #define HEIGHT 3 // using defined constants for better readability and easiness of later changes in one place
 #define WIDTH 5 // the same
-        std::cout << nline << "----- Multidimensional arrays:" << nline;
-        std::cout << "Can be described as 'arrays of arrays'." << nline << nline;
+        ColourCouter ( "----- Multidimensional arrays:\n", F_bBLUE );
+        ColourCouter ( "Can be described as 'arrays of arrays'.\n\n", F_YELLOW );
         int bidimensional_array [HEIGHT] [WIDTH] {}; // declaration of a bidimensional array of 3 per 5 elements of type int
         bidimensional_array [0] [2] = 13; // to reference to the first element vertically and third horizontally
         std::cout << "Elements of the bidimensional_array:" << nline;
@@ -161,6 +205,28 @@ void Arrays ()
         print_bidimensional_array ( bidimensional_array, HEIGHT, WIDTH );
         std::cout << "Elements of a simple array (achieving the same result):" << nline;
         print_simple_array ( equivalent_simple_array, HEIGHT* WIDTH );
+        /*
+
+        */
+        //ColourCouter ( "\n", F_bBLUE );
+        //ColourCouter ( "\n\n", F_YELLOW );
+        //ColourCouter ( "\n", F_bYELLOW );
+        //ColourCouter ( "\n", F_bCYAN );
+        //! - in addition:
+    }
+    catch ( const std::exception& )
+    {
+
+    }
+}
+
+
+void _7_5_ArraysAsParameters ()
+{
+    try
+    {
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ----- arrays as parameters:
@@ -184,6 +250,20 @@ void Arrays ()
         int another_array [2] [5] { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
         std::cout << "Passing a bidimensional array as the argument of an earlier used function:" << nline << nline;
         print_bidimensional_array ( another_array, 2, 5 );
+    }
+    catch ( const std::exception& )
+    {
+
+    }
+}
+
+
+void _7_6_LibraryArrays ()
+{
+    try
+    {
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ----- library arrays:
@@ -238,10 +318,8 @@ void CharacterSequences ()
     // the functions used in this section are defined above it.
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ character sequences:
@@ -380,10 +458,8 @@ void Pointers ()
     // the functions used in this section are defined above it.
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ Pointers:
@@ -752,10 +828,8 @@ void DynamicMemory ()
 {
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ dynamic memory:
@@ -892,10 +966,8 @@ void DataStructures ()
     // the functions and structures used in this section are defined above it.
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ data structures:
@@ -1033,10 +1105,8 @@ void OtherDataTypes ()
 {
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ other data types:

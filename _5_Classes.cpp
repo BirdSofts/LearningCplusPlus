@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,24.01.2019</changed>
+/// <changed>ʆϒʅ,12.02.2019</changed>
 // --------------------------------------------------------------------------------
 
 #include "pch.h"
@@ -12,6 +12,9 @@
 
 #define Tab '\t'
 #define Nline '\n'
+
+const char tab { '\t' };
+const char nline { '\n' };
 
 
 class Rectangle
@@ -128,10 +131,8 @@ void ClassesI ()
     // the classes used in this section are defined above it.
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ Classes I:
@@ -458,10 +459,8 @@ void ClassesII ()
     // the classes used in this section are defined above it.
     try
     {
-        ColourCouter ( "-------------------------------------------------------", F_bRED );
-        ColourCouter ( "-------------------------------------------------------\n\n", F_bRED );
-        const char tab { '\t' };
-        const char nline { '\n' };
+        ColourCouter ( "--------------------------------------------------", F_bRED );
+        ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
         //! ####################################################################
         //! ~~~~~ Classes II:
@@ -672,7 +671,7 @@ void ClassesII ()
         aContainer <char> theChar ( 'j' );
         std::cout << "The integer value and its increment are:" << tab << theInt.get () << tab;
         std::cout << theInt.increase () << nline;
-        std::cout << "The character and its uppercase are:" << tab << tab << theChar.get () << tab;
+        std::cout << "The character and its uppercase are:" << "\t\t" << theChar.get () << tab;
         std::cout << theChar.uppercase () << nline;
 
         //! ####################################################################
