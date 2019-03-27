@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,12.02.2019</changed>
+/// <changed>ʆϒʅ,27.03.2019</changed>
 // --------------------------------------------------------------------------------
 
 #include "pch.h"
@@ -162,8 +162,8 @@ void ClassesI ()
         //-- the keyword 'union'
         // conversely, the concepts of the keyword 'union' is different from that of the classes defined with the keywords 'class' and 'struct', since unions only store one data member at a time, but nevertheless they are also classes and can thus also hold member functions. the default access in union classes is public.
         //! -------------------------------------------------------------------------------------------
-        std::cout << nline << "~~~~~ Classes I:" << nline;
-        std::cout << "Classes are an expanded concept of data structure with the ability not only containing data members but also functions as members." << nline << nline;
+        ColourCouter ( "~~~~~ Classes I:\n", F_bBLUE );
+        ColourCouter ( "Classes are an expanded concept of data structure with the ability, not only containing data members but also functions as members.\n\n", F_YELLOW );
         class Rectangle_ex
         {
             int width, height;
@@ -185,6 +185,14 @@ void ClassesI ()
         // classes allow programming using object-oriented paradigms:
         // data and functions are both members of the object, thus the reduction of passing and carrying of handlers or other state variables as arguments to functions, since they are part of the objects whose member is called.
         // notice the calls to the 'area' member function
+        /*
+
+        */
+        //ColourCouter ( "\n", F_bBLUE );
+        //ColourCouter ( "\n\n", F_YELLOW );
+        //ColourCouter ( "\n", F_bYELLOW );
+        //ColourCouter ( "\n", F_bCYAN );
+        //! - in addition:
 
         //! ####################################################################
         //! ----- constructors:
@@ -515,7 +523,7 @@ void ClassesII ()
         // guide to the table:
         // please, replace @ by the operator in each case.
         // a is an object of the class A, b is an object of the class B, c is an object of the class C
-        // TYPE is just any type (that operators overloads perform the conversation to type TYPE)
+        // TYPE is just any type (that operators overloads perform the conversion to type TYPE)
         // -------------------------------------------------------------------------------------------------------------
         // | Expression | Operator                                      | Member function        | Non-member function |
         // -------------------------------------------------------------------------------------------------------------

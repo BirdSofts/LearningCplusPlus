@@ -3,7 +3,7 @@
 /// _2_Basics.h
 /// </summary>
 /// <created>ʆϒʅ,11.04.2018</created>
-/// <changed>ʆϒʅ,16.01.2019</changed>
+/// <changed>ʆϒʅ,09.03.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once
@@ -13,17 +13,17 @@
 #define INTRODUCTIONANDBASICS_H
 
 
-void _2_1_StructureOfaProgram ();
-void _2_2_VariablesTypesAndIdentifiers ();
-void _2_3_FundamentalTypesAndDeduction ();
-void _2_4_ConstantNumerals ();
-void _2_5_ConstantLiterals ();
-void _2_6_OtherConstantLiterals ();
-void _2_7_ArithmeticOperators ();
-void _2_8_LagicalOperators ();
-void _2_9_OtherOperators ();
-void _2_10_PrecedenceOfOperators ();
-void _2_11_BasicInputOutput ();
+void _02_01_StructureOfaProgram ();
+void _02_02_VariablesTypesAndIdentifiers ();
+void _02_03_FundamentalTypesAndDeduction ();
+void _02_04_ConstantNumerals ();
+void _02_05_ConstantLiterals ();
+void _02_06_OtherConstantLiterals ();
+void _02_07_ArithmeticOperators ();
+void _02_08_LagicalOperators ();
+void _02_09_OtherOperators ();
+void _02_10_PrecedenceOfOperators ();
+void _02_11_BasicInputOutput ();
 
 
 #endif // !INTRODUCTIONANDBASICS_H

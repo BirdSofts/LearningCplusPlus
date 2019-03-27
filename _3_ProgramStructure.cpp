@@ -3,7 +3,7 @@
 /// _3_ProgramStructures.cpp
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,12.02.2019</changed>
+/// <changed>ʆϒʅ,09.03.2019</changed>
 // --------------------------------------------------------------------------------
 
 #include "pch.h"
@@ -17,7 +17,7 @@ const char tab { '\t' };
 const char nline { '\n' };
 
 
-void _3_1_ControlStructures ()
+void _03_01_ControlStructures ()
 {
     try
     {
@@ -41,7 +41,7 @@ void _3_1_ControlStructures ()
 }
 
 
-void _3_2_SelectionStatements ()
+void _03_02_SelectionStatements ()
 {
     try
     {
@@ -90,7 +90,7 @@ void _3_2_SelectionStatements ()
 }
 
 
-void _3_3_IterationStatements ()
+void _03_03_IterationStatements ()
 {
     try
     {
@@ -232,7 +232,7 @@ void _3_3_IterationStatements ()
 }
 
 
-void _3_4_JumpStatements ()
+void _03_04_JumpStatements ()
 {
     try
     {
@@ -304,7 +304,7 @@ void _3_4_JumpStatements ()
 }
 
 
-void _3_5_AnotherSelectionStatement ()
+void _03_05_AnotherSelectionStatement ()
 {
     try
     {
@@ -379,7 +379,7 @@ int subtraction ( int a, int b )
 {
     int r; r = a - b; return r;
 }
-void _4_1_Functions ()
+void _04_01_Functions ()
 {
     try
     {
@@ -427,7 +427,7 @@ void print_message ( void )
 {
     std::cout << "\t\t Hi, I'm a Function. ^_^ \n\n";
 }
-void _4_2_VoidFunctions ()
+void _04_02_VoidFunctions ()
 {
     try
     {
@@ -452,7 +452,7 @@ void _4_2_VoidFunctions ()
 }
 
 
-void _4_3_MainFunctionReturnValue ()
+void _04_03_MainFunctionReturnValue ()
 {
     try
     {
@@ -495,7 +495,7 @@ void duplication ( int& a, int& b, int& c )
 {
     a *= 2, b *= 2, c *= 2;
 }
-void _4_4_PassedArgumentsTypes ()
+void _04_04_PassedArgumentsTypes ()
 {
     try
     {
@@ -549,7 +549,7 @@ std::string constant_concatenate ( const std::string& a, const std::string& b )
 {
     return a + b;
 }
-void _4_5_Efficiency ()
+void _04_05_Efficiency ()
 {
     try
     {
@@ -592,7 +592,7 @@ inline std::string inline_constant_concatenate ( const std::string& a, const std
 {
     return a + b;
 }
-void _4_6_InlineFunctions ()
+void _04_06_InlineFunctions ()
 {
     try
     {
@@ -627,7 +627,7 @@ int divide ( int a, int b = 2 )
 {
     int r; r = a / b; return r;
 }
-void _4_7_ParametersDefaultValues ()
+void _04_07_ParametersDefaultValues ()
 {
     try
     {
@@ -656,7 +656,7 @@ void _4_7_ParametersDefaultValues ()
 
 void odd ( int x ); // function prototype
 void even ( int x ); // the same
-void _4_8_FunctionsDeclaration ()
+void _04_08_FunctionsDeclaration ()
 {
     try
     {
@@ -714,7 +714,7 @@ long factorial ( long a )
     else
         return 1;
 }
-void _4_9_Recursivity ()
+void _04_09_Recursivity ()
 {
     try
     {
@@ -738,7 +738,7 @@ void _4_9_Recursivity ()
 }
 
 
-void _5_1_OverloadsAndTemplates ()
+void _05_01_OverloadsAndTemplates ()
 {
     // the body code of functions used in this section are defined above it
     try
@@ -768,7 +768,7 @@ double operate ( double a, double b )
 {
     return ( a / b );
 }
-void _5_2_OverloadedFunctions ()
+void _05_02_OverloadedFunctions ()
 {
     try
     {
@@ -823,7 +823,7 @@ bool equality_check ( T a, U b )
 {
     return ( a == b );
 }
-void _5_3_FunctionTemplates ()
+void _05_03_FunctionTemplates ()
 {
     try
     {
@@ -894,7 +894,7 @@ T fixed_multiply ( T val )
 {
     return val * N;
 }
-void _5_4_NonTypeTemplateArguments ()
+void _05_04_NonTypeTemplateArguments ()
 {
     try
     {
@@ -926,7 +926,7 @@ void _5_4_NonTypeTemplateArguments ()
 }
 
 
-void _6_1_NameVisibility ()
+void _06_01_NameVisibility ()
 {
     try
     {
@@ -962,7 +962,7 @@ int second_function ()
     local_variable = 2;
     return local_variable;
 }
-void _6_2_Scopes ()
+void _06_02_Scopes ()
 {
     try
     {
@@ -1033,7 +1033,7 @@ namespace firstNamespace
     int c { 4 };
     int d { 5 };
 }
-void _6_3_Namespaces ()
+void _06_03_Namespaces ()
 {
     try
     {
@@ -1081,7 +1081,7 @@ namespace second
     double xx { 3.1416 };
     double yy { 2.7183 };
 }
-void _6_4_UsingKeyword ()
+void _06_04_UsingKeyword ()
 {
     try
     {
@@ -1139,7 +1139,7 @@ namespace third
     int xx { 5 };
     int yy { 10 };
 }
-void _6_5_NamespaceAliasing ()
+void _06_05_NamespaceAliasing ()
 {
     try
     {
@@ -1175,7 +1175,7 @@ void _6_5_NamespaceAliasing ()
 
 
 int aGlobalVariable; // static storage, is automatic initialized
-void _6_6_StorageClasses ()
+void _06_06_StorageClasses ()
 {
     try
     {

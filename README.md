@@ -39,8 +39,10 @@ I appreciate any contribution to the project.
 
 #References
 http://www.cplusplus.com/doc/
+https://stackoverflow.com/
 http://de.cppreference.com/
 https://docs.microsoft.com/
+https://www.ibm.com/support/knowledgecenter/en/
 C++ reference: http://www.cplusplus.com/reference/
 
 # Copyright

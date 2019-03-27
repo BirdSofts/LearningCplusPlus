@@ -3,7 +3,7 @@
 /// _1_Introduction.h
 /// </summary>
 /// <created>ʆϒʅ,20.12.2018</created>
-/// <changed>ʆϒʅ,14.01.2019</changed>
+/// <changed>ʆϒʅ,09.03.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once
@@ -13,7 +13,7 @@
 #define _1_INTRODUCTION_H
 
 
-void _1_1_Introduction ();
+void _01_01_Introduction ();
 
 
 #endif // !_1_INTRODUCTION_H
