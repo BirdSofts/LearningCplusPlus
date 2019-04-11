@@ -3,11 +3,11 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,27.03.2019</changed>
+/// <changed>ʆϒʅ,12.04.2019</changed>
 // --------------------------------------------------------------------------------
 
 #include "pch.h"
-#include "ConsoleAdjustments.h"
+#include "Console.h"
 
 
 #define Tab '\t'

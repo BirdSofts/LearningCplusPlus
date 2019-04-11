@@ -3,7 +3,7 @@
 /// _2_Basics.cpp
 /// </summary>
 /// <created>ʆϒʅ,11.04.2018</created>
-/// <changed>ʆϒʅ,28.03.2019</changed>
+/// <changed>ʆϒʅ,12.04.2019</changed>
 // --------------------------------------------------------------------------------
 
 //! preprocessor directives:
@@ -12,7 +12,7 @@
 // this directive instruct the preprocessor to include header iostream, which is a section of standard C++ code.
 // header iostream after inclusion allow the program to perform standard input and output operations.
 #include "pch.h"
-#include "ConsoleAdjustments.h"
+#include "Console.h"
 
 
 //! using namespace std:
@@ -87,7 +87,6 @@ void _02_02_VariablesTypesAndIdentifiers ()
     // identifiers shall always begin with letters, additionally they can begin with underscore too.
     // programmers identifiers can not match C++ reserved keywords.
     // C++ is a case-sensitive language.
-    // more info on identifiers: http://www.cplusplus.com/doc/tutorial/variables/
     // std::endl: flushes the stream and prints the newline character
     ColourCouter ( "----- Declaration and initialization in different C++ revisions:\n", F_bBLUE );
     ColourCouter ( "A variable must first be declared and in the moment of declaration, it can be initialized.\n\n", F_YELLOW );
