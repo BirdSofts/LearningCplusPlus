@@ -3,7 +3,7 @@
 /// _2_Basics.cpp
 /// </summary>
 /// <created>ʆϒʅ,11.04.2018</created>
-/// <changed>ʆϒʅ,12.04.2019</changed>
+/// <changed>ʆϒʅ,16.04.2019</changed>
 // --------------------------------------------------------------------------------
 
 //! preprocessor directives:
@@ -11,7 +11,8 @@
 // example: #include <iostream>
 // this directive instruct the preprocessor to include header iostream, which is a section of standard C++ code.
 // header iostream after inclusion allow the program to perform standard input and output operations.
-#include "pch.h"
+//#include "pch.h"
+#include "LearningCplusPlus.h"
 #include "Console.h"
 
 

@@ -3,7 +3,7 @@
 /// _3_ProgramStructures.h
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,09.03.2019</changed>
+/// <changed>ʆϒʅ,16.04.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once

@@ -3,10 +3,11 @@
 /// _4_CompoundDataTypes.cpp
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,12.04.2019</changed>
+/// <changed>ʆϒʅ,16.04.2019</changed>
 // --------------------------------------------------------------------------------
 
-#include "pch.h"
+//#include "pch.h"
+#include "LearningCplusPlus.h"
 #include "Console.h"
 
 

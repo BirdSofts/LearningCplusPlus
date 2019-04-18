@@ -3,7 +3,7 @@
 /// _4_CompoundDataTypes.h
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,24.03.2019</changed>
+/// <changed>ʆϒʅ,16.04.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once

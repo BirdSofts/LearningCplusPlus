@@ -1,6 +1,5 @@
 # Introduction 
 LearningCplusPlus project originally aimed to serve as a personal private reference for coding in C++ language.
-Mostly cplusplus website has been used as reference.
 The project is just learning materials, which tries very hard to bring learning instruction, the source code itself and the compilation results all together in coding environment in easy language which results in experiencing more joy while learning to code.
 
 <table>
@@ -28,11 +27,25 @@ The project is just learning materials, which tries very hard to bring learning 
 </table>
 
 # Getting Started
-If you are a real beginner, just use Visual Studio and try learning the code environment in beginner level first, before starting the C++ language itself.
-If you have experience then you probably know what you are doing.
+1.  Installation process:
+Compilable! :)
+
+2.  Software dependencies:
+Dependent on Windows APIs
+
+3.  Latest releases:
+Still no release, just coding and debugging
+
+4.  API references
+Windows's console: screen, colour and font manipulations APIs.
 
 # Build and Test
-The project has been built and tested in Visual Studio environment. If you want to do it in other coding environment, then you are going to be on your own.
+If you are a beginner, use Visual Studio or know what you are doing before doing anything.
+
+Compilable using CMake.
+```cmake
+cmake --build build-path
+```
 
 # Contribute
 I appreciate any contribution to the project.

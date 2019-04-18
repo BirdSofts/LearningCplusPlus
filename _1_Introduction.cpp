@@ -3,10 +3,11 @@
 /// _1_Introduction.cpp
 /// </summary>
 /// <created>ʆϒʅ,20.12.2018</created>
-/// <changed>ʆϒʅ,09.03.2019</changed>
+/// <changed>ʆϒʅ,16.04.2019</changed>
 // --------------------------------------------------------------------------------
 
-#include "pch.h"
+//#include "pch.h"
+#include "LearningCplusPlus.h"
 #include "Console.h"
 
 
