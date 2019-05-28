@@ -3,7 +3,7 @@
 /// _3_ProgramStructures.h
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,16.04.2019</changed>
+/// <changed>ʆϒʅ,15.05.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once
@@ -13,33 +13,33 @@
 #define PROGRAMSTRUCTURE_H
 
 
-void _03_01_ControlStructures ();
-void _03_02_SelectionStatements ();
-void _03_03_IterationStatements ();
-void _03_04_JumpStatements ();
-void _03_05_AnotherSelectionStatement ();
+void _07_01_ControlStructures ();
+void _07_02_SelectionStatements ();
+void _07_03_IterationStatements ();
+void _07_04_JumpStatements ();
+void _07_05_AnotherSelectionStatement ();
 
-void _04_01_Functions ();
-void _04_02_VoidFunctions ();
-void _04_03_MainFunctionReturnValue ();
-void _04_04_PassedArgumentsTypes ();
-void _04_05_Efficiency ();
-void _04_06_InlineFunctions ();
-void _04_07_ParametersDefaultValues ();
-void _04_08_FunctionsDeclaration ();
-void _04_09_Recursivity ();
+void _08_01_Functions ();
+void _08_02_VoidFunctions ();
+void _08_03_MainFunctionReturnValue ();
+void _08_04_PassedArgumentsTypes ();
+void _08_05_Efficiency ();
+void _08_06_InlineFunctions ();
+void _08_07_ParametersDefaultValues ();
+void _08_08_FunctionsDeclaration ();
+void _08_09_Recursivity ();
 
-void _05_01_OverloadsAndTemplates ();
-void _05_02_OverloadedFunctions ();
-void _05_03_FunctionTemplates ();
-void _05_04_NonTypeTemplateArguments ();
+void _09_01_OverloadsAndTemplates ();
+void _09_02_OverloadedFunctions ();
+void _09_03_FunctionTemplates ();
+void _09_04_ParticularTypeTemplateArguments ();
 
-void _06_01_NameVisibility ();
-void _06_02_Scopes ();
-void _06_03_Namespaces ();
-void _06_04_UsingKeyword ();
-void _06_05_NamespaceAliasing ();
-void _06_06_StorageClasses ();
+void _10_01_NameVisibility ();
+void _10_02_Scopes ();
+void _10_03_Namespaces ();
+void _10_04_UsingKeyword ();
+void _10_05_NamespaceAliasing ();
+void _10_06_StorageClasses ();
 
 
 #endif // !PROGRAMSTRUCTURE_H

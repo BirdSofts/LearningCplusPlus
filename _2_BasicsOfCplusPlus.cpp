@@ -3,7 +3,7 @@
 /// _2_Basics.cpp
 /// </summary>
 /// <created>ʆϒʅ,11.04.2018</created>
-/// <changed>ʆϒʅ,10.05.2019</changed>
+/// <changed>ʆϒʅ,15.05.2019</changed>
 // --------------------------------------------------------------------------------
 
 //! preprocessor directives:
@@ -66,7 +66,7 @@ void _02_01_StructureOfaProgram () // declaration of the function, explanation i
 }
 
 
-void _02_02_VariablesTypesAndIdentifiers ()
+void _03_01_VariablesTypesAndIdentifiers ()
 {
   try
   {
@@ -121,13 +121,10 @@ void _02_02_VariablesTypesAndIdentifiers ()
 }
 
 
-void _02_03_FundamentalTypesAndDeduction ()
+void _03_02_FundamentalTypesAndDeduction ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ~~~~~ fundamental types and deduction
     // the zeros and ones stored in memory which represent variables need to be interpreted.
@@ -341,7 +338,7 @@ void _02_03_FundamentalTypesAndDeduction ()
 }
 
 
-void _02_04_ConstantNumerals ()
+void _04_01_ConstantNumerals ()
 {
   try
   {
@@ -417,13 +414,10 @@ void _02_04_ConstantNumerals ()
 }
 
 
-void _02_05_ConstantLiterals ()
+void _04_02_ConstantLiterals ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ~~~~~ constant literals:
     // second kind of the most obvious constants are literals, which can be of types character or string
@@ -547,13 +541,10 @@ c0de"           " paRTed"  " And "
 }
 
 
-void _02_06_OtherConstantLiterals ()
+void _04_03_OtherConstantLiterals ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ~~~~~ other constant literals:
     // third kind of constants is boolean and pointers type, that is keyword literals true, false and nullptr.
@@ -611,7 +602,7 @@ void _02_06_OtherConstantLiterals ()
 // scope start point of these constants
 const char tab { '\t' };
 const char nline { '\n' };
-void _02_07_ArithmeticOperators ()
+void _05_01_ArithmeticOperators ()
 {
   try
   {
@@ -701,13 +692,10 @@ void _02_07_ArithmeticOperators ()
 }
 
 
-void _02_08_LagicalOperators ()
+void _05_02_LagicalOperators ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ~~~~~ boolean operators:
     // boolean operators will be used to have logical operations on operands.
@@ -808,13 +796,10 @@ void _02_08_LagicalOperators ()
 }
 
 
-void _02_09_OtherOperators ()
+void _05_03_OtherOperators ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ~~~~~ other operators:
     // 
@@ -878,13 +863,10 @@ void _02_09_OtherOperators ()
 }
 
 
-void _02_10_PrecedenceOfOperators ()
+void _05_04_PrecedenceOfOperators ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ~~~~~ precedence of operators:
     // higher precedence of operators determines the evaluation order of operators in an expression
@@ -955,7 +937,7 @@ void _02_10_PrecedenceOfOperators ()
 }
 
 
-void _02_11_BasicInputOutput ()
+void _06_01_BasicInputOutput ()
 {
   try
   {
@@ -1078,16 +1060,17 @@ void _02_11_BasicInputOutput ()
     // the goal is to separate the input process from its interpretation as data.
     // a demonstration of extracting in the user-expected behaviour of console programs and in the same time gaining more control over the transformation of inputs into more useful data.
     ColourCouter ( "Separating input process from its interpretation:\n", F_bYELLOW );
+    const double pi { 3.14159 };
     std::string str_var2;
-    float radius { 0 };
+    double radius { 0 };
     std::cout << "Enter circle radius (floating point numbers are accepted):" << nline << " - ";
     //std::getline (std::cin, str_var2); //clear
     std::getline ( std::cin, str_var2 );
     std::cout << "The entered string is:" << "\t\t" << str_var2 << nline;
     std::stringstream ( str_var2 ) >> radius;
     std::cout << "The interpreted value is:" << "\t" << radius << nline << nline;
-    std::cout << "Circle circumference:" << "\t\t" << 2 * radius * Pi << nline;
-    std::cout << "Circle area:" << "\t\t\t" << radius * radius * Pi << nline << nline;
+    std::cout << "Circle circumference:" << "\t\t" << 2 * radius * pi << nline;
+    std::cout << "Circle area:" << "\t\t\t" << radius * radius * pi << nline << nline;
   }
   catch ( const std::exception& )
   {

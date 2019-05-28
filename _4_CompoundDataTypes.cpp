@@ -3,7 +3,7 @@
 /// _4_CompoundDataTypes.cpp
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,10.05.2019</changed>
+/// <changed>ʆϒʅ,29.05.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -18,9 +18,8 @@ const char tab { '\t' };
 const char nline { '\n' };
 
 
-void _07_01_Arrays ()
+void _11_01_Arrays ()
 {
-  // the functions used in this section are defined above it.
   try
   {
     ColourCouter ( " -------------------------------------------------", F_bRED );
@@ -47,29 +46,27 @@ void _07_01_Arrays ()
 }
 
 
-void print_simple_array ( int arg [], int length )
+void print_simple_array ( int array_arg [], int length )
 {
   std::cout << tab;
   for ( int n = 0; n < length; n++ )
   {
-    std::cout << arg [n];
-    if ( arg [n] < 9 ) std::cout << "   "; else std::cout << "  ";
+    std::cout << array_arg [n];
+    if ( array_arg [n] <= 9 ) std::cout << "   "; else std::cout << "  ";
   }
   std::cout << Nline << Nline;
 }
-void _07_02_InitializingArrays ()
+void _11_02_InitializingArrays ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- initializing arrays:
     // arrays of local scope like variables are uninitialized by default
+    // global scope and in namespaces (outside any function) declared arrays are initialized by default.
     // to explicitly initialize an array, the values must be enclosed in curly braces.
     // the number of values must not be grater than the exact number of elements in the array.
-    // if the array is initialized with less, the remaining elements will be set to their default values.
+    // if the array is initialized with less, the remaining elements will be set to its type default value.
     // the default value for fundamental types is zero.
     // empty curly braces are to be used to initial an array with default values.
     // with leaving square braces empty for an initialization-provided array,
@@ -79,11 +76,11 @@ void _07_02_InitializingArrays ()
     ColourCouter ( "----- Initialization of Arrays:\n", F_bBLUE );
     ColourCouter ( "Uninitialized arrays of local scope have undetermined values.\n\n", F_YELLOW );
     int array1 [5]; // uninitialized
-    int array2 [5] = { 0,10,20,30,40 }; // explicitly initialized
-    int array3 [5] = { 0,10,20 }; // remaining elements will be initialized with array's type default value
+    int array2 [5] = { 0,1,2,3,4 }; // explicitly initialized
+    int array3 [5] = { 0,1,2 }; // remaining elements will be initialized with array's type default value
     int array4 [5] = {}; // all elements are initialized with array's type default value
-    int array5 [] = { 0,10,20,30,40 }; // compiler of C++ assumes the size of array automatically
-    int array6 [5] { 0,10,20,30,40 }; // universal initialization
+    int array5 [] = { 0,1,2,3,4 }; // compiler of C++ assumes the size of array automatically
+    int array6 [5] { 0,1,2,3,4 }; // universal initialization
     std::cout << "The elements of an uninitialized array (it can be inserted):" << nline;
     print_simple_array ( array1, 5 );
     std::cout << "The elements of an array with explicit initialization:" << "\t\t";
@@ -104,13 +101,10 @@ void _07_02_InitializingArrays ()
 }
 
 
-void _07_03_AccessingValues ()
+void _11_03_AccessingValues ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- accessing the values of an array:
     // the value of any element in an array can be accessed just like the value of regular variable of the same type.
@@ -132,21 +126,29 @@ void _07_03_AccessingValues ()
     // giving heed to the different uses that brackets [] have concerning arrays is also important. (define and access time)
     // following comes some expansion on valid operations with arrays.
     ColourCouter ( "More on arrays, their indices and some other valid operations:\n", F_bYELLOW );
-    int b_array [5] {}; // first use of brackets: in declaration to specify the size
-    b_array [1] = 22; // second use of brackets: to access an element of the array
+    int b_array [5] { 0 }; // first use of brackets: in declaration to specify the size
+    b_array [1] = -3; // second use of brackets: to access an element of the array
     int a { 3 };
     b_array [0] = a;
     b_array [a] = 33;
     int b { b_array [a + 1] }; // equivalent: int b {0};
     b_array [b_array [a] / 11] = b_array [2] + 5; // equivalent: b_array[3] = 5;
-    std::cout << "The array's elements are (after some valid operation):" << "\t\t";
-    print_simple_array ( b_array, 5 );
-    int result {};
+    std::cout << "The array's elements after some valid operations are:" << nline;
+    std::string str { "" };
+    int sum { 0 };
     for ( int n = 0; n < 5; n++ )
     {
-      result += b_array [n];
+      if ( b_array [n] < 0 )
+        str = "-negative";
+      else
+        if ( b_array [n] == 0 )
+          str = "-zero";
+        else
+          str = "-positive";
+      std::cout << tab << "Element " << n + 1 << ":\t" << b_array [n] << tab << str << nline;
+      sum += b_array [n];
     }
-    std::cout << "Subtraction of all the array's elements are:" << "\t\t\t\t" << result << nline << nline;
+    std::cout << "Subtraction result:" << tab << sum << nline << nline;
   }
   catch ( const std::exception& )
   {
@@ -155,15 +157,15 @@ void _07_03_AccessingValues ()
 }
 
 
-void print_bidimensional_array ( int arg [][5], int width, int height )
+void print_bidimensional_array ( int array_arg [][5], int width, int height )
 {
   std::cout << tab;
   for ( int n = 0; n < width; n++ )
   {
     for ( int m = 0; m < height; m++ )
     {
-      std::cout << arg [n][m];
-      if ( arg [n][m] < 9 ) std::cout << "   "; else std::cout << "  ";
+      std::cout << array_arg [n][m];
+      if ( array_arg [n][m] <= 9 ) std::cout << "   "; else std::cout << "  ";
     }
     std::cout << Nline << tab;
   }
@@ -171,7 +173,7 @@ void print_bidimensional_array ( int arg [][5], int width, int height )
 }
 // depth parameter: to represent a simple array in a table (bidimensional):
 // explanation in multidimensional arrays section
-void print_simple_array_bidimensional ( int arg [], int length, int depth = 0 )
+void print_simple_array_bidimensional ( int array_arg [], int length, int depth = 0 )
 {
   std::cout << tab;
   for ( int n = 0; n < length; n++ )
@@ -179,18 +181,15 @@ void print_simple_array_bidimensional ( int arg [], int length, int depth = 0 )
     if ( depth != 0 )
       if ( ( n != 0 ) && ( n % ( length / depth ) ) == 0 )
         std::cout << nline << tab;
-    std::cout << arg [n];
-    if ( arg [n] < 9 ) std::cout << "   "; else std::cout << "  ";
+    std::cout << array_arg [n];
+    if ( array_arg [n] <= 9 ) std::cout << "   "; else std::cout << "  ";
   }
   std::cout << Nline << Nline;
 }
-void _07_04_MultidimensionalArrays ()
+void _11_04_MultidimensionalArrays ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- multidimensional arrays:
     // arrays with more than one dimension can be described as 'arrays of arrays'.
@@ -236,13 +235,10 @@ void _07_04_MultidimensionalArrays ()
 }
 
 
-void _07_05_ArraysAsParameters ()
+void _11_05_ArraysAsParameters ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- arrays as parameters:
     // C++ language passes the address of an array to a function.
@@ -254,11 +250,11 @@ void _07_05_ArraysAsParameters ()
     // Note calling format: function_identifier ( array_identifier ) --without brackets
     ColourCouter ( "----- Arrays as parameters:\n", F_bBLUE );
     ColourCouter ( "In C++ the address of an array can be passed to a function.\n\n", F_YELLOW );
-    int first_array [] { 5, 10, 15 };
-    int second_array [] { 2, 4, 6, 8, 10 };
-    std::cout << "Passing two simple arrays as argument to an earlier defined function:" << nline;
-    print_simple_array ( first_array, 3 );
-    print_simple_array ( second_array, 5 );
+    int an_array [] { 1, 2, 3 };
+    int another_array [] { 10, 20, 30, 40, 50 };
+    std::cout << "Passing two simple arrays as argument (earlier defined function):" << nline;
+    print_simple_array ( an_array, 3 );
+    print_simple_array ( another_array, 5 );
 
     //! - in addition:
     // a function can also have a multidimensional array as parameter.
@@ -267,9 +263,9 @@ void _07_05_ArraysAsParameters ()
     // for the compiler to determines the depth of each additional dimension, the size of all dimensions after the first one is necessary. (just first twin brackets stays empty)
     // explanation behind is, that for historical reasons, arrays can't be directly copied, therefore all arrays after passing as arguments lose one dimension, and the actual passed is just a pointer.
     // for this to be really understood, a clear understanding in pointer section helps a lot.
-    int another_array [2][5] { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
-    std::cout << "Passing a bidimensional array as argument of an earlier defined function:" << nline;
-    print_bidimensional_array ( another_array, 2, 5 );
+    int the_array [2][5] { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+    std::cout << "Passing a bidimensional array as argument (earlier defined function):" << nline;
+    print_bidimensional_array ( the_array, 2, 5 );
   }
   catch ( const std::exception& )
   {
@@ -278,20 +274,17 @@ void _07_05_ArraysAsParameters ()
 }
 
 
-void print_library_array ( std::array<int, 3> arg )
+void print_library_array ( std::array<int, 3> array_arg )
 {
   std::cout << tab;
-  for ( int element : arg )
+  for ( int element : array_arg )
     std::cout << element << tab;
   std::cout << Nline << Nline;
 }
-void _07_06_LibraryArrays ()
+void _11_06_LibraryArrays ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- library arrays:
     // all the arrays up until now were directly implemented as language features and inherited from C Language.
@@ -302,16 +295,16 @@ void _07_06_LibraryArrays ()
     // classes and containers will be explained later.
     ColourCouter ( "----- Library arrays:\n", F_bBLUE );
     ColourCouter ( "To introduce an alternative for overcoming the issues with built-in C++ language arrays.\n\n", F_YELLOW );
-    std::cout << "A built in array in practice:" << nline << tab;
-    int built_in_array [] { 10, 20, 30 };
+    std::cout << "A language built in array in practice:" << nline << tab;
+    int built_in_array [] { 10, 110, 1110 };
     for ( int i = 0; i < 3; i++ )
       ++built_in_array [i];
     for ( int element : built_in_array ) // range-based for loop
       std::cout << element << tab;
     std::cout << nline;
     //
-    std::cout << "A library array in practice:" << nline << tab;
-    std::array<int, 3> library_array { 10, 20, 30 };
+    std::cout << "A container library array in practice:" << nline << tab;
+    std::array<int, 3> library_array { 10, 110, 1110 };
     for ( int i = 0; i < library_array.size (); i++ ) // Note the easiness of accessing the size of the library array
       ++library_array [i];
     for ( int element : library_array )
@@ -335,7 +328,7 @@ void print_simple_array_of_characters ( char arg [], int length )
   }
   std::cout << Nline << Nline;
 }
-void _08_01_CharacterSequences ()
+void _12_01_CharacterSequences ()
 {
   try
   {
@@ -364,19 +357,18 @@ void _08_01_CharacterSequences ()
     ColourCouter ( "----- Initialization of null-terminated character sequences:\n", F_bBLUE );
     ColourCouter ( "Arrays of characters and their different initializations.\n\n", F_YELLOW );
     // normal initialization of a null-terminated character sequence using an array (needs null character at the end)
-    char the_word_hello_1 [] { 'H','e','l','l','o','\0' };
+    char a_word [] { 'W','o','r','d','\0' };
     // initialization of a null-terminated character sequence with a string literal using an array
-    char the_word_hello_2 [] { "How are you?" };
+    char two_words [] { "the word" };
     std::cout << "First array's string (initialized normally):" << nline << tab;
-    print_simple_array_of_characters ( the_word_hello_1, 6 );
+    print_simple_array_of_characters ( a_word, 5 );
     std::cout << "Second array's string (initialized by string literals):" << nline << tab;
-    print_simple_array_of_characters ( the_word_hello_2, 13 );
-    the_word_hello_1 [0] = 'B';
-    the_word_hello_1 [1] = 'y';
-    the_word_hello_1 [2] = 'e';
-    the_word_hello_1 [3] = '\0';
-    std::cout << "New string assigned to each elements of first array is:" << nline << tab;
-    print_simple_array_of_characters ( the_word_hello_1, 4 );
+    print_simple_array_of_characters ( two_words, 9 );
+    a_word [0] = 'H';
+    a_word [1] = 'i';
+    a_word [2] = '\0';
+    std::cout << "New string assigned to some elements of first array is:" << nline << tab;
+    print_simple_array_of_characters ( a_word, 3 );
 
     //! ####################################################################
     //! ----- strings and null-terminated character sequences:
@@ -391,29 +383,31 @@ void _08_01_CharacterSequences ()
     ColourCouter ( "----- Strings and null-terminated character sequences:\n", F_bBLUE );
     ColourCouter ( "In standard library both representations of strings (C-string and library string) coexist.\n\n", F_YELLOW );
     ColourCouter ( "A demonstration that use both representations:\n", F_bYELLOW );
-    char question_1 [] { "What is your name?" };
-    std::string question_2 { "Where do you live?" };
-    char answer_1 [80];
-    std::string answer_2;
-    std::cout << question_1 << nline << tab << "- ";
-    std::cin >> answer_1;
-    std::cout << question_2 << nline << tab << "- ";
-    std::cin >> answer_2;
-    std::cout << nline << "Hello, " << answer_1 << " from " << answer_2 << "!" << nline << nline;
+    char cString_1 [] { "Type your name to get stored to an array (C-string representation):" };
+    std::string libString_1 { "Type your home country name to get stored to a library string variable:" };
+    char cString_2 [100];
+    std::string libString_2;
+    std::cout << cString_1 << nline << tab << "- ";
+    std::cin >> cString_2;
+    std::cout << libString_1 << nline << tab << "- ";
+    std::cin >> libString_2;
+    std::cout << nline << "Howdy, " << cString_2 << " from " << libString_2 << "!" << nline << nline;
 
     //! - in addition:
     // in any case, null- terminated character sequences and strings are easily transformed from and to one another.
     // null-terminated character sequences can be transformed into strings implicitly.
     // transformation of strings into null-terminated character sequences can happen with string's member functions c_str or data and both are equivalent.
     ColourCouter ( "Null-terminated character sequences and strings are easily transformed from or to one another.\n", F_bYELLOW );
-    char a_c_string [] { "some text" };
+    char a_c_string [] { "-.^;^. a String .^;^.-" };
     std::string a_string = a_c_string; // implicit transformation into library string
-    std::cout << "A string in C-string representation:" << "\t\t\t\t\t" << a_c_string << nline;
-    std::cout << "The same string transformed into library string representation:" << "\t\t" << a_string << nline;
-    std::cout << "The same string inserted as C-string representation by using c_str:" << tab;
-    std::cout << a_string.c_str () << nline; // print as a C-string
-    std::cout << "The same string inserted as C-string representation by using data:" << tab;
-    std::cout << a_string.data () << nline << nline; // print as a C-string
+    std::cout << "A string in C-string representation:" << nline;
+    std::cout << tab << "- " << a_c_string << nline;
+    std::cout << "The transformed string into library string representation:" << nline;
+    std::cout << tab << "- " << a_string << nline;
+    std::cout << "Inserting the string as C-string representation (c_str):" << nline;
+    std::cout << tab << "- " << a_string.c_str () << nline; // print as a C-string
+    std::cout << "Inserting the string as C-string representation (data):" << nline;
+    std::cout << tab << "- " << a_string.data () << nline << nline; // print as a C-string
   }
   catch ( const std::exception& )
   {
@@ -422,7 +416,7 @@ void _08_01_CharacterSequences ()
 }
 
 
-void _09_01_PointersBasics ()
+void _13_01_PointersBasics ()
 {
   try
   {
@@ -449,9 +443,8 @@ void _09_01_PointersBasics ()
     // Note reference operator (&) itself can be read as "address of"
     ColourCouter ( "----- Reference operator:\n", F_bBLUE );
     ColourCouter ( "The reference operator (&) can be used to obtain the address of the variable identifier.\n\n", F_YELLOW );
-    int variable { 25 };
+    int variable { 30 };
     int* pointer { &variable }; // declaring and assigning the address of a variable to a pointer
-    int variable2 = variable; // normal assignment
     std::cout << "Stored address of the variable in the pointer is:" << tab << pointer << nline << nline;
 
     //! ####################################################################
@@ -464,8 +457,11 @@ void _09_01_PointersBasics ()
     // an address obtained with ampersand (&) can be dereferenced with asterisk (*)
     ColourCouter ( "----- Dereference Operator (*):\n", F_bBLUE );
     ColourCouter ( "The dereference operator can be used to access the variable directly which the pointers point to.\n\n", F_YELLOW );
-    variable2 = *pointer; // 'variable2' equal to value pointed to by 'pointer'
-    std::cout << "The value pointed to by the pointer and accessed directly by the dereference operator is: " << variable2 << nline << nline;
+    int var_1 { 40 };
+    int* ptr { &var_1 };
+    int var_2 = var_1; // normal assignment
+    var_2 = *ptr; // 'variable2' equal to value pointed to by 'ptr'
+    std::cout << "The value pointed to by pointer and accessed directly by dereference operator is: " << var_2 << nline << nline;
 
     //! ####################################################################
     //! ----- declaring pointers:
@@ -480,40 +476,44 @@ void _09_01_PointersBasics ()
     ColourCouter ( "----- Declaring Pointers:\n", F_bBLUE );
     ColourCouter ( "Different properties of the pointers when they directly refer to the values of variables justify the need to declare them with the needed specified data type.\n\n", F_YELLOW );
 
-    int* number;
-    char* character;
-    double* decimal;
+    int* anInteger;
+    char* aCharacter;
+    double* aDecimalValue;
 
     //! - in addition:
     // an example:
     // setting values to variables indirectly through pointers (using the memory location addresses of variables)
     // a pointer can point to different variables during its life time.
-    int firstValue, secondValue;
-    int* myPointer;
-    myPointer = &firstValue;
-    *myPointer = 10; // assigning a value to the variable pointed by the pointer
-    myPointer = &secondValue;
-    *myPointer = 20; // the same
     ColourCouter ( "Indirectly setting values to variables through pointers.\n", F_bYELLOW );
-    std::cout << "The value of firstValue is:" << tab << firstValue << nline;
-    std::cout << "The value of secondValue is:" << tab << secondValue << nline << nline;
+    std::cout << "Look! a smily:" << tab;
+    char a, b;
+    char* thePointer;
+    thePointer = &a;
+    *thePointer = { '^' }; // assigning a character to the variable pointed by the pointer
+    thePointer = &b;
+    *thePointer = { ';' }; // the same
+    std::cout << a << b << a << nline << nline;
 
     //! - in addition:
     // when declaring multiple pointers, each individual one needs an asterisk (*) in its declaration.
     // spaces aren't matter and it is even better to declare each pointer in a different statement.
     // to get familiar with the way to read each statement, pay attention to their following comments.
     ColourCouter ( "A more elaborated demonstration on setting new values:\n", F_bYELLOW );
-    firstValue = 5; secondValue = 15;
-    std::cout << "First value is:" << "\t\t" << firstValue << nline << "Second value is:" << tab << secondValue << nline << nline;
-    int* p1, * p2; // asterisk (*) for each pointer -due to the precedence rules-
-    p1 = &firstValue;  // address of
-    p2 = &secondValue; // the same
-    *p1 = 10;          // value pointed to by
-    *p2 = *p1;         // the same
-    p1 = p2;           // assignment of pointers values (the addresses)
-    *p1 = 20;          // value pointed to by
-    std::cout << "Indirectly modified values through pointers are:" << nline;
-    std::cout << "First value is:" << "\t\t" << firstValue << nline << "Second value is:" << tab << secondValue << nline << nline;
+    char c { '^' }, d { '_' }, e { '\0' };
+    char* ptr_1, * ptr_2, * ptr_3; // asterisk (*) for each pointer -due to the precedence rules-
+    ptr_1 = &c; // address of
+    ptr_2 = &d; // the same
+    ptr_3 = &e; // "
+    *ptr_3 = c; // value pointed to by
+    *ptr_1 = *ptr_2; // pointed values
+    ptr_2 = ptr_3; // pointer's values (the addresses)
+    d = *ptr_2; // value pointed to by
+    std::cout << "Look! another smily:" << tab;
+    std::string smily { "" };
+    smily += d;
+    smily += c;
+    smily += d;
+    std::cout << smily << nline << nline;
   }
   catch ( const std::exception& )
   {
@@ -522,13 +522,10 @@ void _09_01_PointersBasics ()
 }
 
 
-void _09_02_PointersAndTypes ()
+void _13_02_PointersAndDataTypes ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- pointers and arrays:
     // the concepts of arrays and pointers are related, and they work very much like each other to their first elements.
@@ -536,7 +533,7 @@ void _09_02_PointersAndTypes ()
     // whereas 'theArray' can never be assigned anything and will always represent the same block of 20 elements of type int.
     ColourCouter ( "----- Pointers and arrays\n", F_bBLUE );
     ColourCouter ( "Concepts of arrays and pointers are related.\n\n", F_YELLOW );
-    int theArray [20];
+    int theArray [10];
     int* thePointer;
     // after the next assignment, the array and the pointer are equivalent with very similar properties.
     // main difference is the possibility of new assignment of a different address to the pointer.
@@ -551,27 +548,33 @@ void _09_02_PointersAndTypes ()
     // therefore they dereference the variable they follow like the operation of asterisk (*) to the variable it precedes,
     // and in addition they add the number between the brackets to the address.
     // for example:
-    //a[5]=0; // a [offset of 5]
-    //*(a+5)=0; // pointed to by (a+5)
+    //a[3]=0; // a [offset of 3]
+    //*(a+3)=0; // pointed to by (a+3)
     // no matter 'a' is an array or a pointer, these two expressions are equivalent and valid.
     // in case of an array, the array identifier refers to first element, just like a pointer.
-    int numbers [10];
-    int* p;
-    p = numbers;
-    *p = 10;
-    p++; *p = 20;
-    p = &numbers [2]; *p = 30;
-    p = numbers + 3; *p = 40;
-    p = numbers; *( p + 4 ) = 50;
-    std::cout << "The values set to the array using pointers are (array way print):" << nline << tab;
-    for ( int i = 0; i < 5; i++ )
+    ColourCouter ( "Filling an array using pointers:\n", F_bYELLOW );
+    char smilies [6];
+    char* ptr;
+    ptr = smilies;
+    *ptr = '^';
+    ptr++; *ptr = '_';
+    ptr = &smilies [2]; *ptr = '^';
+    ptr = smilies + 3; *ptr = '^';
+    ptr = smilies; *( ptr + 4 ) = '.';
+    *( ptr + 5 ) = '^';
+    std::cout << "The filled array (array way print):" << nline << tab;
+    for ( int i = 0; i < 6; i++ )
     {
-      std::cout << numbers [i] << tab; // array way
+      std::cout << smilies [i]; // array way
+      if ( i == 2 )
+        std::cout << tab;
     }
-    std::cout << nline << "The values set to the array using pointers are (pointer way print):" << nline << tab;
-    for ( int i = 0; i < 5; i++ )
+    std::cout << nline << "The filled array (pointer way print):" << nline << tab;
+    for ( int i = 0; i < 6; i++ )
     {
-      std::cout << *( p + i ) << tab; // pointer way
+      std::cout << *( ptr + i ); // pointer way
+      if ( i == 2 )
+        std::cout << tab;
     }
     std::cout << nline << nline;
 
@@ -582,18 +585,18 @@ void _09_02_PointersAndTypes ()
     // pointers can be initialized not only to the address of a variable, but also to the value of another pointer or array.
     ColourCouter ( "----- Pointer Initialization:\n", F_bBLUE );
     ColourCouter ( "Like variables initialization of pointers can be done at the moment of declaration.\n\n", F_YELLOW );
-    int myVar { 0 };            // a variable
-    int* myPtr1 = &myVar; // point to address of variable
-    int myArr [31] { 0 };     // an array
-    int* myPtr2 = myPtr1; // point to the value of a pointer
-    int* myPtr3 = myArr;  // point to an array
-    std::cout << "First pointer's value and pointed value (points to a variable) are:" << nline << tab << myPtr1 << tab << *myPtr1 << nline;
-    std::cout << "Second pointer's value and pointed value (points to first pointer) are:" << nline << tab << myPtr2 << tab << *myPtr2 << nline;
-    std::cout << "First pointer's value and pointed value (points to an array) are:" << nline << tab << myPtr3 << tab << *myPtr3 << nline << nline;
+    int aVariable { 10 }; // a variable
+    int* firstPointer { &aVariable }; // point to address of variable
+    int anArray [3] { 20 }; // an array
+    int* secondPointer { firstPointer }; // point to the value of a pointer
+    int* thirdPointer { anArray }; // point to an array
+    std::cout << "First pointer's value and pointed value (initialized using a variable) are:" << nline << tab << firstPointer << tab << *firstPointer << nline;
+    std::cout << "Second pointer's value and pointed value (initialized using first pointer) are:" << nline << tab << secondPointer << tab << *secondPointer << nline;
+    std::cout << "First pointer's value and pointed value (initialized using an array) are:" << nline << tab << thirdPointer << tab << *thirdPointer << nline << nline;
 
     //! ####################################################################
     //! ----- pointer arithmetics:
-    // when conduction arithmetical operations on pointers, there are these differences to pay attention to:
+    // when conducting arithmetical operations on pointers, there are these differences to pay attention to:
     // first of all only addition and subtraction operations are allowed.
     // even these two allowed operations have slightly different behaviours, since types have different sizes,
     // and this size is going to be added or subtracted to the stored address value in pointers.
@@ -602,21 +605,21 @@ void _09_02_PointersAndTypes ()
     ColourCouter ( "Arithmetical operations on pointers result in different behaviours and outputs than regular integer types.\n\n", F_YELLOW );
     char Char { 'A' };
     char* ptrChar { &Char };
-    short Short { 4454 };
+    short Short { 222 };
     short* ptrShort { &Short };
-    long Long { 44544454 };
+    long Long { 333333 };
     long* ptrLong { &Long };
     std::cout << "The address values and the values pointed to before the addition:" << nline;
-    std::cout << "myChar is:" << tab << ptrChar << tab << *ptrChar << nline;
-    std::cout << "myShort is:" << tab << ptrShort << "\t\t\t\t" << *ptrShort << nline;
-    std::cout << "myLong is:" << tab << ptrLong << "\t\t\t\t" << *ptrLong << nline;
+    std::cout << "ptrChar is:" << tab << ptrChar << tab << *ptrChar << nline;
+    std::cout << "ptrShort is:" << tab << ptrShort << "\t\t\t\t" << *ptrShort << nline;
+    std::cout << "ptrLong is:" << tab << ptrLong << "\t\t\t\t" << *ptrLong << nline;
     ++ptrChar;
     ++ptrShort;
     ++ptrLong;
     std::cout << "The address values and the values pointed to after the addition:" << nline;
-    std::cout << "myChar is:" << tab << ptrChar << tab << *ptrChar << nline;
-    std::cout << "myShort is:" << tab << ptrShort << "\t\t\t\t" << *ptrShort << nline;
-    std::cout << "myLong is:" << tab << ptrLong << "\t\t\t\t" << *ptrLong << nline << nline;
+    std::cout << "ptrChar is:" << tab << ptrChar << tab << *ptrChar << nline;
+    std::cout << "ptrShort is:" << tab << ptrShort << "\t\t\t\t" << *ptrShort << nline;
+    std::cout << "ptrLong is:" << tab << ptrLong << "\t\t\t\t" << *ptrLong << nline << nline;
 
     // combinations: dereference operator with both prefix or postfix versions of increment or decrement operators
     // increment/decrement operator: higher priority (left-to-right)
@@ -624,35 +627,35 @@ void _09_02_PointersAndTypes ()
     // as always parenthesis reduce confusion and add legibility to expressions.
     // postfix: *p++ = *q++;   is roughly equivalent to:   *p = *q; ++p; ++q;
     ColourCouter ( "Four possible combinations of dereference operator with both prefix or postfix versions of increment or decrement operators:\n", F_bYELLOW );
-    int ptrVar { 4454 };
-    int* ptr;
+    int variable { 0 };
+    int* pointer;
     int temp;
-    std::cout << "The stored value in the variable is:" << tab << ptrVar << nline;
-    ColourCouter ( "The temp variable is storage of each operation, so it could be shown.\n\n", F_bCYAN );
-    ptr = &ptrVar;
-    std::cout << "ptr value is:" << "\t\t\t\t" << ptr << nline;
-    temp = *ptr++;   // same as *(ptr++): increment pointer, and dereference un-incremented address
-    std::cout << "ptr after incrementation *ptr++ is:" << tab << ptr << nline;
-    std::cout << "result of incrementation *ptr++ is:" << tab << temp << nline << nline;
+    std::cout << "The stored value in the variable is:" << "\t\t" << variable << nline;
+    ColourCouter ( "The temp variable is the additional storage for each operation, so the results could be shown.\n\n", F_bCYAN );
+    pointer = &variable;
+    std::cout << "pointer value is:" << "\t\t\t\t" << pointer << nline;
+    temp = *pointer++; // same as *(pointer ++): increment pointer, and dereference un-incremented address
+    std::cout << "pointer after operation *pointer++ is:" << "\t\t" << pointer << nline;
+    std::cout << "result of operation *pointer++ is:" << "\t\t" << temp << nline << nline;
     //
-    ptr = &ptrVar;
-    std::cout << "ptr value is:" << "\t\t\t\t" << ptr << nline;
-    temp = *++ptr;   // same as *(++p): increment pointer, and dereference incremented address
-    std::cout << "ptr after incrementation *++ptr is:" << tab << ptr << nline;
-    std::cout << "result of incrementation *++ptr is:" << tab << temp << nline << nline;
+    pointer = &variable;
+    std::cout << "pointer value is:" << "\t\t\t\t" << pointer << nline;
+    temp = *++pointer; // same as *(++pointer): increment pointer, and dereference incremented address
+    std::cout << "pointer after operation *++pointer is:" << "\t\t" << pointer << nline;
+    std::cout << "result of operation *++pointer is:" << "\t\t" << temp << nline << nline;
     //
-    ptr = &ptrVar;
-    std::cout << "ptr value is:" << "\t\t\t\t" << ptr << nline;
-    temp = ++ * ptr;   // same as ++(*p): dereference pointer, and increment the value it points to
-    std::cout << "ptr after incrementation ++*ptr is:" << tab << ptr << nline;
-    std::cout << "result of incrementation ++*ptr is:" << tab << temp << nline << nline;
+    pointer = &variable;
+    std::cout << "pointer value is:" << "\t\t\t\t" << pointer << nline;
+    temp = ++ * pointer; // same as ++(*pointer): dereference pointer, and increment the value it points to
+    std::cout << "pointer after operation ++*pointer is:" << "\t\t" << pointer << nline;
+    std::cout << "result of operation ++*pointer is:" << "\t\t" << temp << nline << nline;
     //
-    ptr = &ptrVar;
-    std::cout << "ptr value is:" << "\t\t\t\t" << ptr << nline;
-    temp = ( *ptr )++; // dereference pointer, and post-increment the value it points to.
-                     // without parenthesis the incrementation happens to the pointer itself too.
-    std::cout << "ptr after incrementation (*ptr)++ is:" << tab << ptr << nline;
-    std::cout << "result of incrementation (*ptr)++ is:" << tab << temp << nline << nline;
+    pointer = &variable;
+    std::cout << "pointer value is:" << "\t\t\t\t" << pointer << nline;
+    temp = ( *pointer )++; // dereference pointer, and post-increment the value it points to.
+                           // without parenthesis the incrementation happens to the pointer itself too.
+    std::cout << "pointer after operation (*pointer)++ is:" << tab << pointer << nline;
+    std::cout << "result of operation (*pointer)++ is:" << "\t\t" << temp << nline << nline;
 
   }
   catch ( const std::exception& )
@@ -662,61 +665,73 @@ void _09_02_PointersAndTypes ()
 }
 
 
-void increment_all_PointersUsed ( int* start, int* stop )
+void flag_prime_numbers ( const int* begin, const int* end, bool* flag )
 {
-  int* current = start;
-  while ( current != stop )
+  const int* element = begin;
+  while ( element != end )
   {
-    ++( *current );
-    ++current;
+    if ( *element % 2 == 0 )
+      * flag = true;
+    else
+      if ( *element % 3 == 0 )
+        * flag = true;
+      else
+        if ( *element % 5 == 0 )
+          * flag = true;
+        else
+          if ( *element % 7 == 0 )
+            * flag = true;
+    ++element;
+    ++flag;
   }
 }
-void print_all_ConstantPointersUsed ( const int* start, const int* stop )
+void print_prime_numbers ( const int* begin, const int* end, const bool* flag )
 {
-  const int* current = start;
-  while ( current != stop )
+  const int* element = begin;
+  while ( element != end )
   {
-    std::cout << *current << Tab;
-    ++current;
+    if ( *flag == false )
+      std::cout << *element << Tab;
+    ++element;
+    ++flag;
   }
   std::cout << Nline << Nline;
 }
-void _09_03_PointersAndLiterals ()
+void _13_03_PointersAndLiterals ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- pointers and constants:
     // to access variables by pointers read-only, it is enough to qualify the type pointed to as constant.
     // pointers to non-const are implicitly convertible to pointers to constant, but as a safety feature, the other way around isn't possible.
     ColourCouter ( "----- Pointers and Constants:\n", F_bBLUE );
     ColourCouter ( "To access a variable for just reading purposes, not modifying.\n\n", F_YELLOW );
-    int x;
-    int y { 10 };
-    const int* const_ptr { &y }; // points to a variable but in a constant-qualified manner
+    int a;
+    int b { 5 };
+    const int* const_ptr { &b }; // points to a variable but in a constant-qualified manner
                                  // allowed (non-const type (address of) to constant):
                                  // the type of y is int* and is assigned to a pointer of type constant int*.
-    x = *const_ptr; // ok: reading p
-    //*const_ptr = x; // error: modifying constant-qualified
-    std::cout << "The value accessed by a constant-qualified pointer is:" << tab << x << nline << nline;
+    a = *const_ptr; // ok: reading constant-qualified pointer
+    //*const_ptr = a; // error: modifying constant-qualified pointer
+    std::cout << "The value accessed by a constant-qualified pointer is:" << tab << a << nline << nline;
 
     //! - in addition:
     // one of the use cases: function parameters can include pointers to constant elements to prevent modifications on the passed arguments.
     // to be more clear: pointers that are constant type qualified (point to constant content), can still point to new addresses, but they can not modify the pointed content.
-    ColourCouter ( "Two functions with normal and constant-qualified pointers as parameters:\n", F_bYELLOW );
-    int numbers_array [] { 10,20,30 };
+    ColourCouter ( "Two functions mixing the use of normal and constant-qualified pointers as parameters:\n", F_bYELLOW );
+    const int count { 5 };
+    int the_array [count] { 11,12,13,14,15 };
+    bool bool_array [count] { false };
     std::cout << "The array elements are:" << nline << tab;
-    for ( int i = 0; i < 3; i++ )
+    for ( int i = 0; i < count; i++ )
     {
-      std::cout << numbers_array [i] << tab;
+      std::cout << the_array [i] << tab;
     }
     std::cout << nline << nline;
-    std::cout << "The array elements after execution of the functions are:" << nline << tab;
-    increment_all_PointersUsed ( numbers_array, numbers_array + 3 );
-    print_all_ConstantPointersUsed ( numbers_array, numbers_array + 3 );
+    std::cout << "The prime ones are:" << nline << tab;
+    flag_prime_numbers ( the_array, the_array + count, bool_array );
+    print_prime_numbers ( the_array, the_array + count, bool_array );
 
     //! - in addition:
     // constant pointers:
@@ -726,12 +741,12 @@ void _09_03_PointersAndLiterals ()
     // therefore it needs a grow experience to recognise best suited use cases.
     // a sooner deep understanding of constness, pointers and references is of course better.
     ColourCouter ( "Pointers themselves can also be constant.\n", F_bYELLOW );
-    int x_var { 0 };
+    int x_var { 1 };
     int* ptr1 { &x_var }; // non-const pointer to non-const int
     const int* ptr2 { &x_var }; // non-const pointer to constant int
     int* const ptr3 { &x_var }; // constant pointer to non-const int
     const int* const ptr4 { &x_var }; // constant pointer to constant int
-    std::cout << "The value of variable referenced four times:" << "\t\t" << *ptr1 << tab << *ptr2 << tab << *ptr3 << tab << *ptr4 << nline;
+    std::cout << "The value of variable dereferenced four times:" << "\t\t" << *ptr1 << tab << *ptr2 << tab << *ptr3 << tab << *ptr4 << nline;
 
     //! - in addition:
     // the above syntaxes get even more complex by considering,
@@ -740,32 +755,32 @@ void _09_03_PointersAndLiterals ()
     // on the internet the discussion on the merits of each still goes on intensely.
     const int* ptr5 { &x_var }; //      non-const pointer to constant int
     int const* ptr6 { &x_var }; // also non-const pointer to constant int
-    std::cout << "The value of variable referenced again two times:" << tab << *ptr5 << tab << *ptr6 << nline << nline;
+    std::cout << "The value of variable dereferenced again two times:" << tab << *ptr5 << tab << *ptr6 << nline << nline;
 
 
     //! ####################################################################
     //! ----- pointers and string literals:
     // additional to direct insertion into cout, initialization of strings and arrays of character,
     // string literals can be accessed directly by pointers.
-    // another description: arrays of proper array type to contain all its character plus null-character and each element of type constant char.
+    // another description for string literals: arrays of proper array type to contain all its character plus null-character and each element of type constant char (literals are not modifiable).
     // each element of a character sequence is accessible by a pointer that point to the sequence, exactly like it is accessible using the same array way.
-    // this is because of the before described fact, that arrays and pointers behave essentially the same way in expressions.
+    // the reason: already described fact, that arrays and pointers behave essentially the same way in expressions.
     ColourCouter ( "----- Pointers and string literals:\n", F_bBLUE );
     ColourCouter ( "By using pointers string literals can be accessed directly.\n\n", F_YELLOW );
-    const char* Ptr_StrLit { "Hello!" }; // a pointer pointed to an array of respected literal representation
-    std::cout << "Accessing a character sequence directly in usual array and pointers way:" << nline << tab;
-    for ( int i = 0; i <= 5; i++ )
+    const char* Ptr_StrLit { "Way to go!" }; // a pointer pointed to an array of respected literal representation
+    std::cout << "Accessing a character sequence directly in usual array and pointer way:" << nline << tab;
+    for ( int i = 0; i < 10; i++ )
     {
       std::cout << Ptr_StrLit [i]; // accessing in usual array way
       if ( Ptr_StrLit [i] != '!' )
-        std::cout << '_';
+        std::cout << '.';
     }
     std::cout << "\t\t";
-    for ( int i = 0; i <= 5; i++ )
+    for ( int i = 0; i < 10; i++ )
     {
       std::cout << *( Ptr_StrLit + i ); // accessing in usual pointer way
       if ( *( Ptr_StrLit + i ) != '!' )
-        std::cout << '_';
+        std::cout << '.';
     }
     std::cout << nline << nline;
   }
@@ -776,28 +791,30 @@ void _09_03_PointersAndLiterals ()
 }
 
 
-void increase ( void* data, int p_size )
+void void_parameter ( void* void_ptr, int size )
 {
-  if ( p_size == sizeof ( char ) )
+  if ( size == sizeof ( char ) )
   {
-    char* p_char;
-    p_char = static_cast<char*>( data );
-    ++( *p_char );
+    char* char_ptr;
+    char_ptr = static_cast<char*>( void_ptr );
+    // uppercase/lowercase switch
+    if ( *char_ptr < 97 )
+      * char_ptr += 32;
+    else
+      *char_ptr -= 32;
   }
-  if ( p_size == sizeof ( int ) )
+  if ( size == sizeof ( int ) )
   {
-    int* p_int;
-    p_int = static_cast<int*>( data );
-    ++( *p_int );
+    int* int_ptr;
+    int_ptr = static_cast<int*>( void_ptr );
+    // square
+    *int_ptr *= *int_ptr;
   }
 }
-void _09_04_MoreOnPointers ()
+void _13_04_MoreOnPointers ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- pointers to pointers:
     // C++ provides the use of pointers that point to pointers.
@@ -805,13 +822,9 @@ void _09_04_MoreOnPointers ()
     // the declaration syntax simply requires an additional asterisk for each level of indirection.
     ColourCouter ( "----- Pointers to pointers:\n", F_bBLUE );
     ColourCouter ( "In C++ pointers are allowed to point to pointers.\n\n", F_YELLOW );
-    int int_var;
-    int* int_ptr;
-    int** int_ptr_ptr; // a pointer to pointer
-                       // useable in three different levels of indirection and each one correspond to a different value.
-    int_var = 89;
-    int_ptr = &int_var;
-    int_ptr_ptr = &int_ptr;
+    int int_var { 89 };
+    int* int_ptr { &int_var };
+    int** int_ptr_ptr { &int_ptr }; // a pointer to pointer, useable in three different levels of indirection and each one correspond to a different value.
     std::cout << "Pointed values in three different levels of indirection are:" << nline << tab;
     std::cout << int_ptr_ptr << tab; // first level, the address of the pointer to pointer
     std::cout << *int_ptr_ptr << tab; // second level, the address of pointed pointer
@@ -830,13 +843,13 @@ void _09_04_MoreOnPointers ()
     // which for non-dynamic data types it is a constant value.
     ColourCouter ( "----- Void pointers:\n", F_bBLUE );
     ColourCouter ( "Void pointers are able to point to values without any infos on their exact types.\n\n", F_YELLOW );
-    char a { 'A' };
-    int b = 24;
-    std::cout << "Values ready to be passed are:" << nline << tab << a << tab << b << nline;
-    increase ( &a, sizeof ( a ) );
-    increase ( &b, sizeof ( b ) );
-    std::cout << "Increased values in the function with a void pointer as parameter are:" << nline;
-    std::cout << tab << a << tab << b << nline << nline;
+    char _char { 'A' };
+    int _int = 24;
+    std::cout << "Values ready to be passed are:" << nline << tab << _char << tab << _int << nline;
+    void_parameter ( &_char, sizeof ( _char ) );
+    void_parameter ( &_int, sizeof ( _int ) );
+    std::cout << "The result values are:" << nline;
+    std::cout << tab << _char << tab << _int << nline << nline;
 
     //! ####################################################################
     //! ----- invalid pointers and null pointers:
@@ -848,24 +861,24 @@ void _09_04_MoreOnPointers ()
     ColourCouter ( "In C++ pointers can point to any address values, no matter their storage state.\n\n", F_YELLOW );
     // the two pointer definitions below, while not pointing to any address with value, aren't cause of any compile error.
     // but dereferencing them is a different story and causes runtime error or undefined behaviours
-    int* pp; // uninitialized pointer (local variable) (no error)
-    int anArray [10];
-    int* qq { &anArray [20] }; // element out of bound (no error)
-    //std::cout << pp << nline; // error: used without initialization
-    std::cout << "The pointed address is (out of bound of the array addresses):" << tab << qq << nline << nline;
+    int* ptr_1; // uninitialized pointer (local variable) (no error)
+    int theArray [2] { 0 };
+    int* ptr_2 { &theArray [4] }; // element out of bound (no error)
+    //std::cout << ptr_1 << nline; // error: used without initialization
+    std::cout << "The pointed address is (out of bound of the array addresses):" << tab << ptr_2 << nline << nline;
 
     //! - in addition:
     // as in past sections somewhat described: null pointers: pointers can NULL, 0 or nullptr to represent that they point to nowhere.
     // null pointers satisfy the need of explicit point to nowhere, and not just an invalid address.
     // all null pointers compare equal to other null pointers.
     // Note as already described: void pointers: point to somewhere without a specific type
-    int* pp2 { 0 };
-    int* qq2 { nullptr };
-    int* rr { NULL }; // quite usual in old codes: using the defined constant NULL to refer to null pointer value
+    int* ptr_a { 0 };
+    int* ptr_b { nullptr };
+    int* ptr_c { NULL }; // quite usual in old codes: using the defined constant NULL to refer to null pointer value
                      // NULL is defined in several headers of the standard library
                      // it is also defined as an alias of some null pointer constant such as 0 or nullptr
     std::cout << "The pointed addresses of defined null pointers are:" << nline;
-    std::cout << tab << pp2 << tab << qq2 << tab << rr << nline << nline;
+    std::cout << tab << ptr_a << tab << ptr_b << tab << ptr_c << nline << nline;
   }
   catch ( const std::exception& )
   {
@@ -874,28 +887,23 @@ void _09_04_MoreOnPointers ()
 }
 
 
-int addition_Function ( int a, int b )
+int increment ( int param )
 {
-  return ( a + b );
+  return ++param;
 }
-int subtraction_Function ( int a, int b )
+int decrement ( int param )
 {
-  return ( a - b );
+  return --param;
 }
-int operation_FunctionCaller ( int x, int y, int ( *FuncToCall ) ( int, int ) )
+int operation_FunctionCaller ( int param, int ( *function ) ( int ) )
 {
   // calling the wished function using its stored executable address which is passed as argument
-  int g;
-  g = ( *FuncToCall ) ( x, y );
-  return g;
+  return ( *function ) ( param );
 }
-void _09_05_PointersToFunctions ()
+void _13_05_PointersToFunctions ()
 {
   try
   {
-    ColourCouter ( " -------------------------------------------------", F_bRED );
-    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
-
     //! ####################################################################
     //! ----- pointers to functions:
     // in C++ operations with pointers to function are allowed, they point to the executable function code,
@@ -906,12 +914,13 @@ void _09_05_PointersToFunctions ()
     // parenthesis are needed and alter the higher precedence of function parameters.
     ColourCouter ( "----- Pointers to functions:\n", F_bBLUE );
     ColourCouter ( "Pointers to functions are introduced to call a function or to pass a function as argument to another function.\n\n", F_YELLOW );
-    int a, b, c, d;
-    int ( *minus )( int, int ) = subtraction_Function; // a pointer to function (two parameters and direct initialization)
-    a = subtraction_Function ( 10, 5 ); // calling the function itself
-    b = minus ( 15, 5 ); // calling the pointer to function
-    c = operation_FunctionCaller ( 10, 7, addition_Function ); // passing the function itself
-    d = operation_FunctionCaller ( 34, c, minus ); // passing the pointer to function
+    int a { 10 }, b { 15 }, c { 20 }, d { 25 };
+    std::cout << "The passed values are:" << "\t\t\t\t" << a << ", " << b << ", " << c << ", " << d << nline;
+    int ( *decrease )( int ) = decrement; // a pointer to function (two parameters and direct initialization)
+    a = decrement ( a ); // calling the function itself
+    b = decrease ( b ); // calling the pointer to function
+    c = operation_FunctionCaller ( c, increment ); // passing the function itself
+    d = operation_FunctionCaller ( d, decrease ); // passing the pointer to function
     std::cout << "First result (function itself):" << "\t\t\t" << a << nline;
     std::cout << "Second result (pointer to function):" << "\t\t" << b << nline;
     std::cout << "Third result (passing the function itself):" << tab << c << nline;
@@ -924,7 +933,7 @@ void _09_05_PointersToFunctions ()
 }
 
 
-void _10_01_DynamicMemory ()
+void _14_01_DynamicMemory ()
 {
   try
   {
@@ -952,19 +961,19 @@ void _10_01_DynamicMemory ()
     ColourCouter ( "The integrated operator new is to be used to allocate dynamic memory.\n\n", F_YELLOW );
     int* ptr1;
     ptr1 = new int; // allocate memory to contain one single element of type int
-    *ptr1 = 555;
+    *ptr1 = 10;
     std::cout << "The address and value of dynamic allocated memory are:" << nline << tab << ptr1 << tab << *ptr1 << nline;
     // the substantial difference between declaring normal arrays and allocating dynamic memory is,
     // that allocation happens during runtime and the size is any variable value.
     char* ptr2;
-    ptr2 = new char [6]; // allocate a block (an array) of char elements
-    for ( int i = 0; i <= 5; i++ )
+    ptr2 = new char [3]; // allocate a block (an array) of char elements
+    for ( int i = 0; i <= 2; i++ )
     {
       *( ptr2 + i ) = '$'; // accessing in usual pointer way
     }
     std::cout << "The address of first element of the dynamic allocated memory is:" << nline << tab << ptr2 << nline;
     std::cout << "The elements stored in the allocated memory are:" << nline << tab;
-    for ( int i = 0; i <= 5; i++ )
+    for ( int i = 0; i <= 2; i++ )
     {
       std::cout << ptr2 [i] << tab; // accessing in usual array way
     } std::cout << nline << nline;
@@ -988,14 +997,18 @@ void _10_01_DynamicMemory ()
     // since it implies explicit check on pointer value after each and every allocation,
     // thus, unless it is a critical allocation, the exception mechanism is preferred.
     int* ptr3;
-    ptr3 = new ( std::nothrow ) int [5] { 0 };
+    ptr3 = new ( std::nothrow ) int [3];
     if ( ptr3 == nullptr )
       std::cout << "Error assigning memory!" << nline;
     else
     {
+      for ( int i = 0; i <= 2; i++ )
+        ptr3 [i] = 5; // accessing in usual array way
       std::cout << "The address of first element of the dynamic allocated memory is:" << nline << tab << ptr3 << nline;
       std::cout << "The elements stored in the allocated memory are:" << nline << tab;
-      for ( int i = 0; i <= 4; i++ ) { std::cout << ptr3 [i] << tab; } std::cout << nline << nline;
+      for ( int i = 0; i <= 2; i++ )
+        std::cout << ptr3 + i << tab; // accessing in usual pointer way
+      std::cout << nline << nline;
     }
 
     //! ####################################################################
@@ -1015,38 +1028,47 @@ void _10_01_DynamicMemory ()
     // not only by catching the proper exception, but also controlling the user input and checking the pointer value.
     ColourCouter ( "----- Operators delete and delete[]:\n", F_bBLUE );
     ColourCouter ( "The integrated operator delete is to be used to free the allocated dynamic memory.\n\n", F_YELLOW );
-    std::string _inStr;
-    int _number, _index;
-    int* _pointer;
-    std::cout << "How many numbers would you like to type?" << tab;
-    std::getline ( std::cin, _inStr );
-    std::stringstream ( _inStr ) >> _number;
-    while ( _number > 10 )
+    std::string inStr { "" };
+    int number { 0 }, counter { 0 };
+    int* pointer;
+    std::cout << "Enter a number (enter 'bye' to exit):" << tab;
+    std::getline ( std::cin, inStr );
+    while ( inStr != "bye" )
     {
-      std::cout << "Come on! You don't want to enter so many numbers! Think and try again. :)" << tab;
-      std::getline ( std::cin, _inStr );
-      std::stringstream ( _inStr ) >> _number;
-    }
-    if ( _number > 5 )
-      std::cout << "Really? You do want to enter so many numbers? :| OK!" << nline;
-    _pointer = new( std::nothrow ) int [_number]; // entered by the user and not a constant
-    if ( _pointer == nullptr )
-      std::cout << nline << "Error: memory couldn't be allocated!" << nline;
-    else
-    {
-      std::cout << nline;
-      for ( _index = 0; _index < _number; _index++ )
+      std::stringstream ( inStr ) >> number;
+      if ( ( number / 2 ) > 500 )
+        counter = 20;
+      else
+        counter = 15;
+      pointer = new( std::nothrow ) int [counter]; // reckoned form user entered value so not a constant
+      if ( pointer == nullptr )
+        std::cout << nline << "Error: memory couldn't be allocated!" << nline;
+      else
       {
-        std::cout << "Enter number:" << tab;
-        //std::cin >> _pointer [_index]; // pointer way: *(_pointer + _index)
-        std::getline ( std::cin, _inStr );
-        std::stringstream ( _inStr ) >> _pointer [_index]; // pointer way: *(_pointer + _index)
+        int j { 0 };
+        for ( int i = 1; i <= number; i++ )
+        {
+          if ( number % i == 0 )
+          {
+            pointer [j] = i;
+            j++;
+          }
+          if ( j == counter )
+            break;
+        }
+        if ( ( j < counter ) && ( number != 1 ) )
+          pointer [j] = number;
+        std::cout << "Some of the divisors are:" << nline << tab;
+        for ( int i = 0; i < j; i++ )
+        {
+          std::cout << pointer [i]; // pointer way: *(_pointer + i)
+          if ( ( i + 1 ) != j )
+            std::cout << ", ";
+        }
+        std::cout << nline << nline << "Enter another number (enter 'bye' to exit):" << tab;
+        std::getline ( std::cin, inStr );
       }
-      std::cout << nline << "You have entered:" << nline << tab;
-      for ( _index = 0; _index < _number; _index++ )
-        std::cout << _pointer [_index] << tab; // pointer way: *(_pointer + _index)
-      std::cout << nline << nline;
-      delete [] _pointer;
+      delete [] pointer;
     }
 
     //! - in addition:
@@ -1066,16 +1088,22 @@ void _10_01_DynamicMemory ()
 }
 
 
-struct movies_t
+struct phone
 {
-  std::string title;
+  std::string model;
   int year;
 } mine; // optional field object_names in practice
-void printMovie ( movies_t movie )
+void print ( phone info )
 {
-  std::cout << movie.title << " (" << movie.year << ")" << Nline;
+  std::cout << tab << "- " << info.model << " bought in year (" << info.year << ")" << Nline;
 }
-void _11_01_DataStructures ()
+struct smily
+{
+  char signs [4] { ';', '.', '_', '^' };
+  std::string title [3] { "moustache", "mouth", "lips" };
+  int index { 0 };
+};
+void _15_01_DataStructures ()
 {
   try
   {
@@ -1105,36 +1133,33 @@ void _11_01_DataStructures ()
     // objects declared of them as whole and to the object members individually using the same identifier.
     ColourCouter ( "~~~~~ Data structures:\n", F_bBLUE );
     ColourCouter ( "To introduce grouped data elements with different types and different lengths under one name.\n\n", F_YELLOW );
-    movies_t yours; // after declaration used just like any other type
+    phone yours; // after declaration used just like any other type
     std::string strTemp;
-    mine.title = "2001 A Space Odyssey";
-    mine.year = 1968;
-    std::cout << "Enter the title of your favourite movie: ";
-    std::getline ( std::cin, yours.title );
-    std::cout << "Enter its release year: ";
+    mine.model = "LG M700 Q6";
+    mine.year = 2018;
+    std::cout << "Enter the model of your smartphone:" << tab;
+    std::getline ( std::cin, yours.model );
+    std::cout << "In which year you have bought it?" << tab;
     std::getline ( std::cin, strTemp );
     std::stringstream ( strTemp ) >> yours.year;
-    std::cout << nline << "My favourite movie is:" << nline << tab;
-    printMovie ( mine );
-    std::cout << "And yours is:" << nline << tab;
-    printMovie ( yours );
+    std::cout << nline << "My smartphone model is:" << nline;
+    print ( mine );
+    std::cout << "Your smartphone model is:" << nline;
+    print ( yours );
     std::cout << nline;
 
     //! - in addition:
     // using structures as type of arrays to construct tables or databases.
-    std::cout << "An array with data structure as its type:" << nline;
-    movies_t films [3];
+    ColourCouter ( "An array with data structure as its type:\n", F_bYELLOW );
+    smily some [3];
+    for ( int i = 0; i < 3; i++ )
+      some [i].index = i;
+    std::cout << "These smilies are built:" << nline;
     for ( int i = 0; i < 3; i++ )
     {
-      std::cout << "Enter title: " << tab;
-      std::getline ( std::cin, films [i].title );
-      std::cout << "Enter year: " << tab;
-      std::getline ( std::cin, strTemp );
-      std::stringstream ( strTemp ) >> films [i].year;
+      std::cout << tab << some [i].signs [3] << some [i].signs [i] << some [i].signs [3] << tab;
+      std::cout << some [i].title [i] << nline;
     }
-    std::cout << nline << "You have entered these movies:" << nline;
-    for ( int i = 0; i < 3; i++ )
-      printMovie ( films [i] );
     std::cout << nline;
 
     //! ####################################################################
@@ -1152,52 +1177,54 @@ void _11_01_DataStructures ()
     // --------------------------------------------------------------------------------
     // *a.b         value pointed to by member b (a pointer) of object a    *(a.b)
     // --------------------------------------------------------------------------------
-    // Note in case *a.b equivalent to *(a.b) the object member is a pointer type,
+    // Note in case *a.b, equivalent to *(a.b), the object member is a pointer type,
     // if not, the evaluation results in accessing a hypothetical pointer member called 'b', which isn't the case.
     ColourCouter ( "----- Pointers to structures:\n", F_bBLUE );
     ColourCouter ( "Structures can be pointed to by their own type of pointers.\n\n", F_YELLOW );
-    movies_t aMovie_t;
-    movies_t * ptrMovie_t;
-    ptrMovie_t = &aMovie_t;
-    std::cout << "Accessing movie structure using pointers:" << nline;
-    std::cout << "Enter title: " << tab;
-    std::getline ( std::cin, ptrMovie_t->title ); // for all purposes, equivalent to: (*ptrMovie_t).title
-    std::cout << "Enter year: " << tab;
-    std::getline ( std::cin, strTemp );
-    std::stringstream ( strTemp ) >> ptrMovie_t->year;
-    std::cout << nline << "You have entered:" << tab;
-    std::cout << ptrMovie_t->title << " (" << ptrMovie_t->year << " )" << nline << nline;
+    std::string temp { "" };
+    phone aPhone;
+    phone* ptrPhone;
+    ptrPhone = &aPhone;
+    std::cout << "Accessing phone structure using pointers:" << nline;
+    std::cout << "Enter your smartphone model:" << tab;
+    std::getline ( std::cin, ptrPhone->model ); // for all purposes, equivalent to: (*ptrMovie_t).title
+    std::cout << "Enter the bought year:" << tab;
+    std::getline ( std::cin, temp );
+    std::stringstream ( temp ) >> ptrPhone->year;
+    std::cout << nline << "You have entered:" << nline;
+    print ( aPhone );
+    std::cout << nline;
 
     //! ####################################################################
     //! ----- nesting structures:
     // elements of a structure can also be of structure type, the result is then a nested structure.
     ColourCouter ( "----- Nesting structures:\n", F_bBLUE );
     ColourCouter ( "To introduce elements in a structure that themselves are also structures.\n\n", F_YELLOW );
-    struct friends_t
+    struct owner
     {
       std::string name;
       std::string email;
-      movies_t favorite_movie;
-    } maria, charlie;
-    friends_t* ptrFriend_t = &charlie;
-    maria.name = "Marie";
-    maria.email = "maria@gmail.com";
-    maria.favorite_movie.title = "The Matrix";
-    maria.favorite_movie.year = 1999;
-    charlie.name = "Charlie";
-    ptrFriend_t->email = "charlie@gmail.com";
-    charlie.favorite_movie.title = "Blade Runner";
-    charlie.favorite_movie.year = 1982; // equivalent to next expression
-    ptrFriend_t->favorite_movie.year = 1982; // equivalent to next expression
-    ( *ptrFriend_t ).favorite_movie.year = 1982;
+      phone _phone;
+    } anna, john;
+    owner* ptrOwner = &john;
+    anna.name = "Anna";
+    anna.email = "anna@gmail.com";
+    anna._phone.model = "IPhone 6";
+    anna._phone.year = 2016;
+    john.name = "John";
+    ptrOwner->email = "john@gmail.com";
+    john._phone.model = "Samsung Galaxy";
+    john._phone.year = 2015; // equivalent to next expression
+    ptrOwner->_phone.year = 2015; // equivalent to next expression
+    ( *ptrOwner )._phone.year = 2015;
     ColourCouter ( "A demonstration of a nested structure:\n", F_bYELLOW );
-    std::cout << "Maria and Charlie's favourite movies are:" << nline;
-    std::cout << maria.name << nline;
-    std::cout << tab << maria.email << nline << tab;
-    printMovie ( maria.favorite_movie );
-    std::cout << charlie.name << nline;
-    std::cout << tab << ptrFriend_t->email << nline << tab;
-    printMovie ( ( *ptrFriend_t ).favorite_movie );
+    std::cout << "Anna and John's smartphones model are:" << nline;
+    std::cout << anna.name << nline;
+    std::cout << anna.email << nline;
+    print ( anna._phone );
+    std::cout << john.name << nline;
+    std::cout << ptrOwner->email << nline;
+    print ( ( *ptrOwner )._phone );
     std::cout << nline;
   }
   catch ( const std::exception& )
@@ -1207,7 +1234,7 @@ void _11_01_DataStructures ()
 }
 
 
-void _12_01_OtherDataTypes ()
+void _16_01_OtherDataTypes ()
 {
   try
   {
@@ -1236,18 +1263,18 @@ void _12_01_OtherDataTypes ()
     // another purpose is to reduce the length of long or confusing type names.
     ColourCouter ( "----- Type aliases (typedef / using):\n", F_bBLUE );
     ColourCouter ( "To introduce different identifiers as alias for any valid type.\n\n", F_YELLOW );
-    typedef char C; // obvious
-    typedef unsigned int WORD; // WORD is alias for unsigned int
-    typedef char* pChar; // pChar is alias for char*
-    typedef char field [50]; // Note field is alias for char [50]
-    C myChar { 'A' }, anotherChar { 'B' }, * pTc1 { &myChar };
-    WORD myWord { 111 };
-    pChar ptc2 { &anotherChar };
-    field name { "Mehrdad" };
-    using C2 = char;
-    using WORD2 = unsigned int;
-    using pChar2 = char*;
-    using field2 = char [50];
+    typedef int I; // obvious
+    typedef unsigned char COUNTER; // COUNTER is alias for unsigned char
+    typedef char* ptrChar; // ptrChar is alias for char*
+    typedef char name [30]; // Note name is alias for char [20]
+    I theInteger { 10 }, aInteger { 20 }, * ptrInt1 { &theInteger };
+    COUNTER theCounter { 50 };
+    I* ptrInt2 { &aInteger };
+    name myName { "Mehrdad" };
+    using L = long;
+    using Decimal = double;
+    using ptrInt = int*;
+    using surname = char [40];
 
     //! ####################################################################
     //! ----- unions:
@@ -1266,13 +1293,13 @@ void _12_01_OtherDataTypes ()
     // therefore no member of an union has an independent space for storing different values.
     ColourCouter ( "----- Unions:\n", F_bBLUE );
     ColourCouter ( "To share one portion of memory between members with different date types.\n\n", F_YELLOW );
-    union myTypes_t
+    union theTypes
     {
-      char c;
-      int i;
-      float f;
-    } myTypes;
-    myTypes.c = 'A';
+      char character;
+      long number;
+      double floating;
+    } first;
+    first.character = 'A';
 
     //! - in addition:
     // one interesting purpose of unions is to access a value both ways,
@@ -1281,23 +1308,23 @@ void _12_01_OtherDataTypes ()
     // Note this feature is likely to create portability issues,
     // since the exact alignment and order of union members in memory is system dependent.
     std::cout << "Accessing an union in its entirety, as structure and as array:" << nline;
-    union mix_t
-    {                               // assumptions (as already explained fundamental type sizes are system dependent):
-      int int_allBytes;           // 4 byte (entirety access)
+    union mixed_types
+    { // assumptions (as already explained fundamental type sizes are system dependent):
+      int allBytes; // 4 byte (entirety access)
       struct
       {
-        short short_highBytes;  // 2 byte (access in structure form)
-        short short_lowBytes;   // 2 byte
-      } struct_highLow;
-      char char_Bytes [4];        // 4*1 byte (access in array form)
+        short highBytes; // 2 byte (access in structure form)
+        short lowBytes; // 2 byte
+      } highLow;
+      char Byte [4]; // 4*1 byte (access in array form)
     } mix;
-    mix.int_allBytes = 0x11111111;
-    std::cout << "In entirety:" << "\t\t\t" << mix.int_allBytes << nline;
-    std::cout << "Low and high bytes (structure):" << tab << mix.struct_highLow.short_highBytes << tab << mix.struct_highLow.short_lowBytes << nline;
+    mix.allBytes = 0x22222222;
+    std::cout << "In entirety:" << "\t\t\t" << mix.allBytes << nline;
+    std::cout << "Low and high bytes (structure):" << tab << mix.highLow.highBytes << tab << mix.highLow.lowBytes << nline;
     std::cout << "Byte by Byte (array):" << "\t\t";
     for ( unsigned char i = 0; i < 4; i++ )
     {
-      std::cout << mix.char_Bytes [i] << tab;
+      std::cout << mix.Byte [i] << tab;
     }
     std::cout << nline << nline;
 
@@ -1308,25 +1335,25 @@ void _12_01_OtherDataTypes ()
     // as already explained, an union share a space between its members.
     ColourCouter ( "----- Anonymous unions:\n", F_bBLUE );
     ColourCouter ( "By declaring an union without any name in a class or structure, they become anonymous unions.\n\n", F_YELLOW );
-    struct book_t
+    struct person
     {
-      char title [50];
-      char author [50];
+      char name [50];
+      char email [50];
       union
       {
-        float dollar;
-        int yen;
-      } price; // a normal union
+        short day;
+        short month;
+      } birthday; // a normal union
       union
       {
-        float dollar;
-        int yen;
+        short day;
+        short month;
       }; // an anonymous union
-    } book;
-    book.price.dollar = 3.4;
-    book.dollar = 3.4;
-    std::cout << "The value is (normal union):" << tab << book.price.dollar << nline;
-    std::cout << "The value is (anonymous union):" << tab << book.dollar << nline << nline;
+    } mine;
+    mine.birthday.day = 3;
+    mine.day = 3;
+    std::cout << "The value is (normal union):" << tab << mine.birthday.day << nline;
+    std::cout << "The value is (anonymous union):" << tab << mine.day << nline << nline;
 
     //! ####################################################################
     //! ----- enumerated types (enum):
@@ -1342,12 +1369,12 @@ void _12_01_OtherDataTypes ()
     // the field object_names can be used to directly instantiate objects (variables) of this type
     ColourCouter ( "----- Enumerated types (enum):\n", F_bBLUE );
     ColourCouter ( "To introduce a set of custom identifiers, known as enumerators, as possible values.\n\n", F_YELLOW );
-    enum colours_t { black, blue, green, cyan, red, purple, yellow, white }; // a total new data type
-    colours_t myColour;
-    myColour = blue;
-    if ( myColour = green )
-      myColour = red;
-    std::cout << "The value of 'myColour' variable is:" << nline << tab << myColour << nline;
+    enum seasons_t { spring, summer, autumn, winter }; // a total new data type
+    seasons_t theSeason;
+    theSeason = spring;
+    if ( theSeason == spring )
+      theSeason = summer;
+    std::cout << "The value of 'theSeason' variable is:" << nline << tab << theSeason << nline;
 
     //! - in addition:
     // enumerators of an enumerated type declared with enum are always assigned integer values internally,
@@ -1355,15 +1382,14 @@ void _12_01_OtherDataTypes ()
     // if not explicitly specified, the first enumerator's internal integer value is zero (0).
     // the following values then get plus one, each one after another.
     // it is also possible to assign arbitrary integer values to enumerators.
-    enum months_t
+    enum week_t
     {
-      January = 1, February, March, April,
-      May, June, July, August,
-      September, October, November, December
-    } y2k;
-    y2k = January;
-    int val { y2k };
-    std::cout << "The values of variables are:" << nline << tab << y2k << tab << val << nline << nline;
+      Monday = 1, Thursday, Wednesday, Tuesday,
+      Friday, Saturday, Sunday
+    } _week;
+    _week = Sunday;
+    int val { _week };
+    std::cout << "The values of variables are:" << nline << tab << _week << tab << val << nline << nline;
 
     //! ####################################################################
     //! ----- enumerated types with enum class:
@@ -1372,6 +1398,16 @@ void _12_01_OtherDataTypes ()
     // therefore lacking enumerator values of type int, the conversion to int isn't possible.
     // each enumerator value of an enum class is accessible only with scoping into its type,
     // this way of access is also available in normal enum types, but it is just optional.
+    ColourCouter ( "----- Enumerated types with enum class:\n", F_bBLUE );
+    ColourCouter ( "To introduce real enum types that preserve safety.\n\n", F_YELLOW );
+    enum class Seasons { spring, summer, autumn, winter };
+    Seasons aSeason;
+    aSeason = Seasons::spring; // the needed scoping into the type
+    if ( aSeason == Seasons::spring )
+      aSeason = Seasons::autumn;
+    std::cout << "The value of 'aSeason' variable is:" << nline << tab << static_cast<int>( aSeason ) << nline;
+
+    //! - in addition:
     // enum class declared enumerated types have more control over their underlying type,
     // which can be any integral data type such as char, short, unsigned int,
     // and essentially serves to determine the size of the enumerated type.
@@ -1382,16 +1418,11 @@ void _12_01_OtherDataTypes ()
     // .
     // .
     // } object_names;
-    ColourCouter ( "----- Enumerated types with enum class:\n", F_bBLUE );
-    ColourCouter ( "To introduce real enum types that preserve safety.\n\n", F_YELLOW );
-    enum class Colours { black, blue, green, cyan, red, purple, yellow, white };
-    Colours myColour2;
-    myColour2 = Colours::blue; // the needed scoping into the type
-    if ( myColour2 == Colours::green )
-      myColour2 = Colours::red;
-    std::cout << "The value of 'myColour2' variable is:" << nline << tab << static_cast<int>( myColour2 ) << nline;
-    enum class EyeColour : long { blue, green, brown }; // + underlying type (a distinct type of the 'char' size)
-    std::cout << "The size of 'EyeColour' type is:" << nline << tab << sizeof ( EyeColour ) << nline << nline;
+    enum class sports_t : unsigned short
+    {
+      football, tennis, golf, baseball
+    }; // a distinct type (underlying type size is the size of short)
+    std::cout << "The size of 'sports_t' type is:" << nline << tab << sizeof ( sports_t ) << nline << nline;
   }
   catch ( const std::exception& )
   {
