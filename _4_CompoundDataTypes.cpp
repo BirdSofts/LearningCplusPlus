@@ -3,7 +3,7 @@
 /// _4_CompoundDataTypes.cpp
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,29.05.2019</changed>
+/// <changed>ʆϒʅ,09.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -797,7 +797,7 @@ void void_parameter ( void* void_ptr, int size )
   {
     char* char_ptr;
     char_ptr = static_cast<char*>( void_ptr );
-    // uppercase/lowercase switch
+    // uppercase/lowercase switch (ASCII code of character)
     if ( *char_ptr < 97 )
       * char_ptr += 32;
     else
@@ -1070,6 +1070,7 @@ void _14_01_DynamicMemory ()
       }
       delete [] pointer;
     }
+    std::cout << nline;
 
     //! - in addition:
     // dynamic memory in C language

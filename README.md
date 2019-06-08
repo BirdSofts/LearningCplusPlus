@@ -56,6 +56,7 @@ https://stackoverflow.com/
 http://de.cppreference.com/
 https://docs.microsoft.com/
 https://www.ibm.com/support/knowledgecenter/en/
+https://www.tutorialspoint.com/cplusplus/
 C++ reference: http://www.cplusplus.com/reference/
 
 # Copyright
