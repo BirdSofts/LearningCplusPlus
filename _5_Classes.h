@@ -3,7 +3,7 @@
 /// _5_Classes.h
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,03.06.2019</changed>
+/// <changed>ʆϒʅ,14.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once
@@ -26,6 +26,14 @@ void _17_10_ClassTemplates ();
 void _17_11_TemplateSpecialization ();
 
 void _18_01_SpecialMembers ();
+void _18_02_DefaultConstructor ();
+void _18_03_Destructor ();
+void _18_04_CopyConstructor ();
+void _18_05_CopyAssignment ();
+void _18_06_MoveConstructorAndAssignment ();
+void _18_07_ImplicitMembers ();
+
+void _19_01_FriendFunctions ();
 
 
 #endif // !CLASSES_H

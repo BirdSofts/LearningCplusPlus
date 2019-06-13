@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,09.06.2019</changed>
+/// <changed>ʆϒʅ,14.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -42,7 +42,7 @@ void _17_01_ClassesI ()
     ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
 
     //! ####################################################################
-    //! ~~~~~ Classes I:
+    //! ~~~~~ Classes:
     // C++ language introduces classes as an expansion to data structures,
     // additionally to data members, they can contain functions as members.
     // an instantiation of a class result in an object
@@ -79,7 +79,7 @@ void _17_01_ClassesI ()
     // when only its definition is included within the class, compiler considers it a normal (non-inline) class member.
     // the only difference being already mentioned, the behaviour stays the same,
     // thus in the end it may come to a possible compiler optimization.
-    ColourCouter ( "~~~~~ Classes I:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Classes:\n", F_bBLUE );
     ColourCouter ( "Classes are an expanded concept of data structure with the ability, not only containing data members but also functions as members.\n\n", F_YELLOW );
     class Number first;
     // like data structures, dot (.) method is used to directly access members either data or function of a class
@@ -212,8 +212,8 @@ void _17_03_UniformInitialization ()
     // optionally, this syntax can include an equal sign before the braces.
     ColourCouter ( "----- Uniform initialization:\n", F_bBLUE );
     ColourCouter ( "There are different ways for a constructor to be called.\n\n", F_YELLOW );
-    Smily a ( 0 ); // functional form
-    Smily b = 1; // assignment initialization
+    Smily a ( 0 ); // functional form (usable for single argument constructors)
+    Smily b = 1; // assignment initialization (usable for single argument constructors)
     Smily c { 2 }; // uniform initialization
     Smily d = { 3 }; // uniform initialization plus equal (POD type-like)
     std::cout << nline;
@@ -791,21 +791,379 @@ void _18_01_SpecialMembers ()
 
     //! ####################################################################
     //! ~~~~~ special members:
+    // member function defined implicitly under certain circumstances are known as special members:
+    // -------------------------------------------------------------
+    // member function        typical form for class theClass
+    // -------------------------------------------------------------
+    // default constructor    theClass::theClass();
+    // -------------------------------------------------------------
+    // destructor             theClass::~theClass();
+    // -------------------------------------------------------------
+    // copy constructor       theClass::theClass (const theClass&);
+    // -------------------------------------------------------------
+    // copy assignment        theClass& operator= (const theClass&);
+    // -------------------------------------------------------------
+    // move constructor       theClass::theClass (theClass&&);
+    // -------------------------------------------------------------
+    // move assignment        theClass& operator= (theClass&&);
+    // -------------------------------------------------------------
+    ColourCouter ( "~~~~~ Special members:\n", F_bBLUE );
+    ColourCouter ( "Special member functions are defined implicitly under certain circumstances.\n\n", F_YELLOW );
+
+
+
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class FloatingPoint
+{
+private:
+  double entity;
+public:
+  FloatingPoint () { entity = 0; } // explicit defined default constructor
+  FloatingPoint ( const double& arg ) :entity ( arg ) {}
+  const double& get () const { return entity; }
+};
+void _18_02_DefaultConstructor ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- default constructor:
+    // an object defined of a class, but not initialised with any arguments, calls the default constructor.
+    // classes defined without any constructor are assumed by compiler to have an implicitly defined default constructor.
+    // after a class provides a constructor, taking any number of parameters to initialize object's data members with,
+    // compiler in no case introduces an implicit default constructor,
+    // thus no instantiation not using the explicit defined constructor is possible.
+    // hence afterward, for the ability to instantiate using default constructor, it shall be defined explicitly.
+    ColourCouter ( "----- Default Constructor:\n", F_bBLUE );
+    ColourCouter ( "This special member introduces object's instantiation without passing any arguments.\n\n", F_YELLOW );
+    FloatingPoint anEntity;
+    FloatingPoint anotherEntity { 2.2 };
+    std::cout << "The floating point numbers are:" << nline;
+    std::cout << tab << anEntity.get () << tab << anotherEntity.get () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class FloatEntity
+{
+private:
+  double* ptrEntity;
+public:
+  FloatEntity () : ptrEntity ( new double ) { *ptrEntity = 0; }
+  FloatEntity ( const double& arg ) :ptrEntity ( new double ( arg ) ) {}
+  ~FloatEntity () { delete ptrEntity; } // destructor
+  const double& get () const { return *ptrEntity; }
+};
+void _18_03_Destructor ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- destructor:
+    // the special member destructor is needed to free the allocated resource by a class, when its lifetime ends.
+    // note that when a class doesn't allocate any dynamic memory, it doesn't really require a destructor.
+    // like constructor, destructor of a class is automatically called upon the lifetime end of the objects defined of.
+    // destructor, very much like the default constructor, takes not even void as argument,
+    // while using the class identifier as its own and preceded with a tilde sign (~).
+    // the destructor of the below defined object is called at the end of the function.
+    ColourCouter ( "----- Destructor:\n", F_bBLUE );
+    ColourCouter ( "Destructor is a special member, and is called at the lifetime end of a class.\n\n", F_YELLOW );
+    FloatEntity theEntity { 4.4 };
+    std::cout << "The floating point number is:" << nline;
+    std::cout << tab << theEntity.get () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Creature
+{
+private:
+  std::string name;
+public:
+  Creature ( std::string arg ) :name ( arg ) {}
+  const std::string& const get () { return name; }
+};
+class creaturePtr
+{
+private:
+  std::string* ptrName;
+public:
+  creaturePtr ( const std::string& arg ) :ptrName ( new std::string ( arg ) ) {}
+  ~creaturePtr () { delete ptrName; }
+  // custom copy constructor
+  creaturePtr ( const creaturePtr& obj ) : ptrName ( new std::string ( obj.get () ) ) {}
+  const std::string& get () const { return *ptrName; }
+};
+void _18_04_CopyConstructor ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- copy constructor:
+    // the special member copy constructor, after invocation at the moment of a new object's definition,
+    // which is passed another already defined object of the same class as a single argument,
+    // instantiates a duplication of it, using the new object's identifier.
+    // with other words, the new object get initialized using another already defined object of the same class.
+    // copy constructor introduces its first possibly constant qualified argument of type reference to the class itself.
+    // copy, move constructors/assignments are implicitly provided through compiler,
+    // if the class itself doesn't introduce its custom version,
+    // which then simply performs a shallow copy of the members of the passed object.
+    // for example the implicit defined copy constructor by compiler for the class Creature is roughly equivalent to:
+    // Creature::Creature ( const Creature & obj ) : name ( obj.name ) {}
+    ColourCouter ( "----- Copy constructor:\n", F_bBLUE );
+    ColourCouter ( "To instantiate an object as copy of another object.\n\n", F_YELLOW );
+    Creature one { "Human" };
+    Creature two { one }; // invoking the implicit copy constructor
+    std::cout << "The copied creature is identified as:" << nline;
+    std::cout << tab << two.get () << nline << nline;
+
+    //! - in addition:
+    // while the introduced implicit copy constructor perfectly suites the need of many classes,
+    // when it comes to pointers and handling the allocated storage, a performed shallow copy,
+    // through which just the pointer value and not the pointed content get duplicated, in no case is a wished result.
+    // after a shallow copy, the object and its duplication point to the same destination address of memory,
+    // hence the program crushes at the destruction moment of this object or its copy on runtime.
+    // therefore the only solution is a custom copy constructor to perform a deep copy.
+    ColourCouter ( "Deep copy instantiation:\n", F_bYELLOW );
+    creaturePtr three { "Human" };
+    creaturePtr four { three };
+    std::cout << "The copied creature is identified as:" << nline;
+    std::cout << tab << four.get () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Animal
+{
+private:
+  std::string* ptrName;
+public:
+  Animal ( const std::string& arg ) :ptrName ( new std::string ( arg ) ) {}
+  ~Animal () { delete ptrName; }
+  Animal ( const Animal& obj ) : ptrName ( new std::string ( obj.get () ) ) {}
+  // copy assignment operator
+  Animal& operator= ( const Animal& obj )
+  {
+    // --two available options for different scenarios:
+    // ----free the allocated memory (in case of constant member)
+    delete ptrName;
+    ptrName = new std::string ( obj.get () );
+    return *this;
+    // ----re-utilization (in case of non-constant member)
+    *ptrName = obj.get ();
+    return *this;
+  }
+  const std::string& get () const { return *ptrName; }
+};
+void _18_05_CopyAssignment ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- copy assignment:
+    // objects can additionally be copied on any assignment operation.
+    // one of the overloads of the operator= is the copy assignment operator, which is a special member,
+    // the single parameter of which is a value or reference to the class itself,
+    // and generally returns a reference to *this, although not being a requirement.
+    // a possible signature of the copy assignment of the class Creature is:
+    // Creature& operator= ( const Creature& );
+    // like copy constructor, the compiler defines a copy assignment operator implicitly,
+    // when the class introduces no custom version of its own,
+    // which performs needed shallow copy of a lot of classes perfectly.
+    // when it comes to pointers to objects and handling the needed storage, as the case with copy constructor,
+    // additionally to risk of freeing the allocated memory twice, there is the danger of memory leaks creation,
+    // which occurs by not deleting the object pointed to by the under new assignment operation object.
+    // a deep copy performed after deleting or reassigning the previous object solves these issues.
+    ColourCouter ( "----- Copy Assignment:\n", F_bBLUE );
+    ColourCouter ( "To copy an object on assignment operation.\n\n", F_YELLOW );
+    Animal one { "Dog" };
+    // initialization through copy constructor
+    Animal two { one };
+    // initialization through copy constructor (already introduced syntax, which calls single-argument constructors)
+    Animal three = one;
+    // already initialized objects, thus copy assignment is called
+    one = three;
+    std::cout << "The copied animal is identified as:" << nline;
+    std::cout << tab << one.get () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Appliance
+{
+private:
+  std::string* ptrName;
+public:
+  Appliance ( const std::string& arg ) :ptrName ( new std::string ( arg ) ) {}
+  ~Appliance () { delete ptrName; }
+  // copy constructor
+  Appliance ( const Appliance& obj ) : ptrName ( new std::string ( obj.get () ) ) {}
+  // copy assignment operator (non-constant member scenario)
+  Appliance& operator= ( const Appliance& obj )
+  {
+    *ptrName = obj.get ();
+    return *this;
+  }
+  // move constructor
+  Appliance ( Appliance&& obj ) :ptrName ( obj.ptrName ) { obj.ptrName = nullptr; }
+  // move assignment
+  Appliance& operator= ( Appliance&& obj )
+  {
+    delete ptrName;
+    ptrName = obj.ptrName;
+    obj.ptrName = nullptr;
+    return *this;
+  }
+  // addition
+  Appliance operator+ ( const Appliance& arg ) { return Appliance ( get () + " and " + arg.get () ); }
+  const std::string& get () const { return *ptrName; }
+};
+void _18_06_MoveConstructorAndAssignment ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- move constructor and assignment:
+    // moving similar to copying set the value to another object, the difference is the actual transfer,
+    // hence the source, which must be an unnamed object, loses that content.
+    // unnamed objects, for example return type of functions or type-casts, are in nature temporary,
+    // therefore they aren't identified with any name.
+    // initialization/assignment using temporary objects triggers the special member move constructor/assignment.
+    // to mention the efficient side, the use of unnamed temporaries make the copy unnecessary,
+    // with other words, the short-living unnamed objects are then acquired with the most efficient operation.
+    // the only parameter of move constructor/assignment is of type revalue reference to the class itself,
+    // which is specified following the type with two ampersands (&&),
+    // and then as a parameter matches the temporaries of the same type.
+    // Note syntax form (revalue reference): theClass ( theClass&& ); --- theClass& operator= ( theClass&& );
+    // for objects that manage their storage, such as objects that allocate and free storage with 'new' and 'delete',
+    // the concept of moving provides its most usefulness,
+    // considering the real difference between the operations copying and moving:
+    // --copying from A to B means: memory allocation for B and copying the entire content of A to it
+    // --moving from A to B means: transferring the allocated memory of A to B, which simply involves copying the pointer.
+    ColourCouter ( "----- Move constructor and assignment:\n", F_bBLUE );
+    ColourCouter ( "Transferring the content of an unnamed object to destination.\n\n", F_YELLOW );
+    Appliance one { "Refrigerator" };
+    Appliance two { "Washing machine" };
+    std::cout << "The copied appliances are identified as:" << nline;
+    Appliance temp { one }; // copy constructor
+    std::cout << tab << temp.get () << nline;
+    temp = two; // copy assignment
+    std::cout << tab << temp.get () << nline << nline;
+    std::cout << "The moved appliances are identified as:" << nline;
+    Appliance three { Appliance{"Stove"} }; // move constructor
+    std::cout << tab << three.get () << nline;
+    temp = one + three; // move assignment
+    std::cout << tab << temp.get () << nline << nline;
+
+    //! - in addition:
+    // compilers introducing Return Value Optimization optimize many cases,
+    // that formally require a move-construction call, such as returned function value used to initialize an object.
+    // through this optimization the move constructor may actually never get called.
+    // note that the use of revalue reference needs to be practised with care.
+    // while it can be used as parameter type of any function, the usefulness is arguable.
+    // using it in other functions than move constructors is tricky,
+    // unnecessary and the source of errors quite difficult to track.
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+const double PI { 3.14159f };
+class Circle
+{
+private:
+  double radius;
+public:
+  Circle ( double arg ) :radius ( arg ) {}
+  Circle () = default; // default definition is explicitly selected
+  Circle ( const Circle& obj ) = delete; // explicitly deleted
+  double circumference () { return 2 * radius * PI; }
+};
+void _18_07_ImplicitMembers ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- implicit members:
+    // below comes the certain circumstances,
+    // under which the six special member functions described above are implicitly defined:
+    // --------------------------------------------------------------------------------------------------
+    // member function      implicitly defined if:                                    default definition:
+    // --------------------------------------------------------------------------------------------------
+    // default constructor  no other constructors                                     does nothing
+    // destructor           no destructor                                             "
+    // copy constructor     no move constructor/assignment                            copies all members
+    // copy assignment      "                                                         "
+    // move constructor     no destructor/copy constructor/copy nor move assignment   moves all members
+    // move assignment      "                                                         "
+    // --------------------------------------------------------------------------------------------------
+    // note that due to backward compatibility with C structures and earlier C++ version,
+    // under same criteria pairs of special members are implicitly defined,
+    // which in fact contain even deprecated circumstances.
+    // further more classes using the keywords 'default' and 'delete' can explicitly select,
+    // which of these members exist with their default definition and which are deleted.
+    // Note syntax:
+    // function_declaration = default; --- function_declaration = delete;
+    // note that the recommendation for future support backward in time is there, when defining a class,
+    // which explicitly introduces one custom copy/move constructor or copy/move assignment but not both,
+    // to explicitly specify the state of the other special member functions as 'delete' or 'default'.
+    ColourCouter ( "----- Implicit members:\n", F_bBLUE );
+    ColourCouter ( "Special members are implicit defined under different criteria.\n\n", F_YELLOW );
+    Circle one;
+    Circle two ( 2.2 );
+    std::cout << "The circle's circumference is:" << tab << two.circumference () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+void _19_01_FriendFunctions () 
+{
+  try
+  {
+    //! ####################################################################
+    //! ~~~~~ friendship and inheritance:
+    //! ----- friend functions:
     // 
-    std::cout << nline << "~~~~~ Special members:" << nline;
-    std::cout << "." << nline << nline;
+    ColourCouter ( "~~~~~ Friendship and inheritance:\n\n", F_bBLUE );
+    ColourCouter ( "----- Friend functions:\n", F_bBLUE );
+    ColourCouter ( ".\n\n", F_YELLOW );
 
 
 
-
-    /*
-
-    */
-    //ColourCouter ( "\n", F_bBLUE );
-    //ColourCouter ( "\n\n", F_YELLOW );
     //ColourCouter ( "\n", F_bYELLOW );
     //ColourCouter ( "\n", F_bCYAN );
     //! - in addition:
+
   }
   catch ( const std::exception& )
   {
