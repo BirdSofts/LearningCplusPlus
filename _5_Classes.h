@@ -3,7 +3,7 @@
 /// _5_Classes.h
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,14.06.2019</changed>
+/// <changed>ʆϒʅ,20.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once
@@ -33,7 +33,13 @@ void _18_05_CopyAssignment ();
 void _18_06_MoveConstructorAndAssignment ();
 void _18_07_ImplicitMembers ();
 
-void _19_01_FriendFunctions ();
+void _19_01_FriendshipAndInheritance ();
+void _19_02_FriendFunctionsAndClasses ();
+void _19_03_InheritanceBetweenClasses ();
+void _19_04_InheritedCharacteristics ();
+void _19_05_MultipleInheritance ();
+
+void _20_01_Polymorphism ();
 
 
 #endif // !CLASSES_H

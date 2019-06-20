@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,14.06.2019</changed>
+/// <changed>ʆϒʅ,20.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -1094,7 +1094,7 @@ void _18_06_MoveConstructorAndAssignment ()
 }
 
 
-const double PI { 3.14159f };
+const float PI { 3.14159 };
 class Circle
 {
 private:
@@ -1146,16 +1146,291 @@ void _18_07_ImplicitMembers ()
 }
 
 
-void _19_01_FriendFunctions () 
+void _19_01_FriendshipAndInheritance ()
+{
+  try
+  {
+    ColourCouter ( " -------------------------------------------------", F_bRED );
+    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
+
+    //! ####################################################################
+    //! ~~~~~ friendship and inheritance:
+    //
+    ColourCouter ( "~~~~~ Friendship and inheritance:\n", F_bBLUE );
+    ColourCouter ( "Some useful expansions on the concept of classes.\n\n", F_YELLOW );
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Cylinder; // empty declaration (usable as type to define objects)
+class Base
+{
+  friend class Cylinder; // Cylinder is a friend (Cylinder has the privilege to access)
+private:
+  double radius;
+  const double P { 3.14159 };
+public:
+  Base () { radius = 1; } // default constructor
+  Base ( double prm ) :radius ( prm ) {}
+  double circumference () { return 2 * radius * P; }
+  friend void expand_by_base ( Base&, double ); // friend function (not a member function!)
+  friend void expand_by_height ( Cylinder&, double ); // the same
+};
+class Cylinder
+{
+private:
+  Base base;
+  double height;
+public:
+  Cylinder ( double prm ) :height ( prm ) {}
+  double volume () { return base.circumference () * height; }
+  void new_base ( Base );
+  void set ( double prm ) { height *= prm; }
+};
+void expand_by_base ( Base& obj, double prm ) { obj.radius *= prm; } // friend of Base
+void expand_by_height ( Cylinder& obj, double prm ) { obj.set ( prm ); } // not a friend of Cylinder
+void Cylinder::new_base ( Base obj ) // defined outside
+{
+  // the privilege of friends! :)
+  base.radius = obj.radius;
+}
+void _19_02_FriendFunctionsAndClasses ()
 {
   try
   {
     //! ####################################################################
-    //! ~~~~~ friendship and inheritance:
-    //! ----- friend functions:
+    //! ----- friend functions and classes:
+    // private and protected members of a class are accessible within it and from its friends,
+    // which are those classes or functions defined with the keyword 'friend'.
+    // --a non-member external function's declaration needs to be included within the definition of the class,
+    // preceded with the keyword 'friend'.
+    // when conducting operations between two different classes, accessing their private and protected members,
+    // the concept of friend functions has its most typical use.
+    // --similarly, the declaration of a friend class after inclusion within the class definition,
+    // preceded with the keyword 'friend', qualifies it by additional rights.
+    // note that unless explicitly specified, friendships are not corresponded,
+    // hence declaring a class as friend within a class,
+    // doesn't qualifies the class to be also a friend to its friend class,
+    // therefore the friend class, if needed, must define its friendship to this class explicitly.
+    // note, since friendships are not transitive, unless explicitly declared, a friend of a friend is a friend.
+    ColourCouter ( "----- Friend functions and classes:\n", F_bBLUE );
+    ColourCouter ( "Functions and classes defined as friend of a class can access its private and protected members.\n\n", F_YELLOW );
+    Cylinder one { 5 };
+    std::cout << "Cylinder's volume (base is default constructed):" << nline << tab << one.volume () << nline;
+    Base two ( 2.2 );
+    one.new_base ( two );
+    std::cout << "Cylinder's volume (class friend's privilege):" << nline << tab << one.volume () << nline;
+    expand_by_base ( two, 0.9 );
+    one.new_base ( two );
+    std::cout << "Cylinder's volume (function friend's privilege):" << nline << tab << one.volume () << nline;
+    expand_by_height ( one, 0.9 );
+    std::cout << "Cylinder's volume (no friendship is declared):" << nline << tab << one.volume () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Person
+{
+protected:
+  std::string name;
+public:
+  void setter ( std::string arg ) { name = arg; };
+};
+// first derived class and its own features
+class Customer :public Person
+{
+public:
+  std::string print () { return name + " wants to buy a new phone."; }
+};
+// second derived class and its own features
+class Worker :public Person
+{
+public:
+  std::string print () { return name + " works in the shop as cashier."; }
+};
+void _19_03_InheritanceBetweenClasses ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- inheritance between classes:
+    // classes can inherit some of their characteristics from another classes.
+    // a derived class from a base class through the process of inheritance then retains to the inherited features,
+    // which means that it inherits all accessible members of the base class, and additionally introduces its own members.
+    // a class can base itself on another class by declaring the inheritance relationship.
+    // Note syntax: class derived_class_neme :public base_class_name { ... };
+    // there are three options to specify the access level, which are 'public', 'protected' and 'private' keywords.
+    // using these access specifiers, the derived class can limits the accessibility of the inherited members,
+    // hence an inheritance relationship declared with 'private' keyword, retain all inherited members as private members,
+    // no matter that they have been originally defined as public or protected in the base class.
+    // note that, on the other hand, inheriting with public access specifier, saves the original defined state of base class members.
+    // all in all, in C++ public inheritance has the most use cases,
+    // since needed members of a base class defined with other access levels are better represented as member variables instead.
+    // after not explicitly specifying the access level for inheritance,
+    // compiler implicitly assumes it as private for those defined with 'class' keyword and public for those defined with 'struct'.
+    // Note accessibility of class members, considering inheritance concepts:
+    // ----------------------------------------------------------
+    // Access                       public    protected   private
+    // members of the same class    yes       yes         yes
+    // members of derived class     yes       yes         no
+    // not members                  yes       no          no
+    // ----------------------------------------------------------
+    // note that protected members of a base class are accessible within the derived class.
+    ColourCouter ( "----- Inheritance between classes:\n", F_bBLUE );
+    ColourCouter ( "Characteristics of a class can be inherited by other classes.\n\n", F_YELLOW );
+    Customer one;
+    Worker two;
+    one.setter ( "John" );
+    two.setter ( "Mary" );
+    std::cout << one.print () << nline;
+    std::cout << two.print () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class toInherit
+{
+private:
+  int baseEntity;
+public:
+  toInherit ()
+  {
+    std::cout << "Base class: default constructor" << nline;
+    baseEntity = 0;
+  }
+  toInherit ( int a ) :baseEntity { a }
+  {
+    std::cout << "Base class: custom constructor" << nline;
+  }
+  const int& baseGet () { return baseEntity; }
+};
+class divertedOne :public toInherit
+{
+private:
+  int entity;
+public:
+  // call to base class default constructor
+  divertedOne ( int a ) :entity { a }
+  {
+    std::cout << "First diverted class: custom constructor" << nline;
+  };
+  const int& get () { return entity; }
+};
+class divertedTwo :public toInherit
+{
+private:
+  int entity;
+public:
+  // call to base class specific custom constructor
+  divertedTwo ( int a, int b ) :entity { a }, toInherit { b }
+  {
+    std::cout << "Second diverted class: custom constructor" << nline;
+  };
+  const int& get () { return entity; }
+};
+void _19_04_InheritedCharacteristics ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- inherited characteristics:
+    // generally, a derived class defined with public inheritance relationship retain access to every member of a base class except:
+    // constructors, destructor, assignment operator members, the friends, and private members of the base class.
+    // note that, while the access to constructors and destructors of the base class in inheritance way isn't provided,
+    // the constructors and destructor of the derived class automatically call these special member functions of the base class.
+    // this automated call, unless explicitly specified differently, happens to its default constructor.
+    // through the syntax provided to initialize member variables in the initialization list,
+    // it is possible to explicitly call custom constructors of a base class.
+    // Note syntax
+    // derived_constructor_name ( parameters ) : data_members { parameters }, base_constructor_name { parameters } { ... }
+    ColourCouter ( "----- Inherited characteristics:\n", F_bBLUE );
+    ColourCouter ( "Not all the members of a base class get retained in the process of inheritance.\n\n", F_YELLOW );
+    // base class default constructor:
+    divertedOne first { 1 };
+    std::cout << "First diverted class entities:" << tab << first.baseGet () << tab << first.get () << nline << nline;
+    // base class custom constructor:
+    divertedTwo second { 2, 1 };
+    std::cout << "Second diverted class entities:" << tab << second.baseGet () << tab << second.get () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Shape
+{
+protected:
+  const float PI { 3.14159 };
+  float radius;
+public:
+  Shape ( const float& prm ) : radius ( prm ) {}
+  float exponent ( const float& prmOne, const unsigned char& ex )
+  {
+    float temp { 1 };
+    for ( unsigned char i = 0; i < ex; i++ )
+    {
+      temp *= prmOne;
+    }
+    return temp;
+  }
+};
+class Output
+{
+private:
+public:
+  void print ( const float& prm ) { std::cout << "The volume of sphere is:" << tab << prm; }
+};
+class Sphere :public Shape, public Output
+{
+private:
+public:
+  Sphere ( const float& prm ) : Shape ( prm ) {}
+  float area () { return ( 4 / 3 ) * PI * exponent ( radius, 3 ); }
+};
+void _19_05_MultipleInheritance ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- multiple inheritance:
+    // expanding the inheritance concepts, classes can be based on more than one class,
+    // the declaration syntax then get extended to include the needed base classes, separating them with coma ','.
+    // Note syntax: class derived_class_neme :public base_class_one, public base_class_two, ... { ... };
+    ColourCouter ( "----- Multiple inheritance:\n", F_bBLUE );
+    ColourCouter ( "A class can inherit characteristics from more than one base class.\n\n", F_YELLOW );
+    Sphere one ( 10.5 );
+    one.print ( one.area () );
+    std::cout << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+void _20_01_Polymorphism ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- polymorphism:
     // 
-    ColourCouter ( "~~~~~ Friendship and inheritance:\n\n", F_bBLUE );
-    ColourCouter ( "----- Friend functions:\n", F_bBLUE );
+    ColourCouter ( "----- Polymorphism:\n", F_bBLUE );
     ColourCouter ( ".\n\n", F_YELLOW );
 
 
