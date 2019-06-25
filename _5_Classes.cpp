@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,20.06.2019</changed>
+/// <changed>ʆϒʅ,25.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -896,7 +896,7 @@ private:
   std::string name;
 public:
   Creature ( std::string arg ) :name ( arg ) {}
-  const std::string& const get () { return name; }
+  const std::string& get () const { return name; }
 };
 class creaturePtr
 {
@@ -1094,7 +1094,7 @@ void _18_06_MoveConstructorAndAssignment ()
 }
 
 
-const float PI { 3.14159 };
+const double PI { 3.14159 };
 class Circle
 {
 private:
@@ -1316,27 +1316,27 @@ public:
   }
   const int& baseGet () { return baseEntity; }
 };
-class divertedOne :public toInherit
+class derivedOne :public toInherit
 {
 private:
   int entity;
 public:
   // call to base class default constructor
-  divertedOne ( int a ) :entity { a }
+  derivedOne ( int a ) :entity { a }
   {
-    std::cout << "First diverted class: custom constructor" << nline;
+    std::cout << "First derived class: custom constructor" << nline;
   };
   const int& get () { return entity; }
 };
-class divertedTwo :public toInherit
+class derivedTwo :public toInherit
 {
 private:
   int entity;
 public:
   // call to base class specific custom constructor
-  divertedTwo ( int a, int b ) :entity { a }, toInherit { b }
+  derivedTwo ( int a, int b ) :entity { a }, toInherit { b }
   {
-    std::cout << "Second diverted class: custom constructor" << nline;
+    std::cout << "Second derived class: custom constructor" << nline;
   };
   const int& get () { return entity; }
 };
@@ -1358,11 +1358,11 @@ void _19_04_InheritedCharacteristics ()
     ColourCouter ( "----- Inherited characteristics:\n", F_bBLUE );
     ColourCouter ( "Not all the members of a base class get retained in the process of inheritance.\n\n", F_YELLOW );
     // base class default constructor:
-    divertedOne first { 1 };
-    std::cout << "First diverted class entities:" << tab << first.baseGet () << tab << first.get () << nline << nline;
+    derivedOne first { 1 };
+    std::cout << "First derived class entities:" << tab << first.baseGet () << tab << first.get () << nline << nline;
     // base class custom constructor:
-    divertedTwo second { 2, 1 };
-    std::cout << "Second diverted class entities:" << tab << second.baseGet () << tab << second.get () << nline << nline;
+    derivedTwo second { 2, 1 };
+    std::cout << "Second derived class entities:" << tab << second.baseGet () << tab << second.get () << nline << nline;
   }
   catch ( const std::exception& )
   {
@@ -1374,13 +1374,13 @@ void _19_04_InheritedCharacteristics ()
 class Shape
 {
 protected:
-  const float PI { 3.14159 };
-  float radius;
+  const double PI { 3.14159 };
+  double radius;
 public:
-  Shape ( const float& prm ) : radius ( prm ) {}
-  float exponent ( const float& prmOne, const unsigned char& ex )
+  Shape ( const double& prm ) : radius ( prm ) {}
+  double exponent ( const double& prmOne, const unsigned char& ex )
   {
-    float temp { 1 };
+    double temp { 1 };
     for ( unsigned char i = 0; i < ex; i++ )
     {
       temp *= prmOne;
@@ -1392,14 +1392,14 @@ class Output
 {
 private:
 public:
-  void print ( const float& prm ) { std::cout << "The volume of sphere is:" << tab << prm; }
+  void print ( const double& prm ) { std::cout << "The volume of sphere is:" << tab << prm; }
 };
 class Sphere :public Shape, public Output
 {
 private:
 public:
-  Sphere ( const float& prm ) : Shape ( prm ) {}
-  float area () { return ( 4 / 3 ) * PI * exponent ( radius, 3 ); }
+  Sphere ( const double& prm ) : Shape ( prm ) {}
+  double area () { return ( 4 / 3 ) * PI * exponent ( radius, 3 ); }
 };
 void _19_05_MultipleInheritance ()
 {
@@ -1427,18 +1427,198 @@ void _20_01_Polymorphism ()
 {
   try
   {
+    ColourCouter ( " -------------------------------------------------", F_bRED );
+    ColourCouter ( "--------------------------------------------------\n\n", F_bRED );
+
     //! ####################################################################
-    //! ----- polymorphism:
-    // 
-    ColourCouter ( "----- Polymorphism:\n", F_bBLUE );
-    ColourCouter ( ".\n\n", F_YELLOW );
+    //! ~~~~~ polymorphism:
+    // the needed concepts for the following to be understood are data structures, classes, pointers, friendship and inheritance,
+    // without which, learning deeper isn't going to bring anything.
+    // all of them are already introduced in this tutorial.
+    ColourCouter ( "~~~~~ Polymorphism:\n", F_bBLUE );
+    ColourCouter ( "Deeper knowledge in the concepts of classes.\n\n", F_YELLOW );
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
 
 
+class Numbers
+{
+protected:
+  int first, second;
+public:
+  void set_numbers ( int a, int b ) { first = a; second = b; }
+};
+class Subtraction :public Numbers
+{
+public:
+  int result ()
+  {
+    if ( first > second )
+      return first - second;
+    else
+      return second - first;
+  }
+};
+class Summation :public Numbers
+{
+public:
+  int result ()
+  {
+    return first + second;
+  }
+};
+void _20_02_PointersToBaseClass ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- pointers to base class:
+    // furthermore on the advantages of inheritance concepts and introducing polymorphism,
+    // a pointer to a derived class is additionally type-compatible with another one to its base class.
+    // note that it is not possible to access the members of a derived class through a pointer to its base class.
+    // in the example, base class can't represent a common implementation for the different operations.
+    ColourCouter ( "----- Pointer to base class:\n", F_bBLUE );
+    ColourCouter ( "A pointer can point to a base class through its derived class address.\n\n", F_YELLOW );
+    Subtraction minus;
+    Summation plus;
+    Numbers* ptr_minus { &minus }; // type-compatible feature
+    Numbers* ptr_plus { &plus };
+    ptr_minus->set_numbers ( 20, 10 ); // dereferencing the base member
+    ptr_plus->set_numbers ( 20, 10 );
+    std::cout << "The subtraction result:" << tab << minus.result () << nline;
+    std::cout << "The summation result:" << tab << plus.result () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
 
-    //ColourCouter ( "\n", F_bYELLOW );
-    //ColourCouter ( "\n", F_bCYAN );
-    //! - in addition:
+  }
+}
 
+
+class Pair
+{
+protected:
+  int first, second;
+public:
+  void set ( int a, int b ) { first = a; second = b; }
+  virtual int result () { return 0; }
+};
+class Division :public Pair
+{
+public:
+  int result ()
+  {
+    if ( first > second )
+      return first / second;
+    else
+      return second / first;
+  }
+};
+class Multiplication :public Pair
+{
+public:
+  int result ()
+  {
+    return first * second;
+  }
+};
+void _20_03_VirtualMembers ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- virtual members:
+    // preceding the member function declaration with 'virtual' keyword and redefining it in derived classes,
+    // its calling properties through references are preserved.
+    // the redefined implementations of a function member defined and qualified as virtual in base class,
+    // can then be accessed through a reference of the base class.
+    // with other words, the 'virtual' keyword qualifies a function and its redefined implementations to be called appropriately,
+    // specially using a pointer to the type of the base class, which points to an object of the derived class.
+    // Note syntax: virtual function_return_type identifier () {...}
+    // classes that inherit or declare a virtual function are known as polymorphic ones.
+    // the example introduces a regular class as base containing a virtual function member with different implementations.
+    ColourCouter ( "----- Virtual members:\n", F_bBLUE );
+    ColourCouter ( "Through virtual qualification, calling properties through references are preserved.\n\n", F_YELLOW );
+    Pair aPair;
+    Division divide;
+    Multiplication multiply;
+    Pair* ptr_aPair { &aPair };
+    Pair* ptr_divide { &divide };
+    Pair* ptr_multiply { &multiply };
+    ptr_aPair->set ( 20, 10 );
+    ptr_divide->set ( 20, 10 );
+    ptr_multiply->set ( 20, 10 );
+    // access to members of derived classes through the pointers to base
+    std::cout << "The base implementation:" << tab << ptr_aPair->result () << nline;
+    std::cout << "The division result:" << "\t\t" << ptr_divide->result () << nline;
+    std::cout << "The multiplication result:" << tab << ptr_multiply->result () << nline << nline;
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+class Bits
+{
+protected:
+  int entity;
+public:
+  Bits ( int a ) : entity ( a ) {};
+  virtual int result () = 0;
+  // call to pure virtual members from the abstract base class
+  void print () { std::cout << this->result () << nline; }
+};
+class ShiftR :public Bits
+{
+public:
+  ShiftR ( int a ) : Bits ( a ) {};
+  int result () { return ( entity >> 1 ); }
+};
+class ShiftL :public Bits
+{
+public:
+  ShiftL ( int a ) : Bits ( a ) {};
+  int result () { return ( entity << 1 ); }
+};
+void _20_04_AbstractBaseClasses ()
+{
+  try
+  {
+    //! ####################################################################
+    //! ----- abstract base classes:
+    // furthermore the introduction to abstract base classes follows.
+    // these ones can't be used to instantiate any object thereof and can only be used as base classes,
+    // therefore they can introduce pure virtual member functions, which don't have any definition.
+    // Note syntax: virtual function_return_type identifier () = 0;
+    // note that the definition is replaced by equal to zero.
+    // through the introduction of even one virtual member function the class is then known as abstract base class.
+    // note: the advantages of abstract base classes:
+    // --they shine with their polymorphic ability, after declaration of pointers to them and dereferencing objects of derived classes.
+    // --an abstract base class, despite not even being implemented,
+    // can use special pointer 'this' within its member functions to access the proper virtual members.
+    // C++ language introduces its polymorphic characteristics through virtual members and abstract classes,
+    // which provide their most usefulness on object-oriented projects.
+    // additionally these features can be applied to arrays of objects or dynamically allocated objects.
+    // note that, when declaring a dynamic allocated object, somehow like the pointer to base class pointed to object of derived class,
+    // the declared pointer is of type base class and the allocated object is directly declared of type derived class.
+    ColourCouter ( "----- Abstract base classes:\n", F_bBLUE );
+    ColourCouter ( "Abstract base classes introduce pure virtual member functions.\n\n", F_YELLOW );
+    ShiftR right { 1 };
+    Bits* ptr_right { &right };
+    Bits* ptr_left = new ShiftL { 3 }; // the dynamic allocated object
+    std::cout << "Shift to right (result function):" << tab << ptr_right->result () << nline;
+    std::cout << "Shift to left (result function):" << tab << ptr_left->result () << nline;
+    std::cout << "Shift to right (print function):" << tab;
+    ptr_right->print ();
+    std::cout << "Shift to left (print function):" << "\t\t";
+    ptr_left->print ();
+    std::cout << nline;
   }
   catch ( const std::exception& )
   {

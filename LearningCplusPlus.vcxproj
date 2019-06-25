@@ -187,6 +187,7 @@
     <ClInclude Include="_1_Introduction.h" />
     <ClInclude Include="_2_BasicsOfCplusPlus.h" />
     <ClInclude Include="_3_ProgramStructure.h" />
+    <ClInclude Include="_6_OtherLanguageFeatures.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
@@ -196,6 +197,7 @@
     <ClCompile Include="_2_BasicsOfCplusPlus.cpp" />
     <ClCompile Include="LearningCplusPlus.cpp" />
     <ClCompile Include="_3_ProgramStructure.cpp" />
+    <ClCompile Include="_6_OtherLanguageFeatures.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearningCplusPlus.rc" />

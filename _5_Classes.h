@@ -3,7 +3,7 @@
 /// _5_Classes.h
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,20.06.2019</changed>
+/// <changed>ʆϒʅ,25.06.2019</changed>
 // --------------------------------------------------------------------------------
 
 #pragma once
@@ -40,6 +40,9 @@ void _19_04_InheritedCharacteristics ();
 void _19_05_MultipleInheritance ();
 
 void _20_01_Polymorphism ();
+void _20_02_PointersToBaseClass ();
+void _20_03_VirtualMembers ();
+void _20_04_AbstractBaseClasses ();
 
 
 #endif // !CLASSES_H
