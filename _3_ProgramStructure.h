@@ -3,14 +3,12 @@
 /// _3_ProgramStructures.h
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,15.05.2019</changed>
+/// <changed>ʆϒʅ,07.07.2019</changed>
 // --------------------------------------------------------------------------------
 
-#pragma once
 
-
-#ifndef PROGRAMSTRUCTURE_H
-#define PROGRAMSTRUCTURE_H
+#ifndef _3_PROGRAMSTRUCTURE_H
+#define _3_PROGRAMSTRUCTURE_H
 
 
 void _07_01_ControlStructures ();
@@ -42,4 +40,4 @@ void _10_05_NamespaceAliasing ();
 void _10_06_StorageClasses ();
 
 
-#endif // !PROGRAMSTRUCTURE_H
+#endif // !_3_PROGRAMSTRUCTURE_H

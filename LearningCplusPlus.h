@@ -3,10 +3,8 @@
 /// pch.h
 /// </summary>
 /// <created>ʆϒʅ,16.04.2019</created>
-/// <changed>ʆϒʅ,16.04.2019</changed>
+/// <changed>ʆϒʅ,06.07.2019</changed>
 // --------------------------------------------------------------------------------
-
-#pragma once
 
 
 #ifndef LEARNINGCPLUSPLUS_H

@@ -42,6 +42,9 @@
     <ClInclude Include="_6_OtherLanguageFeatures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="_7_cPlusPlusStandardLibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearningCplusPlus.cpp">
@@ -66,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="_6_OtherLanguageFeatures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="_7_cPlusPlusStandardLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

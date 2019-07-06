@@ -3,14 +3,12 @@
 /// _5_Classes.h
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,25.06.2019</changed>
+/// <changed>ʆϒʅ,07.07.2019</changed>
 // --------------------------------------------------------------------------------
 
-#pragma once
 
-
-#ifndef CLASSES_H
-#define CLASSES_H
+#ifndef _5_CLASSES_H
+#define _5_CLASSES_H
 
 
 void _17_01_ClassesI ();
@@ -45,4 +43,4 @@ void _20_03_VirtualMembers ();
 void _20_04_AbstractBaseClasses ();
 
 
-#endif // !CLASSES_H
+#endif // !_5_CLASSES_H

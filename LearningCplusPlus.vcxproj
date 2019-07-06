@@ -188,9 +188,11 @@
     <ClInclude Include="_2_BasicsOfCplusPlus.h" />
     <ClInclude Include="_3_ProgramStructure.h" />
     <ClInclude Include="_6_OtherLanguageFeatures.h" />
+    <ClInclude Include="_7_cPlusPlusStandardLibrary.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="_7_cPlusPlusStandardLibrary.cpp" />
     <ClCompile Include="_5_Classes.cpp" />
     <ClCompile Include="_4_CompoundDataTypes.cpp" />
     <ClCompile Include="_1_Introduction.cpp" />

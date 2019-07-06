@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,25.06.2019</changed>
+/// <changed>ʆϒʅ,01.07.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -28,7 +28,7 @@ public:
   {
     std::cout << Tab << "-Value:" << Tab << entity << Nline;
   }
-  int square ( void ) { return entity * 2; } // declaration and definition
+  int square ( void ) { return entity * entity; } // declaration and definition
 };
 void Number::set_value ( int a ) // scope operator: class member is defined outside
 {
@@ -121,7 +121,7 @@ public:
   {
     std::cout << Tab << "-Value:" << Tab << entity << Nline;
   }
-  int square ( void ) { return entity * 2; }
+  int square ( void ) { return entity * entity; }
 };
 numberEntity::numberEntity ( int a ) // constructor definition
 {
@@ -679,7 +679,7 @@ template <class tType>
 tType NumberGeneric <tType> ::square ()
 {
   tType result;
-  result = entity * 2;
+  result = entity * entity;
   return result;
 }
 void _17_10_ClassTemplates ()
@@ -719,7 +719,7 @@ private:
 public:
   Entity ( tType prm ) :content ( prm ) {}
   tType get () { return  content; }
-  void square () { content *= 2; }
+  void square () { content *= content; }
   tType operator+ ( tType prm ) { return content + prm; }
 };
 // class template specialization
@@ -1534,13 +1534,13 @@ void _20_03_VirtualMembers ()
     //! ----- virtual members:
     // preceding the member function declaration with 'virtual' keyword and redefining it in derived classes,
     // its calling properties through references are preserved.
-    // the redefined implementations of a function member defined and qualified as virtual in base class,
+    // the redefined implementations of a member function defined and qualified as virtual in base class,
     // can then be accessed through a reference of the base class.
     // with other words, the 'virtual' keyword qualifies a function and its redefined implementations to be called appropriately,
     // specially using a pointer to the type of the base class, which points to an object of the derived class.
     // Note syntax: virtual function_return_type identifier () {...}
     // classes that inherit or declare a virtual function are known as polymorphic ones.
-    // the example introduces a regular class as base containing a virtual function member with different implementations.
+    // the example introduces a regular class as base containing a virtual member function with different implementations.
     ColourCouter ( "----- Virtual members:\n", F_bBLUE );
     ColourCouter ( "Through virtual qualification, calling properties through references are preserved.\n\n", F_YELLOW );
     Pair aPair;
@@ -1611,7 +1611,7 @@ void _20_04_AbstractBaseClasses ()
     ColourCouter ( "Abstract base classes introduce pure virtual member functions.\n\n", F_YELLOW );
     ShiftR right { 1 };
     Bits* ptr_right { &right };
-    Bits* ptr_left = new ShiftL { 3 }; // the dynamic allocated object
+    Bits* ptr_left = new ShiftL { 1 }; // the dynamic allocated object
     std::cout << "Shift to right (result function):" << tab << ptr_right->result () << nline;
     std::cout << "Shift to left (result function):" << tab << ptr_left->result () << nline;
     std::cout << "Shift to right (print function):" << tab;

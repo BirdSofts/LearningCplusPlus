@@ -3,14 +3,12 @@
 /// _2_Basics.h
 /// </summary>
 /// <created>ʆϒʅ,11.04.2018</created>
-/// <changed>ʆϒʅ,15.05.2019</changed>
+/// <changed>ʆϒʅ,07.07.2019</changed>
 // --------------------------------------------------------------------------------
 
-#pragma once
 
-
-#ifndef INTRODUCTIONANDBASICS_H
-#define INTRODUCTIONANDBASICS_H
+#ifndef _2_BASICSOFCPLUSPLUS_H
+#define _2_BASICSOFCPLUSPLUS_H
 
 
 void _02_01_StructureOfaProgram ();
@@ -26,4 +24,4 @@ void _05_04_PrecedenceOfOperators ();
 void _06_01_BasicInputOutput ();
 
 
-#endif // !INTRODUCTIONANDBASICS_H
+#endif // !_2_BASICSOFCPLUSPLUS_H

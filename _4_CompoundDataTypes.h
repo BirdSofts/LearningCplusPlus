@@ -3,14 +3,12 @@
 /// _4_CompoundDataTypes.h
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,24.05.2019</changed>
+/// <changed>ʆϒʅ,07.07.2019</changed>
 // --------------------------------------------------------------------------------
 
-#pragma once
 
-
-#ifndef COMPOUNDDATATYPES_H
-#define COMPOUNDDATATYPES_H
+#ifndef _4_COMPOUNDDATATYPES_H
+#define _4_COMPOUNDDATATYPES_H
 
 
 void _11_01_Arrays ();
@@ -35,4 +33,4 @@ void _15_01_DataStructures ();
 void _16_01_OtherDataTypes ();
 
 
-#endif // !COMPOUNDDATATYPES_H
+#endif // !_4_COMPOUNDDATATYPES_H
