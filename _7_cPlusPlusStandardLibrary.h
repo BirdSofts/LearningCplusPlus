@@ -3,7 +3,7 @@
 /// _7_cPlusPlusStandardLibrary.h
 /// </summary>
 /// <created>ʆϒʅ,07.07.2019</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,10.07.2019</changed>
 // --------------------------------------------------------------------------------
 
 
@@ -12,6 +12,12 @@
 
 
 void _24_01_InputAndOutputWithFiles ();
+void _24_02_OpeningAndClosingFiles ();
+void _24_03_TextFiles ();
+void _24_04_CheckingStateFlags ();
+void _24_05_GetAndPutStreamPositioning ();
+void _24_06_BinaryFiles ();
+void _24_07_BuffersAndSynchronization ();
 
 
 #endif // !_7_CPLUSPLUSSTANDARDLIBRARY_H

@@ -3,7 +3,7 @@
 /// pch.h
 /// </summary>
 /// <created>ʆϒʅ,16.04.2019</created>
-/// <changed>ʆϒʅ,06.07.2019</changed>
+/// <changed>ʆϒʅ,07.07.2019</changed>
 // --------------------------------------------------------------------------------
 
 
@@ -32,6 +32,8 @@
 #include <array>
 
 //#include <new> // nothrow
+
+#include <fstream> // operations on files
 
 
 #endif //LEARNINGCPLUSPLUS_H

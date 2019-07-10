@@ -1,0 +1,2 @@
+First line to a text file streamed using standard C++ file streams.
+And this is the second line.	^;^
