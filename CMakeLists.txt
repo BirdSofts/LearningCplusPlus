@@ -3,7 +3,7 @@
 #/ 
 #/ </summary>
 #/ <created>ʆϒʅ,18.04.2019</created>
-#/ <changed>ʆϒʅ,26.06.2019</changed>
+#/ <changed>ʆϒʅ,28.07.2019</changed>
 # *******************************************************************************************
 
 # CMakeList.txt : CMake project for LearningCplusPlus, include source and define
@@ -38,7 +38,7 @@ list(APPEND HEADER_FILES
           Console.h
 )
 
-list(APPEND HEADER_FILES
+list(APPEND SOURCE_FILES
           LearningCplusPlus.cpp
           _1_Introduction.cpp
           _2_BasicsOfCplusPlus.cpp

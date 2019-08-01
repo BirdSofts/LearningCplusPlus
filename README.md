@@ -50,14 +50,30 @@ cmake --build build-path
 # Contribute
 I appreciate any contribution to the project.
 
-#References
-http://www.cplusplus.com/doc/
-https://stackoverflow.com/
-http://de.cppreference.com/
-https://docs.microsoft.com/
-https://www.ibm.com/support/knowledgecenter/en/
-https://www.tutorialspoint.com/cplusplus/
-C++ reference: http://www.cplusplus.com/reference/
+# References
+<table>
+<tr>
+<td><a href="http://www.cplusplus.com/">cplusplus.com</a></td>
+</tr>
+<tr>
+<td><a href="https://stackoverflow.com">Stackoverflow</a></td>
+</tr>
+<tr>
+<td><a href="https://de.cppreference.com/">cppreference.com</a></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/">Microsoft Docs</a></td>
+</tr>
+<tr>
+<td><a href="https://www.ibm.com/support/knowledgecenter/en/">IBM Knowledge Center</a></td>
+</tr>
+<tr>
+<td><a href="https://www.tutorialspoint.com/cplusplus/">tutorialspoint</a></td>
+</tr>
+<tr>
+<td><a href="http://www.cplusplus.com/reference/">C++ reference</a></td>
+</tr>
+</table>
 
 # Copyright
-This is not a freeware and the source code and the literature within is copyrighted. Most of the code is from the online references and the addition to them can just be used as teaching materials. For any other uses the written acknowledgement and permission is needed.
+This is not a freeware and the source code and the literature within is copyrighted. Most of the code is learned and inspired from online references and the addition to them can just be used as teaching materials. For any other uses the written acknowledgement and permission is needed.

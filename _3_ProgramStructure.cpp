@@ -3,7 +3,7 @@
 /// _3_ProgramStructures.cpp
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,15.05.2019</changed>
+/// <changed>ʆϒʅ,24.07.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -562,13 +562,13 @@ void _08_04_PassedArgumentsTypes ()
     result = modulo ( x, y );
     std::cout << "Result of modulo function:" << tab << result << nline << nline;
     //? by reference:
-    // to make access to variables outside of function passible.
-    // to actually modify the value of variables used as arguments to call a function, arguments need to be passed by reference.
+    // to gain access to variables defined outside of functions,
+    // and actually modifying their values passed to a function, arguments need to be passed by reference.
     // to gain access to arguments, the function defines its parameters as reference.
     // in C++ language, references are indicated by the ampersand sign '&' following the parameter type.
     // what is passed is the variable itself,
     // so somehow the association happens between the passed arguments and the parameters of the function to the extent,
-    // that the modification of arguments on their corresponding local variables within function becomes possible,
+    // that the modification of arguments on their corresponding local variables within function is then possible,
     // and in the end its reflection is on the variables passed as arguments.
     ColourCouter ( "Passing arguments by reference:\n", F_bYELLOW );
     int a { 2 }; int b { 3 }; int c { 4 };
@@ -613,8 +613,9 @@ void _08_05_Efficiency ()
     //! ----- efficiency consideration and constant reference:
     // passing arguments by value causes the arguments to be copied which it may be relatively inexpensive for fundamental types like int,
     // but in compound type it may result in certain overhead and copying large quantities of data just for function call.
-    // for this unneeded copy to be avoided, calling functions by reference is suggested and with it,
-    // the function operates directly on aliases of passed arguments and at utter most, it might mean the transfer of certain pointer to the function.
+    // to avoid this unneeded copy, calling functions by reference is suggested and with it,
+    // the function operates directly on aliases of passed arguments and at utter most,
+    // it might mean the transfer of certain pointer to the function.
     ColourCouter ( "----- Efficiency consideration and constant reference:\n", F_bBLUE );
     ColourCouter ( "Passing arguments by reference to avoid certain overhead.\n\n", F_YELLOW );
     std::string line { "A line containing some word to be passed as argument by reference and searched within." };

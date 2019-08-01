@@ -3,37 +3,40 @@
 /// pch.h
 /// </summary>
 /// <created>ʆϒʅ,16.04.2019</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,24.07.2019</changed>
 // --------------------------------------------------------------------------------
 
 
 #ifndef LEARNINGCPLUSPLUS_H
 #define LEARNINGCPLUSPLUS_H
 
+#if WIN32
+#define WIN32_LEAN_AND_MEAN // rarely-used stuff exclusion
+#endif // WIN32
 
-#include <stdio.h>
-#include <tchar.h>
 
-#include <iostream> // standard input and output operations
-#include <iomanip>
+#include <stdio.h> // C language standard input output library
+#include <tchar.h> // Microsoft string's differences coverage library
 
-#include <string> // string class
+#include <iostream> // C++ standard input and output streams
+#include <iomanip> // C++ standard i/o manipulators
 
-#include <cwchar>
-#include <Windows.h>
+#include <string> // C++ standard string class
 
-#include <sstream> // the type stringstream
+#include <cwchar> // C++ standard library to work with C wide strings
+#include <Windows.h> // Windows standard API's
 
-#include <thread> // std::this_thread::sleep_for
-#include <chrono> // std::chrono::milliseconds
+#include <sstream> // C++ standard string streams
 
-//#include <cstdlib> // EXIT_SUCCESS and EXIT_FAILURE
+#include <thread> // C++ standard threads
 
-#include <array>
+#include <cstdlib> // C++ standard general utilities
 
-//#include <new> // nothrow
+#include <array> // C++ standard array container
 
-#include <fstream> // operations on files
+#include <new> // C++ standard to manage dynamic memory
+
+#include <fstream> // C++ standard file streams
 
 
 #endif //LEARNINGCPLUSPLUS_H

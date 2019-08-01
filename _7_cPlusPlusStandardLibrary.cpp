@@ -3,7 +3,7 @@
 /// _7_cPlusPlusStandardLibrary.h
 /// </summary>
 /// <created>ʆϒʅ,07.07.2019</created>
-/// <changed>ʆϒʅ,10.07.2019</changed>
+/// <changed>ʆϒʅ,24.07.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -78,7 +78,8 @@ void _24_02_OpeningAndClosingFiles ()
     // ios::app     set to operate at appending mode to add to the current file content
     // ios::trunc   if an existed file is open to output, it will delete the previous file content and replace them with new one
     // -------------------------------------------------------------------------------------------------------------------------
-    // note that 'ios' in table is an abbreviation for either of the streams 'ofstream', 'ifstream' and 'fstream',
+    // note that in the table introduced abbreviation 'ios' stands for 'ios_base',
+    // in place of which either of the streams 'ofstream', 'ifstream' and 'fstream' is additionally usable,
     // therefore in real expressions it needs to be replaced and in case be preceded by the namespace 'std'.
     // the combination of the above flags using the bitwise operator (|) make it possible to choose different modes together.
     // Note: example of a binary file: stream_object_identifier.open ( "FileName.bin", ios::out | ios::app | ios::binary );
@@ -314,7 +315,7 @@ void _24_06_BinaryFiles ()
     ColourCouter ( "Writing a binary file to be read in unformatted and formatted way:\n", F_bYELLOW );
     dummy data ( 10, "Hello!" ); // the object instantiated from the class
     std::streampos size { sizeof ( dummy ) };
-    std::ofstream streamOne ( "binary.bin", std::fstream::binary ); // object stream for write
+    std::ofstream streamOne ( "binary.bin", std::ios_base::binary ); // object stream for write
     if ( streamOne.is_open () )
     {
       // complex data: simple type cast and write the content of the object already in the memory into the binary file
@@ -322,8 +323,8 @@ void _24_06_BinaryFiles ()
     }
     streamOne.close ();
     char* testTwo { new char [size] }; // to read the unformatted content of the binary file
-    std::ifstream streamTwo ( "binary.bin", std::fstream::binary ); // object stream for read
-    streamTwo.seekg ( 0, std::fstream::beg );
+    std::ifstream streamTwo ( "binary.bin", std::ios_base::binary ); // object stream for read
+    streamTwo.seekg ( 0, std::ios_base::beg );
     std::cout << "Reading the unformatted content of the binary file:" << nline << nline;
     streamTwo.read ( testTwo, size ); // read the content into a pointer pointed to an array of char
     for ( int i = 0; i < size; i++ )
@@ -332,7 +333,7 @@ void _24_06_BinaryFiles ()
     }
     std::cout << nline << nline;
     dummy* inFile { new dummy }; // to read the class written into the binary file for reusing purposes (formatted read)
-    streamTwo.seekg ( 0, std::fstream::beg );
+    streamTwo.seekg ( 0, std::ios_base::beg );
     // complex data: simple type cast and read the data in char type form,
     // then format and load it into memory as a whole object of class pointed to by a pointer.
     streamTwo.read ( ( char*) inFile, size );
