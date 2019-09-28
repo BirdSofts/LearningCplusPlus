@@ -3,7 +3,7 @@
 /// _7_cPlusPlusStandardLibrary.h
 /// </summary>
 /// <created>ʆϒʅ,07.07.2019</created>
-/// <changed>ʆϒʅ,24.07.2019</changed>
+/// <changed>ʆϒʅ,08.08.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -371,6 +371,21 @@ void _24_07_BuffersAndSynchronization ()
     // and otherwise 0 if the synchronization was indeed successful.
     ColourCouter ( "----- Buffers and synchronization:\n", F_bBLUE );
     ColourCouter ( "Operations on physical files may be intermediated through provided buffers.\n\n", F_YELLOW );
+  }
+  catch ( const std::exception& )
+  {
+
+  }
+}
+
+
+void _25_01_Extras ()
+{
+  try
+  {
+    // Todo Threads
+    // Todo interface keyword
+      
   }
   catch ( const std::exception& )
   {
