@@ -3,7 +3,7 @@
 /// _4_CompoundDataTypes.cpp
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,09.06.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -36,7 +36,7 @@ void _11_01_Arrays ()
     // elements field specifies the length of the array in terms of number. (always enclosed in square brackets)
     // arrays are blocks of static memory, which sizes are determined at the compile time,
     // therefore the element field of an array must be a constant expression.
-    ColourCouter ( "~~~~~ Arrays:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Arrays:\n", F_bWHITE );
     ColourCouter ( "Same type elements can build series of elements known as arrays and every element can be referenced by adding an index to the array's unique identifier.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -73,7 +73,7 @@ void _11_02_InitializingArrays ()
     // C++ automatically assume a size for the array that matches the number of its values.
     // evolution of C++ has provided universal initialization also for arrays,
     // so equal signs in between of their declarations and identifiers aren't needed any more.
-    ColourCouter ( "----- Initialization of Arrays:\n", F_bBLUE );
+    ColourCouter ( "----- Initialization of Arrays:\n", F_bWHITE );
     ColourCouter ( "Uninitialized arrays of local scope have undetermined values.\n\n", F_YELLOW );
     int array1 [5]; // uninitialized
     int array2 [5] = { 0,1,2,3,4 }; // explicitly initialized
@@ -109,7 +109,7 @@ void _11_03_AccessingValues ()
     //! ----- accessing the values of an array:
     // the value of any element in an array can be accessed just like the value of regular variable of the same type.
     // Note syntax: name[index]
-    ColourCouter ( "----- Accessing the values of an array:\n", F_bBLUE );
+    ColourCouter ( "----- Accessing the values of an array:\n", F_bWHITE );
     ColourCouter ( "Elements of an array can be accessed by their indices.\n\n", F_YELLOW );
     int a_array [5] {};
     std::cout << "The array's elements are (automatically initialized):" << "\t\t";
@@ -198,7 +198,7 @@ void _11_04_MultidimensionalArrays ()
     // multidimensional arrays are just an abstraction for the programmers, since the same result can be achieved with a simple array, by multiplying its indices.
 #define HEIGHT 3 // using defined constants for better readability and easiness of later changes in one place
 #define WIDTH 5 // the same
-    ColourCouter ( "----- Multidimensional arrays:\n", F_bBLUE );
+    ColourCouter ( "----- Multidimensional arrays:\n", F_bWHITE );
     ColourCouter ( "Can be described as 'arrays of arrays'.\n\n", F_YELLOW );
     int bidimensional_array [HEIGHT][WIDTH] {}; // declaration of a bidimensional array of 3 per 5 elements of type int
     bidimensional_array [0][2] = 13; // to reference to the element vertically first and horizontally third
@@ -248,7 +248,7 @@ void _11_05_ArraysAsParameters ()
     // Note format: base_type parameter_name[]
     // Note syntax: void procedure (int arg[])  --accepts an array of type int as parameter
     // Note calling format: function_identifier ( array_identifier ) --without brackets
-    ColourCouter ( "----- Arrays as parameters:\n", F_bBLUE );
+    ColourCouter ( "----- Arrays as parameters:\n", F_bWHITE );
     ColourCouter ( "In C++ the address of an array can be passed to a function.\n\n", F_YELLOW );
     int an_array [] { 1, 2, 3 };
     int another_array [] { 10, 20, 30, 40, 50 };
@@ -293,7 +293,7 @@ void _11_06_LibraryArrays ()
     // this alternative operates similar to built-in one, exception is that the expensive copying of entire block of memory is allowed and it decays into pointers by means of its member data only when explicitly told to do so.
     // in practice the main difference lays on the declaration and the additional inclusion of needed header.
     // classes and containers will be explained later.
-    ColourCouter ( "----- Library arrays:\n", F_bBLUE );
+    ColourCouter ( "----- Library arrays:\n", F_bWHITE );
     ColourCouter ( "To introduce an alternative for overcoming the issues with built-in C++ language arrays.\n\n", F_YELLOW );
     std::cout << "A language built in array in practice:" << nline << tab;
     int built_in_array [] { 10, 110, 1110 };
@@ -341,7 +341,7 @@ void _12_01_CharacterSequences ()
     // they can aslo be represented by plain arrays of a character type, since they are also sequences of characters
     // by convention, the end of strings represented in character sequences is signalled by null character with literal value \0.
     // the capacity of the array doesn't need to be fully exhausted.
-    ColourCouter ( "~~~~~ Character Sequences:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Character Sequences:\n", F_bWHITE );
     ColourCouter ( "Since strings are sequences of characters, plain character type arrays can also represent them.\n\n", F_YELLOW );
 
     //! ####################################################################
@@ -354,7 +354,7 @@ void _12_01_CharacterSequences ()
     // in fact because the string literals are regular arrays, they have the same restriction,
     // therefore they can only be used at declaration time.
     // to assign a new value to an array containing a sequence of character, each element of the array needs to be assigned a value separately.
-    ColourCouter ( "----- Initialization of null-terminated character sequences:\n", F_bBLUE );
+    ColourCouter ( "----- Initialization of null-terminated character sequences:\n", F_bWHITE );
     ColourCouter ( "Arrays of characters and their different initializations.\n\n", F_YELLOW );
     // normal initialization of a null-terminated character sequence using an array (needs null character at the end)
     char a_word [] { 'W','o','r','d','\0' };
@@ -380,7 +380,7 @@ void _12_01_CharacterSequences ()
     // the main difference between C-strings and library strings:
     // arrays have fixed size that need to be specified either implicit or explicitly in the declaration time (the size of arrays is determined on compilation)
     // while no size specified, strings are simply strings, since strings have a dynamic size determined during runtime.
-    ColourCouter ( "----- Strings and null-terminated character sequences:\n", F_bBLUE );
+    ColourCouter ( "----- Strings and null-terminated character sequences:\n", F_bWHITE );
     ColourCouter ( "In standard library both representations of strings (C-string and library string) coexist.\n\n", F_YELLOW );
     ColourCouter ( "A demonstration that use both representations:\n", F_bYELLOW );
     char cString_1 [] { "Type your name to get stored to an array (C-string representation):" };
@@ -432,7 +432,7 @@ void _13_01_PointersBasics ()
     // declaration of a variable provides needed memory for its value on a specific location with a unique address.
     // active decision on the exact storage address of a variable is fortunately left to the environment (generally an OS) where the C++ program runs, and it happens on runtime.
     // it may be useful for a C++ program to obtain the exact address of a variable in the runtime to access the relevant data cells at a certain position, which happens with the help of pointers.
-    ColourCouter ( "~~~~~ Pointers:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Pointers:\n", F_bWHITE );
     ColourCouter ( "To obtain the address of a variable at runtime in order to access its relative data sells which are at a certain position.\n\n", F_YELLOW );
 
     //! ####################################################################
@@ -441,7 +441,7 @@ void _13_01_PointersBasics ()
     // pointers are a kind of variable that can store the address of other variables.
     // for a language like C++ with a lot of uses in low-level programming pointers are a powerful feature.
     // Note reference operator (&) itself can be read as "address of"
-    ColourCouter ( "----- Reference operator:\n", F_bBLUE );
+    ColourCouter ( "----- Reference operator:\n", F_bWHITE );
     ColourCouter ( "The reference operator (&) can be used to obtain the address of the variable identifier.\n\n", F_YELLOW );
     int variable { 30 };
     int* pointer { &variable }; // declaring and assigning the address of a variable to a pointer
@@ -455,7 +455,7 @@ void _13_01_PointersBasics ()
     // Note dereference operator itself (*) can be read as "value pointed to by"
     // since reference and dereference operators are complementary, identified opposite meaning to know is:
     // an address obtained with ampersand (&) can be dereferenced with asterisk (*)
-    ColourCouter ( "----- Dereference Operator (*):\n", F_bBLUE );
+    ColourCouter ( "----- Dereference Operator (*):\n", F_bWHITE );
     ColourCouter ( "The dereference operator can be used to access the variable directly which the pointers point to.\n\n", F_YELLOW );
     int var_1 { 40 };
     int* ptr { &var_1 };
@@ -473,7 +473,7 @@ void _13_01_PointersBasics ()
     // asterisk (*) in declaration is just a part of the pointer's type compound specifier,
     // therefore it is to be differentiate with dereference operator.
     // all pointers types likely to occupy the same amount of memory, since the pointer size in memory depends on the platform where the program runs.
-    ColourCouter ( "----- Declaring Pointers:\n", F_bBLUE );
+    ColourCouter ( "----- Declaring Pointers:\n", F_bWHITE );
     ColourCouter ( "Different properties of the pointers when they directly refer to the values of variables justify the need to declare them with the needed specified data type.\n\n", F_YELLOW );
 
     int* anInteger;
@@ -531,7 +531,7 @@ void _13_02_PointersAndDataTypes ()
     // the concepts of arrays and pointers are related, and they work very much like each other to their first elements.
     // implicitly the conversion of an array to a pointer of the proper type is possible.
     // whereas 'theArray' can never be assigned anything and will always represent the same block of 20 elements of type int.
-    ColourCouter ( "----- Pointers and arrays\n", F_bBLUE );
+    ColourCouter ( "----- Pointers and arrays\n", F_bWHITE );
     ColourCouter ( "Concepts of arrays and pointers are related.\n\n", F_YELLOW );
     int theArray [10];
     int* thePointer;
@@ -583,7 +583,7 @@ void _13_02_PointersAndDataTypes ()
     // the initialization of pointers can be introduced at the very moment of their declaration.
     // what is going to be initialized is the address to be pointed to and never the value stored in memory.
     // pointers can be initialized not only to the address of a variable, but also to the value of another pointer or array.
-    ColourCouter ( "----- Pointer Initialization:\n", F_bBLUE );
+    ColourCouter ( "----- Pointer Initialization:\n", F_bWHITE );
     ColourCouter ( "Like variables initialization of pointers can be done at the moment of declaration.\n\n", F_YELLOW );
     int aVariable { 10 }; // a variable
     int* firstPointer { &aVariable }; // point to address of variable
@@ -601,7 +601,7 @@ void _13_02_PointersAndDataTypes ()
     // even these two allowed operations have slightly different behaviours, since types have different sizes,
     // and this size is going to be added or subtracted to the stored address value in pointers.
     // on the other hand the exact size of data types is also dependent on the system.
-    ColourCouter ( "----- Pointer arithmetics:\n", F_bBLUE );
+    ColourCouter ( "----- Pointer arithmetics:\n", F_bWHITE );
     ColourCouter ( "Arithmetical operations on pointers result in different behaviours and outputs than regular integer types.\n\n", F_YELLOW );
     char Char { 'A' };
     char* ptrChar { &Char };
@@ -705,7 +705,7 @@ void _13_03_PointersAndLiterals ()
     //! ----- pointers and constants:
     // to access variables by pointers read-only, it is enough to qualify the type pointed to as constant.
     // pointers to non-const are implicitly convertible to pointers to constant, but as a safety feature, the other way around isn't possible.
-    ColourCouter ( "----- Pointers and Constants:\n", F_bBLUE );
+    ColourCouter ( "----- Pointers and Constants:\n", F_bWHITE );
     ColourCouter ( "To access a variable for just reading purposes, not modifying.\n\n", F_YELLOW );
     int a;
     int b { 5 };
@@ -765,7 +765,7 @@ void _13_03_PointersAndLiterals ()
     // another description for string literals: arrays of proper array type to contain all its character plus null-character and each element of type constant char (literals are not modifiable).
     // each element of a character sequence is accessible by a pointer that point to the sequence, exactly like it is accessible using the same array way.
     // the reason: already described fact, that arrays and pointers behave essentially the same way in expressions.
-    ColourCouter ( "----- Pointers and string literals:\n", F_bBLUE );
+    ColourCouter ( "----- Pointers and string literals:\n", F_bWHITE );
     ColourCouter ( "By using pointers string literals can be accessed directly.\n\n", F_YELLOW );
     const char* Ptr_StrLit { "Way to go!" }; // a pointer pointed to an array of respected literal representation
     std::cout << "Accessing a character sequence directly in usual array and pointer way:" << nline << tab;
@@ -820,7 +820,7 @@ void _13_04_MoreOnPointers ()
     // C++ provides the use of pointers that point to pointers.
     // the result is a defined pointer that in different levels of indirection points to data or even other pointers.
     // the declaration syntax simply requires an additional asterisk for each level of indirection.
-    ColourCouter ( "----- Pointers to pointers:\n", F_bBLUE );
+    ColourCouter ( "----- Pointers to pointers:\n", F_bWHITE );
     ColourCouter ( "In C++ pointers are allowed to point to pointers.\n\n", F_YELLOW );
     int int_var { 89 };
     int* int_ptr { &int_var };
@@ -841,7 +841,7 @@ void _13_04_MoreOnPointers ()
     // one of void pointers uses may be to pass generic argument as parameters to a function.
     // already described sizeof operator is integrated in C++, returns the size of its argument in bytes,
     // which for non-dynamic data types it is a constant value.
-    ColourCouter ( "----- Void pointers:\n", F_bBLUE );
+    ColourCouter ( "----- Void pointers:\n", F_bWHITE );
     ColourCouter ( "Void pointers are able to point to values without any infos on their exact types.\n\n", F_YELLOW );
     char _char { 'A' };
     int _int = 24;
@@ -857,7 +857,7 @@ void _13_04_MoreOnPointers ()
     // including addresses that refer to no valid element like uninitialized variables and non-existent elements of an array.
     // this fact introduces invalid pointers in C++, which means that a pointer can take any address value,
     // no matter whether there actually something is stored or not.
-    ColourCouter ( "----- Invalid pointers and null pointers:\n", F_bBLUE );
+    ColourCouter ( "----- Invalid pointers and null pointers:\n", F_bWHITE );
     ColourCouter ( "In C++ pointers can point to any address values, no matter their storage state.\n\n", F_YELLOW );
     // the two pointer definitions below, while not pointing to any address with value, aren't cause of any compile error.
     // but dereferencing them is a different story and causes runtime error or undefined behaviours
@@ -912,7 +912,7 @@ void _13_05_PointersToFunctions ()
     // regular function declaration is the source for declaring pointers to function,
     // except that the pointer identifier is followed by an asterisk * and enclosed in parenthesis ().
     // parenthesis are needed and alter the higher precedence of function parameters.
-    ColourCouter ( "----- Pointers to functions:\n", F_bBLUE );
+    ColourCouter ( "----- Pointers to functions:\n", F_bWHITE );
     ColourCouter ( "Pointers to functions are introduced to call a function or to pass a function as argument to another function.\n\n", F_YELLOW );
     int a { 10 }, b { 15 }, c { 20 }, d { 25 };
     std::cout << "The passed values are:" << "\t\t\t\t" << a << ", " << b << ", " << c << ", " << d << nline;
@@ -945,7 +945,7 @@ void _14_01_DynamicMemory ()
     // to this point of tutorial all needed memory was determined by defining the variables before the program execution.
     // there may be cases to determine the memory needs of a program on runtime, like when needed memory depends of user input.
     // for these cases C++ integrates operators 'new' and 'delete' to dynamically allocate memory.
-    ColourCouter ( "~~~~~ Dynamic memory:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Dynamic memory:\n", F_bWHITE );
     ColourCouter ( "To allocate memory during runtime, C++ language integrates the operators 'new' and 'delete'.\n\n", F_YELLOW );
 
     //! ####################################################################
@@ -957,7 +957,7 @@ void _14_01_DynamicMemory ()
     // declaring sequences of more than one elements required to use the second declaration syntax,
     // where the number of elements (an integer value) is to specified within brackets.
     // the result is a pointer to the beginning of the new allocated block of memory.
-    ColourCouter ( "----- Operators new and new[]:\n", F_bBLUE );
+    ColourCouter ( "----- Operators new and new[]:\n", F_bWHITE );
     ColourCouter ( "The integrated operator new is to be used to allocate dynamic memory.\n\n", F_YELLOW );
     int* ptr1;
     ptr1 = new int; // allocate memory to contain one single element of type int
@@ -1026,7 +1026,7 @@ void _14_01_DynamicMemory ()
     // specially when there is a need that user provides its input amount,
     // therefore a program must be able to handle failures of allocation,
     // not only by catching the proper exception, but also controlling the user input and checking the pointer value.
-    ColourCouter ( "----- Operators delete and delete[]:\n", F_bBLUE );
+    ColourCouter ( "----- Operators delete and delete[]:\n", F_bWHITE );
     ColourCouter ( "The integrated operator delete is to be used to free the allocated dynamic memory.\n\n", F_YELLOW );
     std::string inStr { "" };
     int number { 0 }, counter { 0 };
@@ -1132,7 +1132,7 @@ void _15_01_DataStructures ()
     //                  and the objects of structures can be passed to functions like standard variables.
     // this brings it to one of the features of the data structures, which is the ability to refer to both
     // objects declared of them as whole and to the object members individually using the same identifier.
-    ColourCouter ( "~~~~~ Data structures:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Data structures:\n", F_bWHITE );
     ColourCouter ( "To introduce grouped data elements with different types and different lengths under one name.\n\n", F_YELLOW );
     phone yours; // after declaration used just like any other type
     std::string strTemp;
@@ -1180,7 +1180,7 @@ void _15_01_DataStructures ()
     // --------------------------------------------------------------------------------
     // Note in case *a.b, equivalent to *(a.b), the object member is a pointer type,
     // if not, the evaluation results in accessing a hypothetical pointer member called 'b', which isn't the case.
-    ColourCouter ( "----- Pointers to structures:\n", F_bBLUE );
+    ColourCouter ( "----- Pointers to structures:\n", F_bWHITE );
     ColourCouter ( "Structures can be pointed to by their own type of pointers.\n\n", F_YELLOW );
     std::string temp { "" };
     phone aPhone;
@@ -1199,7 +1199,7 @@ void _15_01_DataStructures ()
     //! ####################################################################
     //! ----- nesting structures:
     // elements of a structure can also be of structure type, the result is then a nested structure.
-    ColourCouter ( "----- Nesting structures:\n", F_bBLUE );
+    ColourCouter ( "----- Nesting structures:\n", F_bWHITE );
     ColourCouter ( "To introduce elements in a structure that themselves are also structures.\n\n", F_YELLOW );
     struct owner
     {
@@ -1245,7 +1245,7 @@ void _16_01_OtherDataTypes ()
     //! ####################################################################
     //! ~~~~~ other data types:
     // 
-    ColourCouter ( "~~~~~ Other data types:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Other data types:\n", F_bWHITE );
     ColourCouter ( "This section introduces some expansions on compound data types.\n\n", F_YELLOW );
 
     //! ####################################################################
@@ -1262,7 +1262,7 @@ void _16_01_OtherDataTypes ()
     // Note type aliases most useful purpose is as tools to separate programs from their underlying types,
     // for example to easily replace the program types in a later version.
     // another purpose is to reduce the length of long or confusing type names.
-    ColourCouter ( "----- Type aliases (typedef / using):\n", F_bBLUE );
+    ColourCouter ( "----- Type aliases (typedef / using):\n", F_bWHITE );
     ColourCouter ( "To introduce different identifiers as alias for any valid type.\n\n", F_YELLOW );
     typedef int I; // obvious
     typedef unsigned char COUNTER; // COUNTER is alias for unsigned char
@@ -1292,7 +1292,7 @@ void _16_01_OtherDataTypes ()
     // occupy the same physical space in memory, which size is the size of the largest member element.
     // repeating it with other words, modification of one union member affects all the members
     // therefore no member of an union has an independent space for storing different values.
-    ColourCouter ( "----- Unions:\n", F_bBLUE );
+    ColourCouter ( "----- Unions:\n", F_bWHITE );
     ColourCouter ( "To share one portion of memory between members with different date types.\n\n", F_YELLOW );
     union theTypes
     {
@@ -1334,7 +1334,7 @@ void _16_01_OtherDataTypes ()
     // an union can be defined with no name, if its declaration happens within a class or structure.
     // after declaring an union anonymous, its members are accessible from objects by member names.
     // as already explained, an union share a space between its members.
-    ColourCouter ( "----- Anonymous unions:\n", F_bBLUE );
+    ColourCouter ( "----- Anonymous unions:\n", F_bWHITE );
     ColourCouter ( "By declaring an union without any name in a class or structure, they become anonymous unions.\n\n", F_YELLOW );
     struct person
     {
@@ -1368,7 +1368,7 @@ void _16_01_OtherDataTypes ()
     // .
     // } object_names;
     // the field object_names can be used to directly instantiate objects (variables) of this type
-    ColourCouter ( "----- Enumerated types (enum):\n", F_bBLUE );
+    ColourCouter ( "----- Enumerated types (enum):\n", F_bWHITE );
     ColourCouter ( "To introduce a set of custom identifiers, known as enumerators, as possible values.\n\n", F_YELLOW );
     enum seasons_t { spring, summer, autumn, winter }; // a total new data type
     seasons_t theSeason;
@@ -1399,7 +1399,7 @@ void _16_01_OtherDataTypes ()
     // therefore lacking enumerator values of type int, the conversion to int isn't possible.
     // each enumerator value of an enum class is accessible only with scoping into its type,
     // this way of access is also available in normal enum types, but it is just optional.
-    ColourCouter ( "----- Enumerated types with enum class:\n", F_bBLUE );
+    ColourCouter ( "----- Enumerated types with enum class:\n", F_bWHITE );
     ColourCouter ( "To introduce real enum types that preserve safety.\n\n", F_YELLOW );
     enum class Seasons { spring, summer, autumn, winter };
     Seasons aSeason;

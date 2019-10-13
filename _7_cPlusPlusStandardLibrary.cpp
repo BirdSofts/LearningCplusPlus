@@ -3,7 +3,7 @@
 /// _7_cPlusPlusStandardLibrary.h
 /// </summary>
 /// <created>ʆϒʅ,07.07.2019</created>
-/// <changed>ʆϒʅ,08.08.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -38,7 +38,7 @@ void _24_01_InputAndOutputWithFiles ()
     // after which the file streams can be used exactly on the same manner as objects of i/ostream.
     // to operate on physical files the header <fstream> is to be included additionally to <iostream>.
     // the used codes in the example below is going to be explained extended in the following sections.
-    ColourCouter ( "~~~~~ Input/output with files:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Input/output with files:\n", F_bWHITE );
     ColourCouter ( "The diverted file stream classes from basic i/ostream classes satisfy the purpose.\n\n", F_YELLOW );
     std::ofstream firstTXTfile;
     firstTXTfile.open ( "text.txt" );
@@ -114,7 +114,7 @@ void _24_02_OpeningAndClosingFiles ()
     // subsequently the closed file can be opened by other processes to operate on.
     // when a stream object is destroyed while being associated an open file,
     // the destructor automatically closes the file calling the member function 'close'.
-    ColourCouter ( "----- Opening and closing files:\n", F_bBLUE );
+    ColourCouter ( "----- Opening and closing files:\n", F_bWHITE );
     ColourCouter ( "For a successful operation, a file needs to probably be opened and closed.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -134,7 +134,7 @@ void _24_03_TextFiles ()
     // therefore all input/output operations passing values to/from them suffer some formatting translations,
     // in which the results don't necessarily correspond to their literal binary values.
     // like standard C++ input/output streams, the operators 'insertion' (<<) and 'extraction' (>>) are needed to operate on files.
-    ColourCouter ( "----- Text files:\n", F_bBLUE );
+    ColourCouter ( "----- Text files:\n", F_bWHITE );
     ColourCouter ( "Simple files designed to store texts.\n\n", F_YELLOW );
     std::cout << "Writing to a file, reading from it and capitalizing the characters for print:" << nline << nline;
     std::ofstream fileStreamOne ( "text.txt" );
@@ -188,7 +188,7 @@ void _24_04_CheckingStateFlags ()
     // and despite the similarity considering 'bad ()' member function as antonym, they are not the exact opposites,
     // since 'good ()' member function examines more state flags at once.
     // -- clear (): the functionality of clearing the state flags is wrapped in this member function.
-    ColourCouter ( "----- Checking state flags:\n", F_bBLUE );
+    ColourCouter ( "----- Checking state flags:\n", F_bWHITE );
     ColourCouter ( "To make sure whether a stream object functions as expected, different state flags are provided.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -249,7 +249,7 @@ void _24_05_GetAndPutStreamPositioning ()
     // note that, since the special member types are the same on all stream objects,
     // including the stream objects using exotic types of characters, they are more generic,
     // on the other hand for historical reasons, the use of non-member types are wide in existing code.
-    ColourCouter ( "----- Get and put stream positioning:\n", F_bBLUE );
+    ColourCouter ( "----- Get and put stream positioning:\n", F_bWHITE );
     ColourCouter ( "Stream objects keep at least one internal stream position in their internal get/put positions.\n\n", F_YELLOW );
     ColourCouter ( "A text file created and inserted with two sentences in the examples of past sections:\n", F_bYELLOW );
     std::ifstream fileStream ( "text.txt" );
@@ -310,7 +310,7 @@ void _24_06_BinaryFiles ()
     // which will contain the bytes need to be read or write founded on their different functionality respectively.
     // their second parameter is passed a valid integer to specify the number of characters
     // needed to be read from the file into a block of memory, or to write it into the file.
-    ColourCouter ( "----- Binary files:\n", F_bBLUE );
+    ColourCouter ( "----- Binary files:\n", F_bWHITE );
     ColourCouter ( "Files designed to store different kinds of unformatted data.\n\n", F_YELLOW );
     ColourCouter ( "Writing a binary file to be read in unformatted and formatted way:\n", F_bYELLOW );
     dummy data ( 10, "Hello!" ); // the object instantiated from the class
@@ -369,7 +369,7 @@ void _24_07_BuffersAndSynchronization ()
     // --explicit member function 'sync ()': an explicit call to this member function immediately synchronize the buffer,
     // which returns an integer equal to -1, if the stream isn't associated a buffer or if the operation fails,
     // and otherwise 0 if the synchronization was indeed successful.
-    ColourCouter ( "----- Buffers and synchronization:\n", F_bBLUE );
+    ColourCouter ( "----- Buffers and synchronization:\n", F_bWHITE );
     ColourCouter ( "Operations on physical files may be intermediated through provided buffers.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )

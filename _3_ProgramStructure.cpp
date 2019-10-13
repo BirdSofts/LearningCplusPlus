@@ -3,7 +3,7 @@
 /// _3_ProgramStructures.cpp
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,24.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -32,7 +32,7 @@ void _07_01_ControlStructures ()
     // either simple statements ended with semicolon (;)
     // or a compound one which every single statement ends with its own semicolon (;) enclosed as a block in curly braces ({}). { statement1; statement2; ... }
     // the entire block composed of sub-statements is considered a single statement.
-    ColourCouter ( "~~~~~ Control structures (Statements and flow control):\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Control structures (Statements and flow control):\n", F_bWHITE );
     ColourCouter ( "A program can contain linear sequence of statements, repeated segments of code, decision taking and bifurcations.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -52,7 +52,7 @@ void _07_02_SelectionStatements ()
     //! keywords:   if  else
 
     // Note syntax: if (condition) statement
-    ColourCouter ( "~~~~~ Selection statements (if and else):\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Selection statements (if and else):\n", F_bWHITE );
     ColourCouter ( "Can be used to introduce conditioned execution of statements.\n\n", F_YELLOW );
     int x { 99 };
     std::cout << "Current value of x is:" << tab << x << nline;
@@ -97,7 +97,7 @@ void _07_03_IterationStatements ()
     //! ~~~~~ iteration statements (loops):
     // repetition of statements a certain times or till a condition is fulfilled.
     //! keywords:   while   do  for
-    ColourCouter ( "~~~~~ Iteration statements (Loops):\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Iteration statements (Loops):\n", F_bWHITE );
     ColourCouter ( "To repeat statements a certain times or until a condition is fulfilled.\n\n", F_YELLOW );
 
     //! ####################################################################
@@ -107,7 +107,7 @@ void _07_03_IterationStatements ()
     // Note syntax: while (expression) statement
     // the complexity of the loop in the example below is trivial for computer,
     // so it will be performed instantly without any practical delay
-    ColourCouter ( "----- The while loop:\n", F_bBLUE );
+    ColourCouter ( "----- The while loop:\n", F_bWHITE );
     ColourCouter ( "While the expression is true, this loop continue to iterate.\n\n", F_YELLOW );
     std::cout << "Between numbers one to twenty, three is the divisors of (while loop):" << tab << "{ ";
     int n { 1 };
@@ -129,7 +129,7 @@ void _07_03_IterationStatements ()
     // the use of do-while loop is preferred over the while loop,
     // especially when the to be checked condition is determined within the statement itself.
     // Note syntax: do statement while (condition);
-    ColourCouter ( "----- The do-while loop:\n", F_bBLUE );
+    ColourCouter ( "----- The do-while loop:\n", F_bWHITE );
     ColourCouter ( "Same behaviour like while loop, but with guarantee of one time statement execution.\n\n", F_YELLOW );
     std::cout << "Between numbers one to ten, two is the divisors of (do-while loop):" << tab << "{ ";
     int o { 1 };
@@ -150,7 +150,7 @@ void _07_03_IterationStatements ()
     // the initialization expression executes before the loop begins and the increase expression after each iteration,
     // therefore this loop is most useful, when it comes to counter variables.
     // Note syntax: for (initialization; condition; increase) statement;
-    ColourCouter ( "----- The for loop:\n", F_bBLUE );
+    ColourCouter ( "----- The for loop:\n", F_bWHITE );
     ColourCouter ( "To introduce loops that iterate a certain number of times.\n\n", F_YELLOW );
     std::cout << "Between numbers one to ten, three is the divisors of (for loop):" << tab << "{ ";
     for ( int i { 1 }; i < 10; i++ )
@@ -198,7 +198,7 @@ void _07_03_IterationStatements ()
       {
         if ( ( i == ( j % 6 ) ) || ( ( ( i - 1 ) + ( j % 6 ) ) == 5 ) ) // 6 to divide the patterns (try 5 too)
         {
-          ColourCouter ( "*", F_bBLUE );
+          ColourCouter ( "*", F_bWHITE );
           std::this_thread::sleep_for ( std::chrono::milliseconds ( 20 ) );
         } else
           std::cout << ' ';
@@ -214,7 +214,7 @@ void _07_03_IterationStatements ()
     // ranges are sequences of elements including arrays, containers and any other type supporting the functions begin and end.
     // none of these types is mentioned yet, therefore stings will be used which are sequences of character.
     // this kind of loop is automatic and doesn't require the explicit declaration of counter variable.
-    ColourCouter ( "----- Rang-based for loops:\n", F_bBLUE );
+    ColourCouter ( "----- Rang-based for loops:\n", F_bWHITE );
     ColourCouter ( "Iteration over all the elements in a range.\n\n", F_YELLOW );
     std::string for_range { "SequenceOfCharacters" };
     std::string temp { "" };
@@ -257,14 +257,14 @@ void _07_04_JumpStatements ()
     //! ####################################################################
     //! ~~~~~ jump statements:
     // they can be used to alter the flow of a program by jumping to specific locations
-    ColourCouter ( "~~~~~ Jump statements:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Jump statements:\n", F_bWHITE );
     ColourCouter ( "The flow of a program can be altered by jumping to specific locations.\n\n", F_YELLOW );
 
     //! ####################################################################
     //! ----- the break statement:
     // to leave a loop, even if its end condition isn't fulfilled.
     // purposes: to end an infinite loop, to leave a loop before its natural end
-    ColourCouter ( "----- The break statement:\n", F_bBLUE );
+    ColourCouter ( "----- The break statement:\n", F_bWHITE );
     ColourCouter ( "To leave a loop before its natural end.\n\n", F_YELLOW );
     std::cout << "Breaking the loop at word 'break':" << nline;
     std::string another_range { "-loop-while-do-for-break-iterate-" };
@@ -292,7 +292,7 @@ void _07_04_JumpStatements ()
     //! ####################################################################
     //! ----- the continue statement:
     // to skip the current iteration and jumping to the next one.
-    ColourCouter ( "----- The continue statement:\n", F_bBLUE );
+    ColourCouter ( "----- The continue statement:\n", F_bWHITE );
     ColourCouter ( "To introduce skipping the iterations of a loop.\n\n", F_YELLOW );
     std::cout << "Continuing the loop at word 'break':" << nline;
     std::string a_range { "-loop-while-do-for-break-iterate-" };
@@ -321,7 +321,7 @@ void _07_04_JumpStatements ()
     // therefore it is to be used with care, preferably within the same block and especially in the presence of local variables.
     // defined labels which are valid identifier followed by colon (:), are destinations point and will be used as argument for goto statement.
     // goto is deemed a low-level feature with no particular use in modern higher-level C++ programming paradigms.
-    ColourCouter ( "----- The goto statement:\n", F_bBLUE );
+    ColourCouter ( "----- The goto statement:\n", F_bWHITE );
     ColourCouter ( "To introduce absolute and unconditional jump to another point in the program.\n\n", F_YELLOW );
     std::cout << "Repeated smilies using goto statement:" << nline << tab;
     int n { 10 };
@@ -362,7 +362,7 @@ void _07_05_AnotherSelectionStatement ()
     //      group_of_default_statement;
     //      break;
     // }
-    ColourCouter ( "~~~~~ Another selection statement (switch):\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Another selection statement (switch):\n", F_bWHITE );
     ColourCouter ( "Expressing a binary value (switch):\n\n", F_YELLOW );
     std::string x { "1010110110" };
     std::cout << "The binary number is:" << tab << x << nline << tab;
@@ -446,7 +446,7 @@ void _08_01_Functions ()
     // the expression that calls a function, will be evaluated as the returned value by the function.
     // all the functions that have defined return type in their definitions must return a value with a proper return statement that includes a return value, even if this value is never going to be used.
     // a function can be called multiple times and its parameter aren't limited to literals.
-    ColourCouter ( "~~~~~ Functions:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Functions:\n", F_bWHITE );
     ColourCouter ( "To introduce structures that can be used to perform individual tasks in segment of code.\n\n", F_YELLOW );
     int r;
     float result;
@@ -490,7 +490,7 @@ void _08_02_VoidFunctions ()
     // the void type is an spacial type to represent the absence of value.
     // void keyword can also be used in function's parameter list to explicitly specify that the function takes no actual parameters
     // void keyword in parameter's list: in C++ optional, in C language required
-    ColourCouter ( "----- Functions with no type (The use of void):\n", F_bBLUE );
+    ColourCouter ( "----- Functions with no type (The use of void):\n", F_bWHITE );
     ColourCouter ( "Void functions are those that don't have any returned value.\n\n", F_YELLOW );
     std::cout << "Some interactions integrated in a void function with no parameters:" << nline << nline;
     interaction ();
@@ -526,7 +526,7 @@ void _08_03_MainFunctionReturnValue ()
     // ----------------------------------------------------------------------
     // Note some authors consider the explicitly written return statement a good practice,
     // thus the implicit return statement for main function is a tricky exception.
-    ColourCouter ( "----- The return value of main function:\n", F_bBLUE );
+    ColourCouter ( "----- The return value of main function:\n", F_bWHITE );
     ColourCouter ( "The return value of the main function which is of type int has his own peculiarity.\n\n", F_YELLOW );
     ColourCouter ( "Read the comments in the source code...\n\n", F_bYELLOW );
   }
@@ -553,7 +553,7 @@ void _08_04_PassedArgumentsTypes ()
     // the values will be copied into the variables represented by function parameters.
     // the values of passed arguments will be used to initial the function parameters,
     // thus the modification of them in function doesn't have any effect on the variables outside of it.
-    ColourCouter ( "----- Arguments passed by value and by reference:\n", F_bBLUE );
+    ColourCouter ( "----- Arguments passed by value and by reference:\n", F_bWHITE );
     ColourCouter ( "The Arguments can be passed to a function by value and by reference.\n\n", F_YELLOW );
     int x { 3 }; int y { 4 };
     int result { 0 };
@@ -616,7 +616,7 @@ void _08_05_Efficiency ()
     // to avoid this unneeded copy, calling functions by reference is suggested and with it,
     // the function operates directly on aliases of passed arguments and at utter most,
     // it might mean the transfer of certain pointer to the function.
-    ColourCouter ( "----- Efficiency consideration and constant reference:\n", F_bBLUE );
+    ColourCouter ( "----- Efficiency consideration and constant reference:\n", F_bWHITE );
     ColourCouter ( "Passing arguments by reference to avoid certain overhead.\n\n", F_YELLOW );
     std::string line { "A line containing some word to be passed as argument by reference and searched within." };
     char character;
@@ -661,7 +661,7 @@ void _08_06_InlineFunctions ()
     // since calling a function has a certain overhead (stacking arguments, jumps etc...) it isn't efficient for short functions.
     // by using inline specifier in the function declaration the compiler will be suggested that inline expansion is preferred over the usual function call mechanism.
     // behaviour of a function won't be changed but the function body will be inserted at each point of the function call, so the regular invocation will be avoided.
-    ColourCouter ( "----- Inline functions:\n", F_bBLUE );
+    ColourCouter ( "----- Inline functions:\n", F_bWHITE );
     ColourCouter ( "To introduce the inline expansion of a function body and replace the regular invocation with it.\n\n", F_YELLOW );
     ColourCouter ( "Search function with inline specifier declaration:\n", F_bYELLOW );
     std::string line { "A line containing some word to be passed as argument by reference and searched within." };
@@ -697,7 +697,7 @@ void _08_07_ParametersDefaultValues ()
     //! ----- default values in parameters:
     // optional parameters in C++ functions that doesn't require any arguments in the call shall have default values in the definition,
     // which will be used when a function is needed to be called with fewer arguments.
-    ColourCouter ( "----- Default values in Parameters:\n", F_bBLUE );
+    ColourCouter ( "----- Default values in Parameters:\n", F_bWHITE );
     ColourCouter ( "To declare functions with optional parameters.\n\n", F_YELLOW );
     std::cout << "Two call to exponent function with two parameters of which the last one is optional:" << nline;
     long result;
@@ -734,7 +734,7 @@ void _08_08_FunctionsDeclaration ()
     // the purposes of declaring functions before their actual definition:
     // the order of functions becomes recognizable.
     // possibility to call another function from within the already called function. (example below)
-    ColourCouter ( "----- Declaring functions:\n", F_bBLUE );
+    ColourCouter ( "----- Declaring functions:\n", F_bWHITE );
     ColourCouter ( "To introduce the declaration of a function and place its definition elsewhere.\n\n", F_YELLOW );
     ColourCouter ( "Working with the functions negative and positive:\n", F_bYELLOW );
     int number;
@@ -774,7 +774,7 @@ void _08_09_Recursivity ()
     //! ----- recursivity:
     // the property with which functions can call themselves.
     // usual for some task like sorting elements or factorial (n!)
-    ColourCouter ( "----- Recursivity:\n", F_bBLUE );
+    ColourCouter ( "----- Recursivity:\n", F_bWHITE );
     ColourCouter ( "The call that a function can make to itself.\n\n", F_YELLOW );
     std::cout << "A recursive function to calculate exponent:" << nline;
     int number { 0 }, power { 0 };
@@ -800,7 +800,7 @@ void _09_01_OverloadsAndTemplates ()
 
     //! ####################################################################
     //! ~~~~~ overloads and templates:
-    ColourCouter ( "~~~~~ Overloads and templates:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Overloads and templates:\n", F_bWHITE );
     ColourCouter ( "-- Overloads are two or more functions with the same name.\n", F_YELLOW );
     ColourCouter ( "-- Defining a function with generic type is known as function template.\n\n", F_YELLOW );
   }
@@ -835,7 +835,7 @@ void _09_02_OverloadedFunctions ()
     // the example below is not generally a good idea to demonstrate overloads of a function, since similar behaviour of overloads is expected,
     // on the other hand it shows the possibility that the overloads can be fully different.
     // the functions in this example have entirely different behaviours, declarations and definitions and the only similarity is their name.
-    ColourCouter ( "----- Overloaded functions:\n", F_bBLUE );
+    ColourCouter ( "----- Overloaded functions:\n", F_bWHITE );
     ColourCouter ( "C++ ability to define multiple instances of a function.\n\n", F_YELLOW );
     ColourCouter ( "Operations modulo and maximum performed by overloads of the function operation:\n", F_bYELLOW );
     int number_1 { 5 }, number_2 { 4 };
@@ -883,7 +883,7 @@ void _09_03_FunctionTemplates ()
     //! ####################################################################
     //! ----- function templates:
     // a function (multiply for example) could be overloaded for many types and all of them having the same body or definition.
-    ColourCouter ( "----- Function templates:\n", F_bBLUE );
+    ColourCouter ( "----- Function templates:\n", F_bWHITE );
     ColourCouter ( "The ability of C++ to define generic functions known as function templates.\n\n", F_YELLOW );
     ColourCouter ( "A function could be overloaded for different types while all of them having the same definition:\n", F_bYELLOW );
     std::cout << "Multiply 2 by 2 (overload for int type):" << tab << multiply ( 2, 2 ) << nline;
@@ -955,7 +955,7 @@ void _09_04_ParticularTypeTemplateArguments ()
     // the values of arguments of particular types are never passed during runtime.
     // this means that every call to such a template generates a different version of the function template,
     // therefore the values of argument of particular types need to be constant expressions and the template can not be instantiated with variables.
-    ColourCouter ( "----- Particular type template arguments:\n", F_bBLUE );
+    ColourCouter ( "----- Particular type template arguments:\n", F_bWHITE );
     ColourCouter ( "To introduce expressions of particular types as template parameter.\n\n", F_YELLOW );
     ColourCouter ( "A function template with parameter of particular type int:\n", F_bYELLOW );
     int result;
@@ -982,7 +982,7 @@ void _10_01_NameVisibility ()
     //! ~~~~~ name visibility:
     // in C++ name entities such as variables, functions and compound types need to be declared before being used.
     // the point where this declaration happens hat influence on its visibility.
-    ColourCouter ( "~~~~~ Name Visibility\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Name Visibility\n", F_bWHITE );
     ColourCouter ( "The visibility of name entities such as variables, functions and compound types can be different after declaration.\n", F_YELLOW );
     ColourCouter ( "The point where an entity is declared, influences its visibility.\n\n", F_YELLOW );
   }
@@ -1020,7 +1020,7 @@ void _10_02_Scopes ()
     // -------- definition inside the file that is foreseen to introduce standard or none standard headers,
     // local scope: the entity is defined inside a block and is visible inside of it.
     // a name can represents only one entity, therefore two variables can't have same name within the same scope.
-    ColourCouter ( "----- Scopes:\n", F_bBLUE );
+    ColourCouter ( "----- Scopes:\n", F_bWHITE );
     ColourCouter ( "The scope of every entity is dependent on the point of its declaration.\n\n", F_YELLOW );
     std::cout << "Global variable's value before change:" << "\t\t\t" << global_variable << nline;
     std::cout << "Local variable's value (first function scope):" << "\t\t" << first_function () << nline;
@@ -1089,7 +1089,7 @@ void _10_03_Namespaces ()
     // the elements of namespaces have to be properly qualified with the scope operator (::) and the identifier of their namespace to be reached from outside.
     // namespaces can be split: first segment of a code can be extended to the second segment of the same namespace
     // namespaces can even get extend across different translation units (i.e.: across different files of source code)
-    ColourCouter ( "----- Namespaces:\n", F_bBLUE );
+    ColourCouter ( "----- Namespaces:\n", F_bWHITE );
     ColourCouter ( "To introduce the organization of named entities with global scope into narrower namespace scope.\n\n", F_YELLOW );
     std::cout << "The elements of first namespace before change:" << nline;
     std::cout << tab << "a: " << firstNamespace::a << "\t\t" << "b: " << firstNamespace::b << nline;
@@ -1123,7 +1123,7 @@ void _10_04_UsingKeyword ()
     //! ####################################################################
     //! ----- the using keyword:
     // to introduce a name into the current declarative region (such as a block), to avoid name qualification need.
-    ColourCouter ( "----- The using keyword:\n", F_bBLUE );
+    ColourCouter ( "----- The using keyword:\n", F_bWHITE );
     ColourCouter ( "To avoid the need to qualify a name in the current declarative region.\n\n", F_YELLOW );
     ColourCouter ( "Accessing variables in the namespace with and without qualification:\n", F_bYELLOW );
     {
@@ -1172,7 +1172,7 @@ void _10_05_NamespaceAliasing ()
     //! ----- : namespace aliasing
     // existing namespaces can be aliased with new names
     // Note syntax: namespace new_name = current_name;
-    ColourCouter ( "----- Namespace aliasing:\n", F_bBLUE );
+    ColourCouter ( "----- Namespace aliasing:\n", F_bWHITE );
     ColourCouter ( "New names can be used as alias to have a different name for a defined namespace in a project.\n\n", F_YELLOW );
     ColourCouter ( "Using the alias of the namespace 'third':\n", F_bYELLOW );
     namespace alias = identifier;
@@ -1189,7 +1189,7 @@ void _10_05_NamespaceAliasing ()
     // entities declared in this namespace belong to the standard C++ library.
     // using this namespace with the keyword 'using' facilitate comprehension and shorten the length of the code
     // on the other hand, to avoid name collision, most programmers tend to prefer explicit qualification for projects mixing libraries.
-    ColourCouter ( "----- The std namespace:\n", F_bBLUE );
+    ColourCouter ( "----- The std namespace:\n", F_bWHITE );
     ColourCouter ( "All the entities of the standard C++ library is declared within the namespace 'std'.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -1212,7 +1212,7 @@ void _10_06_StorageClasses ()
     //-- automatic storage: local variables
     // their storage is only available during their declaration block
     // if they aren't explicitly initialized, they will be left uninitialized, and thus have undetermined values
-    ColourCouter ( "----- Storage classes:\n", F_bBLUE );
+    ColourCouter ( "----- Storage classes:\n", F_bWHITE );
     ColourCouter ( "The difference between static and automatic storage.\n\n", F_YELLOW );
     int aLocalVariable; // automatic storage, not automatically initialized, can't be used without initialization
     int anotherLocalVariable { 555 }; // automatic storage, explicitly initialized

@@ -3,7 +3,7 @@
 /// _5_Classes.cpp
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,01.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
 
 //#include "pch.h"
@@ -79,7 +79,7 @@ void _17_01_ClassesI ()
     // when only its definition is included within the class, compiler considers it a normal (non-inline) class member.
     // the only difference being already mentioned, the behaviour stays the same,
     // thus in the end it may come to a possible compiler optimization.
-    ColourCouter ( "~~~~~ Classes:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Classes:\n", F_bWHITE );
     ColourCouter ( "Classes are an expanded concept of data structure with the ability, not only containing data members but also functions as members.\n\n", F_YELLOW );
     class Number first;
     // like data structures, dot (.) method is used to directly access members either data or function of a class
@@ -145,7 +145,7 @@ void _17_02_Constructors ()
     // while having the same structure, a constructor introduces no return type, not even void.
     // to add to the peculiarity of this special member function, a constructor can never get called explicitly,
     // therefore unlike regular functions, constructors are executed once at the instantiation moment of objects.
-    ColourCouter ( "----- Constructors:\n", F_bBLUE );
+    ColourCouter ( "----- Constructors:\n", F_bWHITE );
     ColourCouter ( "A special member function to initialize data members or allocate memory.\n\n", F_YELLOW );
     ColourCouter ( "The class 'number' improved to introduce its constructor:\n", F_bYELLOW );
     class numberEntity first ( 2 ); // initialization at the moment of instantiation using class constructor
@@ -158,7 +158,7 @@ void _17_02_Constructors ()
     // any regular function likewise, a constructor can be overloaded with different number or type of parameters.
     // being able to overload constructors, the default constructor can also get introduced,
     // which is the special kind, that takes no parameters.
-    ColourCouter ( "----- Overloading constructors\n", F_bBLUE );
+    ColourCouter ( "----- Overloading constructors\n", F_bWHITE );
     ColourCouter ( "Constructors can also introduce different overloads.\n\n", F_YELLOW );
     numberEntity third ( 4 );
     third.print ();
@@ -210,7 +210,7 @@ void _17_03_UniformInitialization ()
     // recently introduced in C++, essentially the same as functional form, but using braces
     // --class_name object_name {value, value, value, ...}
     // optionally, this syntax can include an equal sign before the braces.
-    ColourCouter ( "----- Uniform initialization:\n", F_bBLUE );
+    ColourCouter ( "----- Uniform initialization:\n", F_bWHITE );
     ColourCouter ( "There are different ways for a constructor to be called.\n\n", F_YELLOW );
     Smily a ( 0 ); // functional form (usable for single argument constructors)
     Smily b = 1; // assignment initialization (usable for single argument constructors)
@@ -280,7 +280,7 @@ void _17_04_MemberInitializationInConstructor ()
     // it is a waste, if data members are reinitialized otherwise in the constructor.
     // therefore, member initialization list is preferable and this is valid not only in these cases
     // in these cases, members shall be initialized in the member initialization list.
-    ColourCouter ( "----- Member initialization in constructors:\n", F_bBLUE );
+    ColourCouter ( "----- Member initialization in constructors:\n", F_bWHITE );
     ColourCouter ( "Constructors can use different methods to initialize data members.\n\n", F_YELLOW );
     Cube first { 1.1, 2.2, 3.3 };
     std::cout << "Cube's volume:" << tab << first.volume () << nline << nline;
@@ -331,7 +331,7 @@ void _17_05_PointersToClasses ()
     // -------------------------------------------------
     // x[n]           (n+1)th object pointed to by x
     // -------------------------------------------------
-    ColourCouter ( "----- Pointers to classes:\n", F_bBLUE );
+    ColourCouter ( "----- Pointers to classes:\n", F_bWHITE );
     ColourCouter ( "A defined class is a valid data type, therefore it can be used as the type of objects pointed to by a pointer.\n\n", F_YELLOW );
     Triangle objA ( 2.2, 3.3 );
     Triangle* ptrObjA, * ptrObjB, * ptrObjC;
@@ -406,7 +406,7 @@ void _17_06_OverloadingOperators ()
     // type operator sign (parameters) {}
     // while the obligation of exact functionality of overloaded operator to that of mathematical or usual meaning lacks,
     // the strong recommendation is there to oblige, and to follow the usual meaning of operators.
-    ColourCouter ( "----- Overloading operators:\n", F_bBLUE );
+    ColourCouter ( "----- Overloading operators:\n", F_bWHITE );
     ColourCouter ( "In C++, most operators can be overloaded, so they could have defined behaviours for almost any type.\n\n", F_YELLOW );
     Matrix matrix_1 ( 1, 2, 3, 4 );
     Matrix matrix_2 ( 4, 3, 2, 1 );
@@ -504,7 +504,7 @@ void _17_07_TheKeywordThis ()
     //! ----- the keyword this:
     // the keyword 'this', usable within a class's member function, is a pointer to the object itself
     // whose member function is already executing.
-    ColourCouter ( "----- The keyword this:\n", F_bBLUE );
+    ColourCouter ( "----- The keyword this:\n", F_bWHITE );
     ColourCouter ( "To refer to the object itself within the class's member function.\n\n", F_YELLOW );
     class Pattern A { '*' };
     class Pattern B { '$' };
@@ -562,7 +562,7 @@ void _17_08_StaticMembers ()
     // can not be initialized directly in the class, hence additionally to avoid they being declared several times.
     // ---- therefore static member functions:
     // lack the access to non-static class members, either data or functions, additionally they can't use keyword 'this'.
-    ColourCouter ( "----- Static members:\n", F_bBLUE );
+    ColourCouter ( "----- Static members:\n", F_bWHITE );
     ColourCouter ( "Static members, either data or functions, are common members of a class to all the objects of that class.\n\n", F_YELLOW );
     std::string temp = "Hello! ";
     Sentence A [3] { temp, temp, temp };
@@ -617,7 +617,7 @@ void _17_09_ConstantMemberFunctions ()
     // while they can't modify non-static data members, they lake the right to call non-constant member functions.
     // in essence, the state of an object shan't be modified by a constant member.
     // Note: non-constant objects can access both constant and non-constant member functions alike.
-    ColourCouter ( "----- Constant member functions:\n", F_bBLUE );
+    ColourCouter ( "----- Constant member functions:\n", F_bWHITE );
     ColourCouter ( "Declaring an object of a class with qualification as constant introduces the restricted read-only access to its own members either data or function.\n\n", F_YELLOW );
     const Character aConstantObject ( 'A' ); // valid: constructor of the constant objects
     char temp { '-' };
@@ -695,7 +695,7 @@ void _17_10_ClassTemplates ()
     // Note syntax: template_parameter class_identifier <template_parameter> ::member_function_identifier () {}
     // the template parameter between the angel brackets is also a requirement,
     // which introduces the function's template parameter, which is the same as class template parameter.
-    ColourCouter ( "----- Class templates:\n", F_bBLUE );
+    ColourCouter ( "----- Class templates:\n", F_bWHITE );
     ColourCouter ( "To introduce classes that are able to have members that use template parameters as type.\n\n", F_YELLOW );
     NumberGeneric<int> intNum ( 2 );
     NumberGeneric<double> doubleNum ( 2.2 );
@@ -762,7 +762,7 @@ void _17_11_TemplateSpecialization ()
     // type specialization parameter identifies the type, for which the template specialization is being introduced.
     // note that all members of the generic class, even identical ones, must be defined in its specialization again,
     // since there is no inheritance between a generic class and the specialization there of.
-    ColourCouter ( "----- Template specialization:\n", F_bBLUE );
+    ColourCouter ( "----- Template specialization:\n", F_bWHITE );
     ColourCouter ( "To introduce different implementation of a template for a specific type.\n\n", F_YELLOW );
     Entity <int> theInt ( 2 );
     Entity <std::string> theString ( "Hello" );
@@ -807,7 +807,7 @@ void _18_01_SpecialMembers ()
     // -------------------------------------------------------------
     // move assignment        theClass& operator= (theClass&&);
     // -------------------------------------------------------------
-    ColourCouter ( "~~~~~ Special members:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Special members:\n", F_bWHITE );
     ColourCouter ( "Special member functions are defined implicitly under certain circumstances.\n\n", F_YELLOW );
 
 
@@ -841,7 +841,7 @@ void _18_02_DefaultConstructor ()
     // compiler in no case introduces an implicit default constructor,
     // thus no instantiation not using the explicit defined constructor is possible.
     // hence afterward, for the ability to instantiate using default constructor, it shall be defined explicitly.
-    ColourCouter ( "----- Default Constructor:\n", F_bBLUE );
+    ColourCouter ( "----- Default Constructor:\n", F_bWHITE );
     ColourCouter ( "This special member introduces object's instantiation without passing any arguments.\n\n", F_YELLOW );
     FloatingPoint anEntity;
     FloatingPoint anotherEntity { 2.2 };
@@ -877,7 +877,7 @@ void _18_03_Destructor ()
     // destructor, very much like the default constructor, takes not even void as argument,
     // while using the class identifier as its own and preceded with a tilde sign (~).
     // the destructor of the below defined object is called at the end of the function.
-    ColourCouter ( "----- Destructor:\n", F_bBLUE );
+    ColourCouter ( "----- Destructor:\n", F_bWHITE );
     ColourCouter ( "Destructor is a special member, and is called at the lifetime end of a class.\n\n", F_YELLOW );
     FloatEntity theEntity { 4.4 };
     std::cout << "The floating point number is:" << nline;
@@ -925,7 +925,7 @@ void _18_04_CopyConstructor ()
     // which then simply performs a shallow copy of the members of the passed object.
     // for example the implicit defined copy constructor by compiler for the class Creature is roughly equivalent to:
     // Creature::Creature ( const Creature & obj ) : name ( obj.name ) {}
-    ColourCouter ( "----- Copy constructor:\n", F_bBLUE );
+    ColourCouter ( "----- Copy constructor:\n", F_bWHITE );
     ColourCouter ( "To instantiate an object as copy of another object.\n\n", F_YELLOW );
     Creature one { "Human" };
     Creature two { one }; // invoking the implicit copy constructor
@@ -993,7 +993,7 @@ void _18_05_CopyAssignment ()
     // additionally to risk of freeing the allocated memory twice, there is the danger of memory leaks creation,
     // which occurs by not deleting the object pointed to by the under new assignment operation object.
     // a deep copy performed after deleting or reassigning the previous object solves these issues.
-    ColourCouter ( "----- Copy Assignment:\n", F_bBLUE );
+    ColourCouter ( "----- Copy Assignment:\n", F_bWHITE );
     ColourCouter ( "To copy an object on assignment operation.\n\n", F_YELLOW );
     Animal one { "Dog" };
     // initialization through copy constructor
@@ -1063,7 +1063,7 @@ void _18_06_MoveConstructorAndAssignment ()
     // considering the real difference between the operations copying and moving:
     // --copying from A to B means: memory allocation for B and copying the entire content of A to it
     // --moving from A to B means: transferring the allocated memory of A to B, which simply involves copying the pointer.
-    ColourCouter ( "----- Move constructor and assignment:\n", F_bBLUE );
+    ColourCouter ( "----- Move constructor and assignment:\n", F_bWHITE );
     ColourCouter ( "Transferring the content of an unnamed object to destination.\n\n", F_YELLOW );
     Appliance one { "Refrigerator" };
     Appliance two { "Washing machine" };
@@ -1133,7 +1133,7 @@ void _18_07_ImplicitMembers ()
     // note that the recommendation for future support backward in time is there, when defining a class,
     // which explicitly introduces one custom copy/move constructor or copy/move assignment but not both,
     // to explicitly specify the state of the other special member functions as 'delete' or 'default'.
-    ColourCouter ( "----- Implicit members:\n", F_bBLUE );
+    ColourCouter ( "----- Implicit members:\n", F_bWHITE );
     ColourCouter ( "Special members are implicit defined under different criteria.\n\n", F_YELLOW );
     Circle one;
     Circle two ( 2.2 );
@@ -1156,7 +1156,7 @@ void _19_01_FriendshipAndInheritance ()
     //! ####################################################################
     //! ~~~~~ friendship and inheritance:
     //
-    ColourCouter ( "~~~~~ Friendship and inheritance:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Friendship and inheritance:\n", F_bWHITE );
     ColourCouter ( "Some useful expansions on the concept of classes.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -1217,7 +1217,7 @@ void _19_02_FriendFunctionsAndClasses ()
     // doesn't qualifies the class to be also a friend to its friend class,
     // therefore the friend class, if needed, must define its friendship to this class explicitly.
     // note, since friendships are not transitive, unless explicitly declared, a friend of a friend is a friend.
-    ColourCouter ( "----- Friend functions and classes:\n", F_bBLUE );
+    ColourCouter ( "----- Friend functions and classes:\n", F_bWHITE );
     ColourCouter ( "Functions and classes defined as friend of a class can access its private and protected members.\n\n", F_YELLOW );
     Cylinder one { 5 };
     std::cout << "Cylinder's volume (base is default constructed):" << nline << tab << one.volume () << nline;
@@ -1284,7 +1284,7 @@ void _19_03_InheritanceBetweenClasses ()
     // not members                  yes       no          no
     // ----------------------------------------------------------
     // note that protected members of a base class are accessible within the derived class.
-    ColourCouter ( "----- Inheritance between classes:\n", F_bBLUE );
+    ColourCouter ( "----- Inheritance between classes:\n", F_bWHITE );
     ColourCouter ( "Characteristics of a class can be inherited by other classes.\n\n", F_YELLOW );
     Customer one;
     Worker two;
@@ -1355,7 +1355,7 @@ void _19_04_InheritedCharacteristics ()
     // it is possible to explicitly call custom constructors of a base class.
     // Note syntax
     // derived_constructor_name ( parameters ) : data_members { parameters }, base_constructor_name { parameters } { ... }
-    ColourCouter ( "----- Inherited characteristics:\n", F_bBLUE );
+    ColourCouter ( "----- Inherited characteristics:\n", F_bWHITE );
     ColourCouter ( "Not all the members of a base class get retained in the process of inheritance.\n\n", F_YELLOW );
     // base class default constructor:
     derivedOne first { 1 };
@@ -1410,7 +1410,7 @@ void _19_05_MultipleInheritance ()
     // expanding the inheritance concepts, classes can be based on more than one class,
     // the declaration syntax then get extended to include the needed base classes, separating them with coma ','.
     // Note syntax: class derived_class_neme :public base_class_one, public base_class_two, ... { ... };
-    ColourCouter ( "----- Multiple inheritance:\n", F_bBLUE );
+    ColourCouter ( "----- Multiple inheritance:\n", F_bWHITE );
     ColourCouter ( "A class can inherit characteristics from more than one base class.\n\n", F_YELLOW );
     Sphere one ( 10.5 );
     one.print ( one.area () );
@@ -1435,7 +1435,7 @@ void _20_01_Polymorphism ()
     // the needed concepts for the following to be understood are data structures, classes, pointers, friendship and inheritance,
     // without which, learning deeper isn't going to bring anything.
     // all of them are already introduced in this tutorial.
-    ColourCouter ( "~~~~~ Polymorphism:\n", F_bBLUE );
+    ColourCouter ( "~~~~~ Polymorphism:\n", F_bWHITE );
     ColourCouter ( "Deeper knowledge in the concepts of classes.\n\n", F_YELLOW );
   }
   catch ( const std::exception& )
@@ -1481,7 +1481,7 @@ void _20_02_PointersToBaseClass ()
     // a pointer to a derived class is additionally type-compatible with another one to its base class.
     // note that it is not possible to access the members of a derived class through a pointer to its base class.
     // in the example, base class can't represent a common implementation for the different operations.
-    ColourCouter ( "----- Pointer to base class:\n", F_bBLUE );
+    ColourCouter ( "----- Pointer to base class:\n", F_bWHITE );
     ColourCouter ( "A pointer can point to a base class through its derived class address.\n\n", F_YELLOW );
     Subtraction minus;
     Summation plus;
@@ -1541,7 +1541,7 @@ void _20_03_VirtualMembers ()
     // Note syntax: virtual function_return_type identifier () {...}
     // classes that inherit or declare a virtual function are known as polymorphic ones.
     // the example introduces a regular class as base containing a virtual member function with different implementations.
-    ColourCouter ( "----- Virtual members:\n", F_bBLUE );
+    ColourCouter ( "----- Virtual members:\n", F_bWHITE );
     ColourCouter ( "Through virtual qualification, calling properties through references are preserved.\n\n", F_YELLOW );
     Pair aPair;
     Division divide;
@@ -1607,7 +1607,7 @@ void _20_04_AbstractBaseClasses ()
     // additionally these features can be applied to arrays of objects or dynamically allocated objects.
     // note that, when declaring a dynamic allocated object, somehow like the pointer to base class pointed to object of derived class,
     // the declared pointer is of type base class and the allocated object is directly declared of type derived class.
-    ColourCouter ( "----- Abstract base classes:\n", F_bBLUE );
+    ColourCouter ( "----- Abstract base classes:\n", F_bWHITE );
     ColourCouter ( "Abstract base classes introduce pure virtual member functions.\n\n", F_YELLOW );
     ShiftR right { 1 };
     Bits* ptr_right { &right };

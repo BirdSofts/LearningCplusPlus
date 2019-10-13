@@ -211,7 +211,12 @@
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="LearningCplusPlus.aps" />
+    <None Include="LICENSE.md" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="screenshots\ScreenShot.jpg" />
+    <Image Include="screenshots\ScreenShot_2.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
