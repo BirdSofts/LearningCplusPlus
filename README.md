@@ -28,8 +28,8 @@ The project is just learning materials, which tries very hard to bring learning 
 
 # Getting Started
 1.  Installation process:
-under compilation! :)
-Both Visual Studio and Qt Creator (MinGW compiler under Windows) IDEs have been tested while developing.
+Compilable! :)
+Both Visual Studio and Qt Creator (MinGW compiler under Windows) IDEs have been tested.
 
 2.  Software dependencies:
 Dependent on Windows APIs

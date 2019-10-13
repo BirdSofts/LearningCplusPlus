@@ -3,9 +3,8 @@
 /// _3_ProgramStructures.h
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _3_PROGRAMSTRUCTURE_H
 #define _3_PROGRAMSTRUCTURE_H

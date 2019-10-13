@@ -3,9 +3,8 @@
 /// _5_Classes.h
 /// </summary>
 /// <created>ʆϒʅ,18.09.2018</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _5_CLASSES_H
 #define _5_CLASSES_H

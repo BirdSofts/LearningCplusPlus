@@ -3,12 +3,12 @@
 /// pch.h
 /// </summary>
 /// <created>ʆϒʅ,16.04.2019</created>
-/// <changed>ʆϒʅ,24.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef LEARNINGCPLUSPLUS_H
 #define LEARNINGCPLUSPLUS_H
+
 
 #if WIN32
 #define WIN32_LEAN_AND_MEAN // rarely-used stuff exclusion

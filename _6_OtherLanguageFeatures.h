@@ -3,9 +3,8 @@
 /// _6_OtherLanguageFeatures.h
 /// </summary>
 /// <created>ʆϒʅ,26.06.2019</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _6_OTHERLANGUAGEFEATURES_H
 #define _6_OTHERLANGUAGEFEATURES_H

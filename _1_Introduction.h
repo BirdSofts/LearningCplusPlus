@@ -3,9 +3,8 @@
 /// _1_Introduction.h
 /// </summary>
 /// <created>ʆϒʅ,20.12.2018</created>
-/// <changed>ʆϒʅ,06.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _1_INTRODUCTION_H
 #define _1_INTRODUCTION_H

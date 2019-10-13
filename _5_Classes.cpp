@@ -6,13 +6,13 @@
 /// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
 
-//#include "pch.h"
 #include "LearningCplusPlus.h"
 #include "Console.h"
 
 
 #define Tab '\t'
 #define Nline '\n'
+
 
 const char tab { '\t' };
 const char nline { '\n' };

@@ -6,7 +6,6 @@
 /// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
 
-//#include "pch.h"
 #include "LearningCplusPlus.h"
 #include "Console.h"
 

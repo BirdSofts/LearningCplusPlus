@@ -3,16 +3,16 @@
 /// _3_ProgramStructures.cpp
 /// </summary>
 /// <created>ʆϒʅ,09.05.2018</created>
-/// <changed>ʆϒʅ,13.10.2019</changed>
+/// <changed>ʆϒʅ,14.10.2019</changed>
 // --------------------------------------------------------------------------------
 
-//#include "pch.h"
 #include "LearningCplusPlus.h"
 #include "Console.h"
 
 
 #define Tab '\t'
 #define Nline '\n'
+
 
 const char tab { '\t' };
 const char nline { '\n' };

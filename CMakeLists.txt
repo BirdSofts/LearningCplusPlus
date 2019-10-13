@@ -6,7 +6,6 @@
 #/ <changed>ʆϒʅ,13.09.2019</changed>
 # *******************************************************************************************
 
-
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
 set(TARGET_NAME LearningCplusPlus)
@@ -38,8 +37,7 @@ list(APPEND HEADER_FILES
   _7_cPlusPlusStandardLibrary.h
   Console.h
   )
-message(${CMAKE_PREFIX_PATH}/bin/libgcc_s_seh-1.dll)
-message(${CMAKE_CXX_COMPILER})
+
 list(APPEND SOURCE_FILES
   LearningCplusPlus.cpp
   _1_Introduction.cpp
@@ -56,7 +54,6 @@ if(WIN32)
   list(APPEND SOURCE_FILES ${HEADER_FILES})
 endif()
 
-# Add source to this project's executable.
 add_executable(${TARGET_NAME} ${SOURCE_FILES} ${RESOURCES})
 
 if(MINGW)

@@ -3,9 +3,8 @@
 /// _7_cPlusPlusStandardLibrary.h
 /// </summary>
 /// <created>ʆϒʅ,07.07.2019</created>
-/// <changed>ʆϒʅ,08.08.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _7_CPLUSPLUSSTANDARDLIBRARY_H
 #define _7_CPLUSPLUSSTANDARDLIBRARY_H

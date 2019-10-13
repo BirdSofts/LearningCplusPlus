@@ -3,9 +3,8 @@
 /// _4_CompoundDataTypes.h
 /// </summary>
 /// <created>ʆϒʅ,30.05.2018</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _4_COMPOUNDDATATYPES_H
 #define _4_COMPOUNDDATATYPES_H

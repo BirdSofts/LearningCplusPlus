@@ -3,9 +3,8 @@
 /// _2_Basics.h
 /// </summary>
 /// <created>ʆϒʅ,11.04.2018</created>
-/// <changed>ʆϒʅ,07.07.2019</changed>
+/// <changed>ʆϒʅ,13.10.2019</changed>
 // --------------------------------------------------------------------------------
-
 
 #ifndef _2_BASICSOFCPLUSPLUS_H
 #define _2_BASICSOFCPLUSPLUS_H

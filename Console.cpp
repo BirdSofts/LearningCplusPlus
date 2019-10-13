@@ -4,13 +4,9 @@
 /// </summary>
 /// <returns></returns>
 /// <created>ʆϒʅ,02.10.2018</created>
-/// <changed>ʆϒʅ,05.05.2019</changed>
+/// <changed>ʆϒʅ,14.10.2019</changed>
 // ********************************************************************************
 
-#pragma once
-
-
-//#include "pch.h"
 #include "LearningCplusPlus.h"
 #include "Console.h"
 
